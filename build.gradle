@@ -1,4 +1,22 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        activity_ktx_version = '1.6.0'
+        fragment_ktx_version = '1.5.3'
+        lifecycle_version = '2.5.1'
+        retrofit_version = '2.9.0'
+        okhttp_version = '4.10.0'
+        kotlinx_serialization_version = '1.4.1'
+        kotlinx_serialization_converter_version = '0.8.0'
+        coil_version = '2.2.2'
+        hilt_version = '2.44'
+    }
+
+    dependencies {
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+    }
+}
+
 plugins {
     id 'com.android.application' version '7.3.0' apply false
     id 'com.android.library' version '7.3.0' apply false
