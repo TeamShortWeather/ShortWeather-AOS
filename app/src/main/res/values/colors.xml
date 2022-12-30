@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Default Color -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,4 +8,19 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- ShortWeather Color -->
+    <color name="short_weather_black">#000000</color>
+    <color name="short_weather_gray_8">#2F2F2F</color>
+    <color name="short_weather_gray_7">#717171</color>
+    <color name="short_weather_gray_6">#7D7F84</color>
+    <color name="short_weather_gray_5">#919499</color>
+    <color name="short_weather_gray_4">#A7A7A7</color>
+    <color name="short_weather_gray_3">#DCDCDC</color>
+    <color name="short_weather_gray_2">#EBEBEB</color>
+    <color name="short_weather_gray_1">#F2F2F2</color>
+    <color name="short_weather_gray_0">#F8F8F8</color>
+    <color name="short_weather_white">#FFFFFF</color>
+    <color name="short_weather_blue">#5C7EFF</color>
+    <color name="short_weather_beige">#FFF6DD</color>
 </resources>
