@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TextAppearance Style -->
+    <style name="TextAppearance.ShortWeather.Display1" parent="">
+        <item name="android:textSize">32sp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.ShortWeather.Headline1" parent="">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.ShortWeather.Headline2" parent="">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.ShortWeather.Subhead1" parent="">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="TextAppearance.ShortWeather.Subhead2" parent="">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.ShortWeather.Subhead3" parent="">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+
+    <style name="TextAppearance.ShortWeather.Subhead4" parent="">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+    </style>
+
+    <style name="TextAppearance.ShortWeather.Body1" parent="">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+    <style name="TextAppearance.ShortWeather.Body2" parent="">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+    <style name="TextAppearance.ShortWeather.caption1" parent="">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+    </style>
+
+    <style name="TextAppearance.ShortWeather.caption2" parent="">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+    </style>
+</resources>
