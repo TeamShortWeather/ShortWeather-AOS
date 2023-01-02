@@ -12,7 +12,6 @@ class InputInfoActivity: BindingActivity<ActivityInputInfoBinding>(R.layout.acti
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_input_info)
         setOnClickListener()
     }
 
@@ -20,6 +19,7 @@ class InputInfoActivity: BindingActivity<ActivityInputInfoBinding>(R.layout.acti
         // 다음 버튼을 누르면 InputTimeActivity로 이동
         binding.btnInputInfoNext.setOnClickListener(){
             startActivity(Intent(this, InputTimeActivity::class.java))
+            finish()
         }
     }
 }

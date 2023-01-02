@@ -9,6 +9,7 @@ import android.os.Looper
 import org.shortweather.databinding.ActivitySplashBinding
 import org.shortweather.presentation.MainActivity
 import org.shortweather.presentation.input.view.InputInfoActivity
+import org.shortweather.presentation.input.view.InputTimeActivity
 import org.shortweather.util.binding.BindingActivity
 
 @AndroidEntryPoint

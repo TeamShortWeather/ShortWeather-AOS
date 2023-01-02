@@ -22,6 +22,9 @@
             android:name=".presentation.input.view.InputInfoActivity">
         </activity>
         <activity
+            android:name=".presentation.input.view.InputTimeActivity">
+        </activity>
+        <activity
             android:name=".presentation.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
