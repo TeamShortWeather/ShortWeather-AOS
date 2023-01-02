@@ -145,6 +145,7 @@
         <!--데이터바인딩으로 추후 background 빨강/검정으로 제어 필요-->
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_input_info_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="670dp"
