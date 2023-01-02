@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.input.view.InputInfoActivity">
+
+        <TextView
+            android:id="@+id/tv_input_info_header_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/input_header_top"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Headline1"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_input_info_header_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/input_header_bottom"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Headline1"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_input_info_header_top" />
+
+        <TextView
+            android:id="@+id/tv_input_info_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/input_gender"
+            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textColor="@color/short_weather_gray_7"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_input_info_header_bottom" />
+        <!--데이터바인딩으로 추후 textColor 빨강/검정으로 제어 필요-->
+
+        <TextView
+            android:id="@+id/tv_input_info_gender_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:text="여자"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_input_info_gender" />
+
+        <View
+            android:id="@+id/v_input_info_gender_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/short_weather_gray_1"
+            android:layout_marginTop="46dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_input_info_gender" />
+        <!--데이터바인딩으로 추후 background 빨강/검정으로 제어 필요-->
+
+        <TextView
+            android:id="@+id/tv_input_info_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/input_age"
+            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textColor="@color/short_weather_gray_7"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_input_info_gender_line" />
+        <!--데이터바인딩으로 추후 textColor 빨강/검정으로 제어 필요-->
+
+        <TextView
+            android:id="@+id/tv_input_info_age_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:text="10대"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_input_info_age" />
+
+        <View
+            android:id="@+id/v_input_info_age_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/short_weather_gray_1"
+            android:layout_marginTop="46dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_input_info_age" />
+        <!--데이터바인딩으로 추후 background 빨강/검정으로 제어 필요-->
+
+        <TextView
+            android:id="@+id/tv_input_info_sense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/input_sensitivity"
+            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textColor="@color/short_weather_gray_7"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_input_info_age_line" />
+        <!--데이터바인딩으로 추후 textColor 빨강/검정으로 제어 필요-->
+
+        <TextView
+            android:id="@+id/tv_input_info_sense_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:text="추위를 잘 타요"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_input_info_sense" />
+
+        <View
+            android:id="@+id/v_input_info_sense_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/short_weather_gray_1"
+            android:layout_marginTop="46dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_input_info_sense" />
+        <!--데이터바인딩으로 추후 background 빨강/검정으로 제어 필요-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
