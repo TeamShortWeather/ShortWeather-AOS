@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">ShortWeather</string>
+
+    <!-- Title -->
+    <string name="title_today_weather">오늘 날씨</string>
+    <string name="title_week_weather">주간 날씨</string>
+    <string name="title_clothes">옷</string>
+    <string name="title_setting">설정</string>
+
+    <!-- Appbar -->
+    <string name="app_bar_add">add</string>
+    <string name="app_bar_location">서울, 중구 명동</string>
+
+    <!-- Drawer -->
+    <string name="drawer_menu">메뉴</string>
 </resources>
