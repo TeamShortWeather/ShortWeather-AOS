@@ -144,5 +144,18 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_input_info_sense" />
         <!--데이터바인딩으로 추후 background 빨강/검정으로 제어 필요-->
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="670dp"
+            android:text="다음"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+            android:background="@drawable/btn_input_info"
+            android:backgroundTint="@color/short_weather_gray_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--데이터바인딩으로 backgroundTint 회색/파랑, textColor 검정/하양으로 제어 필요-->
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

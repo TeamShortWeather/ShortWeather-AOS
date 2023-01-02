@@ -19,6 +19,9 @@
             android:name=".presentation.MainActivity">
         </activity>
         <activity
+            android:name=".presentation.input.view.InputInfoActivity">
+        </activity>
+        <activity
             android:name=".presentation.splash.SplashActivity"
             android:exported="true">
             <intent-filter>

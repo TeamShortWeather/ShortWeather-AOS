@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import org.shortweather.databinding.ActivitySplashBinding
 import org.shortweather.presentation.MainActivity
+import org.shortweather.presentation.input.view.InputInfoActivity
 import org.shortweather.util.binding.BindingActivity
 
 @AndroidEntryPoint
@@ -21,7 +22,7 @@ class SplashActivity: BindingActivity<ActivitySplashBinding>(R.layout.activity_s
         Handler(Looper.getMainLooper()).postDelayed({
 
             //main activity 시작
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, InputInfoActivity::class.java))
 
             //액티비티 닫기
             finish()
