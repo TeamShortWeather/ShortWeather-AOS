@@ -16,7 +16,10 @@
         android:theme="@style/Theme.ShortWeather"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.MainActivity">
+        </activity>
+        <activity
+            android:name=".presentation.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,9 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".presentation.sample.view.SampleActivity"
-            android:exported="false" />
     </application>
 
 </manifest>
