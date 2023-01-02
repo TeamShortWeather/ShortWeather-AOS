@@ -13,7 +13,7 @@ import org.shortweather.util.binding.BindingActivity
 
 @AndroidEntryPoint
 class SplashActivity: BindingActivity<ActivitySplashBinding>(R.layout.activity_splash) {
-    private val SPLASH_TIME_OUT: Long = 3000  //3 sec
+    private val SPLASH_TIME: Long = 3000  //3 sec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,6 @@ class SplashActivity: BindingActivity<ActivitySplashBinding>(R.layout.activity_s
 
             //액티비티 닫기
             finish()
-        }, SPLASH_TIME_OUT)
+        }, SPLASH_TIME)
     }
 }
