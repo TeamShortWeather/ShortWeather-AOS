@@ -11,6 +11,7 @@ buildscript {
         coil_version = '2.2.2'
         hilt_version = '2.44'
         dotsindicator_version = '4.3'
+        lottie_version = '5.2.0'
     }
 
     dependencies {
