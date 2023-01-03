@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">ShortWeather</string>
+
+    <!--Button text-->
+    <string name="btn_txt_input_info_next">다음</string>
+    <string name="btn_txt_input_time_check">확인</string>
+
+    <!--InputInfo-->
+    <string name="input_header_top">입력하신 정보를 바탕으로</string>
+    <string name="input_header_bottom">생활에 맞는 날씨를 알려드릴게요</string>
+    <string name="input_gender">성별을 선택해 주세요</string>
+    <string name="input_age">연령대를 선택해 주세요</string>
+    <string name="input_sensitivity">온도 민감도를 알려주세요</string>
+
+    <!--InputTime-->
+    <string name="input_time_header">여러분의 하루를 알려주세요</string>
+    <string name="input_time_wake">기상시간</string>
+    <string name="input_time_out">외출시간</string>
+    <string name="input_time_return">귀가시간</string>
+    <string name="input_time_description">* 입력한 시간을 바탕으로 날씨를 알려드려요</string>
+
 </resources>
