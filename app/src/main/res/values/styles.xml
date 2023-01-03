@@ -65,4 +65,12 @@
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/pretendard_regular</item>
     </style>
+
+    <!-- View Style -->
+    <style name="NavigationView.Basic" parent="Widget.Material3.NavigationView">
+        <item name="android:listDivider">@color/short_weather_gray_2</item>
+        <item name="android:background">@color/white</item>
+        <item name="itemTextAppearance">@style/TextAppearance.ShortWeather.Subhead2</item>
+        <item name="itemTextColor">@color/short_weather_black</item>
+    </style>
 </resources>
