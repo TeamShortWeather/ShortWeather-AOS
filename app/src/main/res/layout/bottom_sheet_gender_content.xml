@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet"
+    android:id="@+id/standard_bottom_sheet"
+    style="@style/Widget.Material3.BottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+        android:id="@+id/drag_handle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_bottom_sheet_gender_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:layout_marginStart="24dp"
+        android:text="@string/input_gender"
+        android:textAppearance="@style/TextAppearance.ShortWeather.Headline2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_contents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+<!--    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="42dp"
+        android:layout_marginStart="24dp"
+        android:text="여자"
+        android:textColor="@color/short_weather_gray_7"
+        android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="60dp"
+        android:text="남자"
+        android:textColor="@color/short_weather_gray_7"
+        android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2" />-->
+
+</LinearLayout>
