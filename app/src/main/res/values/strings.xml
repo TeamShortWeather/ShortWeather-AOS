@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ShortWeather</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Setting-->
+    <string name="setting_time">외출 / 귀가 시간대 설정</string>
+    <string name="setting_alarm">알림 설정</string>
+    <string name="setting_wake_up">기상시간 설정</string>
+    <string name="setting_content_description">세팅화면 대체 텍스트</string>
 </resources>
