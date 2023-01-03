@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.input.view.InputTimeActivity">
+
+        <TextView
+            android:id="@+id/tv_input_time_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="90dp"
+            android:text="@string/input_time_header"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Headline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_input_time_wake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/input_time_wake"
+            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textColor="@color/short_weather_gray_7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_input_time_header" />
+        <!--데이터바인딩으로 추후 textColor 빨강/검정으로 제어 필요-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_time_wake"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_input_time_wake">
+
+            <TextView
+                android:id="@+id/tv_input_info_wake_contents"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="8시 30분"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="14dp"
+                android:layout_height="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_expand"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_input_info_wake_contents"
+                app:layout_constraintEnd_toEndOf="@+id/tv_input_info_wake_contents"
+                app:layout_constraintTop_toTopOf="@+id/tv_input_info_wake_contents" />
+            <!--데이터바인딩으로 추후 icon Color 빨강/검정으로 제어 필요-->
+
+            <View
+                android:id="@+id/v_input_info_wake_line"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/short_weather_gray_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_input_info_wake_contents" />
+            <!--데이터바인딩으로 추후 color 빨강/검정으로 제어 필요-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/tv_input_time_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/input_time_out"
+            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textColor="@color/short_weather_gray_7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_time_wake" />
+        <!--            데이터바인딩으로 추후 textColor 빨강/검정으로 제어 필요-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_time_out"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_input_time_out">
+
+            <TextView
+                android:id="@+id/tv_input_time_out_contents"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="8시 30분"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="14dp"
+                android:layout_height="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_expand"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_input_time_out_contents"
+                app:layout_constraintEnd_toEndOf="@+id/tv_input_time_out_contents"
+                app:layout_constraintTop_toTopOf="@+id/tv_input_time_out_contents" />
+            <!--데이터바인딩으로 추후 icon Color 빨강/검정으로 제어 필요-->
+
+            <View
+                android:id="@+id/v_input_time_out_line"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/short_weather_gray_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_input_time_out_contents" />
+            <!--데이터바인딩으로 추후 color 빨강/검정으로 제어 필요-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_input_time_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/input_time_return"
+            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textColor="@color/short_weather_gray_7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_time_out" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_time_return"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_input_time_return">
+
+            <TextView
+                android:id="@+id/tv_input_time_return_contents"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="8시 30분"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="14dp"
+                android:layout_height="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_expand"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_input_time_return_contents"
+                app:layout_constraintEnd_toEndOf="@+id/tv_input_time_return_contents"
+                app:layout_constraintTop_toTopOf="@+id/tv_input_time_return_contents" />
+            <!--데이터바인딩으로 추후 icon Color 빨강/검정으로 제어 필요-->
+
+            <View
+                android:id="@+id/v_input_time_return_line"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/short_weather_gray_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_input_time_return_contents" />
+            <!--데이터바인딩으로 추후 color 빨강/검정으로 제어 필요-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--데이터바인딩으로 추후 textColor 빨강/검정으로 제어 필요-->
+
+        <TextView
+            android:id="@+id/tv_input_time_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginBottom="14dp"
+            android:text="@string/input_time_description"
+            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textColor="@color/short_weather_gray_4"
+            app:layout_constraintBottom_toTopOf="@+id/btn_input_time_check"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_input_time_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_input_info"
+            android:backgroundTint="@color/short_weather_gray_2"
+            android:text="@string/btn_txt_input_time_check"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <!--데이터바인딩으로 backgroundTint 회색/파랑, textColor 검정/하양으로 제어 필요-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

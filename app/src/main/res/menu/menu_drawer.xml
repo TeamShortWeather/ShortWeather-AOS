@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/top_menu_drawer">
+        <item
+            android:id="@+id/today_weather_menu_drawer"
+            android:icon="@drawable/ic_today"
+            android:title="@string/title_today_weather" />
+        <item
+            android:id="@+id/week_weather_menu_drawer"
+            android:icon="@drawable/ic_week"
+            android:title="@string/title_week_weather" />
+        <item
+            android:id="@+id/clothes_menu_drawer"
+            android:icon="@drawable/ic_clothes"
+            android:title="@string/title_clothes" />
+    </group>
+
+    <group android:id="@+id/bottom_menu_drawer">
+        <item
+            android:id="@+id/setting_menu_drawer"
+            android:icon="@drawable/ic_setting"
+            android:title="@string/title_setting" />
+    </group>
+</menu>
