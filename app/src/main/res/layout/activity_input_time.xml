@@ -205,7 +205,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_input_info"
             android:backgroundTint="@color/short_weather_gray_2"
-            android:text="확인"
+            android:text="@string/btn_txt_input_time_check"
             android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
