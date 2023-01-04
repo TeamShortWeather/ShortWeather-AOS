@@ -1,5 +1,6 @@
 package org.shortweather.presentation.input
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,12 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import org.shortweather.R
 import org.shortweather.databinding.ItemBottomSheetBinding
 
-class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.Holder>() {
-    private var itemList: MutableList<BottomSheetItem> = ArrayList()
+class BottomSheetAdapter(
+    private val list: MutableList<BottomSheetItem>,
+    private val listener: OnItemClickListener
+) : RecyclerView.Adapter<BottomSheetAdapter.Holder>() {
+    private var itemList: MutableList<BottomSheetItem> = list
+    private lateinit var binding: ItemBottomSheetBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_bottom_sheet, parent, false)
-        return Holder(view)
+        binding = ItemBottomSheetBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return Holder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -23,7 +28,12 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.Holder>() {
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val item = itemList[position]
         holder.bind(item)
+
+        binding.root.setOnClickListener{
+            Log.d("tag", "selected")
+        }
     }
+/*
 
     fun setItem(items: MutableList<BottomSheetItem>) {
         if (!items.isNullOrEmpty()) {
@@ -31,11 +41,18 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.Holder>() {
             notifyDataSetChanged()
         }
     }
+*/
 
-    inner class Holder(val view: View) : RecyclerView.ViewHolder(view) {
+    inner class Holder(
+        binding: ItemBottomSheetBinding
+    ): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: BottomSheetItem) {
-            view.findViewById<TextView>(R.id.tv_contents).text = item.contents
+            binding.tvContents.text = item.contents
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int, item: BottomSheetItem)
     }
 }
 

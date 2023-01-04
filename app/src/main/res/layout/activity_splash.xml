@@ -19,9 +19,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginStart="84dp"
-            android:layout_marginTop="290dp"
             android:layout_marginEnd="84dp"
-            android:layout_marginBottom="318dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/shortweather_final" />

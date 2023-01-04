@@ -22,4 +22,6 @@ class InputTimeActivity: BindingActivity<ActivityInputTimeBinding>(R.layout.acti
             finish()
         }
     }
+
+
 }

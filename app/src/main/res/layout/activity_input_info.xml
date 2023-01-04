@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="vm"
+            type="org.shortweather.presentation.input.viewmodel.InputInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,15 +41,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
+            android:selectable="true"
             android:text="@string/input_gender"
             android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
-            android:textColor="@color/short_weather_gray_7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_input_info_header_bottom" />
         <!--데이터바인딩으로 추후 textColor 빨강/검정으로 제어 필요-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_gender"
+            android:selectable="true"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -61,6 +64,7 @@
                 android:id="@+id/tv_input_info_gender_contents"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="@={vm.inputGender}"
                 tools:text="여자"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1" />
 
