@@ -29,8 +29,8 @@ class BottomSheetAdapter(
         val item = itemList[position]
         holder.bind(item)
 
-        binding.root.setOnClickListener{
-            Log.d("tag", "selected")
+        binding.root.setOnClickListener {
+            listener.onItemClick(position, item)
         }
     }
 /*

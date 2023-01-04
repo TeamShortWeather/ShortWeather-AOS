@@ -5,20 +5,29 @@
     android:background="@drawable/bg_bottom_sheet"
     android:id="@+id/standard_bottom_sheet"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    style="@style/CustomBottomSheet"
+    android:layout_height="match_parent"
+    app:behavior_peekHeight="100dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/drag_handle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="158dp"
+        android:layout_marginEnd="158dp"
+        android:layout_marginBottom="24dp"
+        android:layout_width="44dp"
+        android:layout_height="4dp"
+        android:background="@drawable/ic_bottom_sheet_drag_view"
+/>
 
     <TextView
-        android:id="@+id/tv_bottom_sheet_gender_header"
+        android:id="@+id/tv_bottom_sheet_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
         android:layout_marginStart="24dp"
-        android:text="@string/input_sensitivity"
+        android:text="@string/input_gender"
         android:textAppearance="@style/TextAppearance.ShortWeather.Headline2" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -29,7 +38,7 @@
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-    <!--    <TextView
+<!--        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="42dp"

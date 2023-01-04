@@ -1,30 +1,42 @@
 package org.shortweather.presentation.input.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
-import org.shortweather.presentation.input.BottomSheetItem
-import org.shortweather.presentation.input.bottomsheet.BottomSheetGender
 import javax.inject.Inject
 
 @HiltViewModel
-class InputInfoViewModel: ViewModel() {
+class InputInfoViewModel @Inject constructor() : ViewModel() {
 
-    val inputGender = MutableLiveData<String>().apply{ value = " " } // 최초에 하나의 공백 삽입
-    val isGenderSelected: LiveData<Boolean> = Transformations.map(inputGender) { it ->
+    var inputGender = MutableLiveData<String>(" ") // 최초상태를 의미하는 하나의 공백 삽입
+    var inputAge = MutableLiveData<String>(" ")
+    var inputSense = MutableLiveData<String>(" ")
+
+    val isGenderSelected: LiveData<Boolean> =
+        Transformations.map(inputGender) { it -> // 선택되지 않았다면 빈칸 -> false처리됨
+            validCheck(it)
+        }
+    val isGenderSuccess: LiveData<Boolean> =
+        Transformations.map(inputGender) { it -> // 하나의 공백(최초상태)가 아니면서 빈칸도 아님 -> 내용 담겼음을 확인
+            !(it.equals(" ") || it.equals(""))
+        }
+
+    val isAgeSelected: LiveData<Boolean> = Transformations.map(inputAge) { it ->
         validCheck(it)
     }
-
-/*    val inputAgecheck : LiveData<Boolean> = Transformations.map(inputAge) { it ->
-        validcheck(it)
+    val isAgeSuccess: LiveData<Boolean> = Transformations.map(inputAge) { it ->
+        !(it.equals(" ") || it.equals(""))
     }
 
-    val inputSensecheck : LiveData<Boolean> = Transformations.map(inputSense) { it ->
-        validcheck(it)
-    }*/
+    val isSenseSelected: LiveData<Boolean> = Transformations.map(inputSense) { it ->
+        validCheck(it)
+    }
+    val isSenseSuccess: LiveData<Boolean> = Transformations.map(inputSense) { it ->
+        !(it.equals(" ") || it.equals(""))
+    }
 
-    private fun validCheck(input: String) : Boolean {
-        if(input.isEmpty()){ // 아예 공백까지 없어야 false 반환
+
+    private fun validCheck(input: String): Boolean {
+        if (input.isEmpty()) { // 아예 공백까지 없어야 false 반환
             return false
         }
         return true

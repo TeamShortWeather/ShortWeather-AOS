@@ -43,6 +43,7 @@
             android:layout_marginTop="32dp"
             android:selectable="true"
             android:text="@string/input_gender"
+            android:textColor="@{vm.isGenderSelected ? @color/short_weather_gray_7 : @color/short_weather_red}"
             android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_input_info_header_bottom" />
@@ -72,7 +73,7 @@
                 android:layout_width="14dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/ic_expand"
+                android:background="@{vm.isGenderSelected ? @drawable/ic_expand : @drawable/ic_expand_red}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_input_info_gender_contents"
                 app:layout_constraintEnd_toEndOf="@+id/tv_input_info_gender_contents"
                 app:layout_constraintTop_toTopOf="@+id/tv_input_info_gender_contents" />
@@ -83,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/short_weather_gray_1"
+                android:background="@{!vm.isGenderSelected ? @color/short_weather_red : (!vm.isGenderSuccess ? @color/short_weather_gray_1 : @color/short_weather_blue)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_input_info_gender_contents" />
@@ -98,7 +99,7 @@
             android:layout_marginTop="30dp"
             android:text="@string/input_age"
             android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
-            android:textColor="@color/short_weather_gray_7"
+            android:textColor="@{vm.isAgeSelected ? @color/short_weather_gray_7 : @color/short_weather_red}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_gender" />
         <!--            데이터바인딩으로 추후 textColor 빨강/검정으로 제어 필요-->
@@ -118,6 +119,7 @@
                 android:id="@+id/tv_input_info_age_contents"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="@={vm.inputAge}"
                 tools:text="10대"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1" />
 
@@ -125,7 +127,7 @@
                 android:layout_width="14dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/ic_expand"
+                android:background="@{vm.isAgeSelected ? @drawable/ic_expand : @drawable/ic_expand_red}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_input_info_age_contents"
                 app:layout_constraintEnd_toEndOf="@+id/tv_input_info_age_contents"
                 app:layout_constraintTop_toTopOf="@+id/tv_input_info_age_contents" />
@@ -136,7 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/short_weather_gray_1"
+                android:background="@{!vm.isAgeSelected ? @color/short_weather_red : (!vm.isAgeSuccess ? @color/short_weather_gray_1 : @color/short_weather_blue)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_input_info_age_contents" />
@@ -151,7 +153,7 @@
             android:layout_marginTop="30dp"
             android:text="@string/input_sensitivity"
             android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
-            android:textColor="@color/short_weather_gray_7"
+            android:textColor="@{vm.isSenseSelected ? @color/short_weather_gray_7 : @color/short_weather_red}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_age" />
         <!--데이터바인딩으로 추후 textColor 빨강/검정으로 제어 필요-->
@@ -171,6 +173,7 @@
                 android:id="@+id/tv_input_info_sense_contents"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="@={vm.inputSense}"
                 tools:text="추위를 잘 타요"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1" />
 
@@ -178,7 +181,7 @@
                 android:layout_width="14dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/ic_expand"
+                android:background="@{vm.isSenseSelected ? @drawable/ic_expand : @drawable/ic_expand_red}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_input_info_sense_contents"
                 app:layout_constraintEnd_toEndOf="@+id/tv_input_info_sense_contents"
                 app:layout_constraintTop_toTopOf="@+id/tv_input_info_sense_contents" />
@@ -189,7 +192,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/short_weather_gray_1"
+                android:background="@{!vm.isSenseSelected ? @color/short_weather_red : (!vm.isSenseSuccess ? @color/short_weather_gray_1 : @color/short_weather_blue)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_input_info_sense_contents" />
@@ -203,9 +206,10 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/btn_input_info"
-            android:backgroundTint="@color/short_weather_gray_2"
+            android:enabled="true"
+            android:background="@drawable/selector_input_btn_bg"
             android:text="@string/btn_txt_input_info_next"
+            android:textColor="@drawable/selector_input_btn_text_color"
             android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
