@@ -23,4 +23,5 @@
     <color name="short_weather_white">#FFFFFF</color>
     <color name="short_weather_blue">#5C7EFF</color>
     <color name="short_weather_beige">#FFF6DD</color>
+    <color name="short_weather_gray_temp">#B9B9B9</color>
 </resources>
