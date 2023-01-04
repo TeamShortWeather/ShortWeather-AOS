@@ -44,4 +44,5 @@
     <string name="weekly_weather_header_day">일별예보</string>
     <string name="weekly_weather_header_time">오전 / 오후</string>
     <string name="weekly_weather_header_temperature">최고 / 최저</string>
+    <string name="weekly_weather_content_description">주간날씨화면 대체 텍스트</string>
 </resources>
