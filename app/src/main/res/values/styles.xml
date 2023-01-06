@@ -84,4 +84,10 @@
         <item name="backgroundTint">@android:color/transparent</item>
     </style>
 
+    <style name="CustomTimePicker">
+        <item name="android:textColorPrimary">@color/short_weather_black</item><!-- text color -->
+        <item name="android:textAppearance">@style/TextAppearance.ShortWeather.Subhead1</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
-            android:text="@string/input_time_wake"
+            android:text="@string/input_time_wake_up"
             android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
             android:textColor="@color/short_weather_gray_7"
             app:layout_constraintStart_toStartOf="parent"

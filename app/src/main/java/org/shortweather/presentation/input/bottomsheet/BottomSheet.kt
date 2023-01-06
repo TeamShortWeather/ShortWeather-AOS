@@ -54,13 +54,13 @@ class BottomSheet(val target: String) : BottomSheetDialogFragment() {
 
     private fun viewKindCheck() { // 바텀시트의 종류가 성별/연령/민감도인지 확인하고 이에 대응하여 아이템들을 생성함,
         if (target == "gender") {
-            binding.tvBottomSheetHeader.setText(R.string.input_gender)
+            binding.tvBottomSheetHeader.text = getString(R.string.input_gender)
             list = mutableListOf(
                 BottomSheetItem("여자"),
                 BottomSheetItem("남자"),
             )
         } else if (target == "age") {
-            binding.tvBottomSheetHeader.setText(R.string.input_age)
+            binding.tvBottomSheetHeader.text = getString(R.string.input_age)
             list = mutableListOf(
                 BottomSheetItem("10대"),
                 BottomSheetItem("20대"),
@@ -70,7 +70,7 @@ class BottomSheet(val target: String) : BottomSheetDialogFragment() {
                 BottomSheetItem("60대 이상"),
             )
         } else {
-            binding.tvBottomSheetHeader.setText(R.string.input_sensitivity)
+            binding.tvBottomSheetHeader.text = getString(R.string.input_sensitivity)
             list = mutableListOf(
                 BottomSheetItem("추위를 잘 타요"),
                 BottomSheetItem("보통이에요"),
