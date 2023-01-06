@@ -1,4 +1,4 @@
-package org.shortweather.presentation.todayweather
+package org.shortweather.presentation.todayweather.view
 
 import android.os.Bundle
 import android.view.View
