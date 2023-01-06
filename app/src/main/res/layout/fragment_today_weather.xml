@@ -34,7 +34,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Display1"
                 android:textColor="@color/short_weather_black"
                 app:layout_constraintStart_toStartOf="@id/tv_today_weather_subtitle"
                 app:layout_constraintTop_toBottomOf="@id/tv_today_weather_subtitle"
@@ -162,5 +162,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 </layout>
