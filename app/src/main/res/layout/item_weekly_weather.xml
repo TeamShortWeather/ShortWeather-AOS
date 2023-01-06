@@ -126,7 +126,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-            android:textColor="@color/short_weather_gray_temp"/>
+            android:textColor="@color/short_weather_gray_4"/>
 
         <TextView
             android:id="@+id/tv_weekly_weather_temp_down"
@@ -139,8 +139,6 @@
             android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
             android:textColor="@color/short_weather_gray_7"/>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
