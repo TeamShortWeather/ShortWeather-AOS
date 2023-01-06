@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
 import org.shortweather.databinding.ActivityMainBinding
-import org.shortweather.presentation.todayweather.TodayWeatherFragment
+import org.shortweather.presentation.todayweathercontainer.view.TodayWeatherContainerFragment
 import org.shortweather.util.binding.BindingActivity
 
 @AndroidEntryPoint
@@ -15,7 +15,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 
         initView()
         setNavigation()
-        startTargetFragment(TodayWeatherFragment())
+        startTargetFragment(TodayWeatherContainerFragment())
     }
 
     private fun initView() {
