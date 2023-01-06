@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="29dp"
             android:text="@string/weekly_weather_header_day"
-            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
             android:textColor="@color/short_weather_gray_7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="81dp"
             android:text="@string/weekly_weather_header_time"
-            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
             android:textColor="@color/short_weather_gray_7"
             app:layout_constraintStart_toEndOf="@+id/weekly_weather_header_day"
             app:layout_constraintTop_toTopOf="@+id/weekly_weather_header_day" />
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="74dp"
             android:text="@string/weekly_weather_header_temperature"
-            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
             android:textColor="@color/short_weather_gray_7"
             app:layout_constraintStart_toEndOf="@id/weekly_weather_header_time"
             app:layout_constraintTop_toTopOf="@id/weekly_weather_header_time" />
