@@ -1,12 +1,7 @@
 package org.shortweather.presentation.input.bottomsheet
 
-import android.R.string.cancel
-import android.app.TimePickerDialog
-import android.app.TimePickerDialog.OnTimeSetListener
-import android.content.Context
+import android.annotation.SuppressLint
 import android.content.DialogInterface
-import android.content.DialogInterface.BUTTON_NEGATIVE
-import android.content.DialogInterface.BUTTON_POSITIVE
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
@@ -70,19 +65,23 @@ class BottomSheetTime(val target: String) : BottomSheetDialogFragment() {
         const val TAG = "BottomSheetTime"
     }
 
-    private fun setTimeInterval(timePicker : TimePicker) {
-            val TIME_PICKER_INTERVAL = 30;
-            val minutePicker: NumberPicker = timePicker.findViewById(
-                Resources.getSystem().getIdentifier(
-                "minute", "id", "android"))
-            minutePicker.minValue = 0;
-            minutePicker.maxValue = (60 / TIME_PICKER_INTERVAL) - 1
-            val displayedValues: ArrayList<String> = ArrayList()
-            for (i in 0 until 60 step TIME_PICKER_INTERVAL) {
-                displayedValues.add(String.format("%02d", i * TIME_PICKER_INTERVAL))
-            }
-            Log.d("tag", "hello")
-            minutePicker.displayedValues = displayedValues.toTypedArray()
+    @SuppressLint("PrivateApi")
+    private fun setTimeInterval(timePicker: TimePicker) {
+        val timeInterval = if(target == "wake") 30 else 60 // 기상시간은 30분 간격, 나머지는 60분 간격
+        val displayedValues: ArrayList<String> = ArrayList()
+        val minutePicker: NumberPicker = timePicker.findViewById(
+            Resources.getSystem().getIdentifier(
+                "minute", "id", "android"
+            )
+        )
+
+        minutePicker.minValue = 0
+        minutePicker.maxValue = (60 / timeInterval) - 1
+        minutePicker.setOnValueChangedListener(null) // 분이 바뀌어도 시에 영향을 주지 않음.
+        for (i in 0 until 60 step timeInterval) { // 시간 간격 반영된 분 삽입
+            displayedValues.add(String.format("%02d", i))
+        }
+        minutePicker.displayedValues = displayedValues.toTypedArray()
     }
 
 }

@@ -14,7 +14,7 @@ import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
 import org.shortweather.util.binding.BindingActivity
 
 @AndroidEntryPoint
-class InputTimeActivity: BindingActivity<ActivityInputTimeBinding>(R.layout.activity_input_time) {
+class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.activity_input_time) {
     val viewModel by viewModels<InputTimeViewModel>()
     private val bottomSheetWake = BottomSheetTime("wake") // 3개의 바텀시트 객체 생성
     private val bottomSheetOut = BottomSheetTime("out")
@@ -29,20 +29,20 @@ class InputTimeActivity: BindingActivity<ActivityInputTimeBinding>(R.layout.acti
 
     private fun setOnClickListener() {
         // 확인 버튼을 누르면 MainActivity로 이동
-        binding.btnInputTimeCheck.setOnClickListener(){ // 메인 화면으로 이동
+        binding.btnInputTimeCheck.setOnClickListener() { // 메인 화면으로 이동
             startActivity(Intent(this, MainActivity::class.java)) // 서버에 전달해주는 로직 추후에 필요
             finish()
         }
 
-        binding.layoutTimeWake.setOnClickListener(){
+        binding.layoutTimeWake.setOnClickListener() { // 기상시간 선택
             bottomSheetWake.show(supportFragmentManager, BottomSheetTime.TAG)
         }
 
-        binding.layoutTimeOut.setOnClickListener(){
+        binding.layoutTimeOut.setOnClickListener() { // 외출시간 선택
             bottomSheetOut.show(supportFragmentManager, BottomSheetTime.TAG)
         }
 
-        binding.layoutTimeReturn.setOnClickListener(){
+        binding.layoutTimeReturn.setOnClickListener() { // 귀가시간 선택
             bottomSheetReturn.show(supportFragmentManager, BottomSheetTime.TAG)
         }
     }

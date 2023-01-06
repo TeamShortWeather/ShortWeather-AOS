@@ -24,20 +24,20 @@ class InputTimeViewModel @Inject constructor() : ViewModel() {
         }
 
     val timeOutSelected: LiveData<Boolean> =
-        Transformations.map(timeWake) { it -> // 선택되지 않았다면 빈칸 -> false처리됨
+        Transformations.map(timeWake) {
             it.isNotEmpty()
         }
     val timeOutSuccess: LiveData<Boolean> =
-        Transformations.map(timeWake) { it -> // 하나의 공백(최초상태)가 아니면서 빈칸도 아님 -> 내용 담겼음을 확인
+        Transformations.map(timeWake) {
             !(it.equals(" ") || it.equals(""))
         }
 
     val timeReturnSelected: LiveData<Boolean> =
-        Transformations.map(timeWake) { it -> // 선택되지 않았다면 빈칸 -> false처리됨
+        Transformations.map(timeWake) {
             it.isNotEmpty()
         }
     val timeReturnSuccess: LiveData<Boolean> =
-        Transformations.map(timeWake) { it -> // 하나의 공백(최초상태)가 아니면서 빈칸도 아님 -> 내용 담겼음을 확인
+        Transformations.map(timeWake) {
             !(it.equals(" ") || it.equals(""))
         }
 
