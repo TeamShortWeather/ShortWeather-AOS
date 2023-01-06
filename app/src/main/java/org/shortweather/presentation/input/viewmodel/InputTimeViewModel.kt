@@ -24,20 +24,20 @@ class InputTimeViewModel @Inject constructor() : ViewModel() {
         }
 
     val timeOutSelected: LiveData<Boolean> =
-        Transformations.map(timeWake) {
+        Transformations.map(timeOut) {
             it.isNotEmpty()
         }
     val timeOutSuccess: LiveData<Boolean> =
-        Transformations.map(timeWake) {
+        Transformations.map(timeOut) {
             !(it.equals(" ") || it.equals(""))
         }
 
     val timeReturnSelected: LiveData<Boolean> =
-        Transformations.map(timeWake) {
+        Transformations.map(timeReturn) {
             it.isNotEmpty()
         }
     val timeReturnSuccess: LiveData<Boolean> =
-        Transformations.map(timeWake) {
+        Transformations.map(timeReturn) {
             !(it.equals(" ") || it.equals(""))
         }
 

@@ -26,57 +26,29 @@
         android:layout_marginStart="24dp"
         android:textAppearance="@style/TextAppearance.ShortWeather.Headline2" />
 
-<!--
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    <NumberPicker
-        android:id="@+id/number_picker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        />
-
-    <NumberPicker
-        android:id="@+id/number_picker_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        />
-
-    <NumberPicker
-        android:id="@+id/number_picker_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        />
-    </LinearLayout>
--->
-
     <TimePicker
         android:id="@+id/tp_input_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:timePickerMode="spinner"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="36dp"
-        android:theme="@style/CustomTimePicker"/>
+        android:theme="@style/CustomTimePicker"
+        android:timePickerMode="spinner" />
 
     <androidx.appcompat.widget.AppCompatButton
-    android:id="@+id/btn_botton_sheet_time"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="24dp"
-    android:layout_marginEnd="24dp"
-    android:layout_marginBottom="20dp"
-    android:enabled="true"
-    android:background="@drawable/bg_bottom_sheet_btn_blue"
-    android:text="@string/btn_txt_input_info_next"
-    android:textColor="@color/short_weather_white"
-    android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/btn_botton_sheet_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_bottom_sheet_btn_blue"
+        android:enabled="true"
+        android:text="@string/btn_txt_input_time_save"
+        android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+        android:textColor="@color/short_weather_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </LinearLayout>

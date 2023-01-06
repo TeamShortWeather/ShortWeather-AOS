@@ -17,6 +17,7 @@
     <!-- Button -->
     <string name="btn_txt_input_info_next">다음</string>
     <string name="btn_txt_input_time_check">확인</string>
+    <string name="btn_txt_input_time_save">저장</string>
 
     <!-- InputInfo -->
     <string name="input_header_top">입력하신 정보를 바탕으로</string>
@@ -32,8 +33,6 @@
     <string name="input_time_return">귀가시간</string>
     <string name="input_time_description">* 입력한 시간을 바탕으로 날씨를 알려드려요</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
 
     <!--Setting-->
     <string name="setting_time">외출 / 귀가 시간대 설정</string>

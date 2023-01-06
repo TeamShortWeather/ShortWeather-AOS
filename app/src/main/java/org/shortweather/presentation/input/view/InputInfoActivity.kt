@@ -12,10 +12,10 @@ import org.shortweather.util.binding.BindingActivity
 
 @AndroidEntryPoint
 class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.activity_input_info) {
-    val viewModel by viewModels<InputInfoViewModel>()
-    val bottomSheetGender = BottomSheet("gender") // 3개의 바텀시트 객체 생성
-    val bottomSheetAge = BottomSheet("age")
-    val bottomSheetSense = BottomSheet("sense")
+    private val viewModel by viewModels<InputInfoViewModel>()
+    private val bottomSheetGender = BottomSheet("gender") // 3개의 바텀시트 객체 생성
+    private val bottomSheetAge = BottomSheet("age")
+    private val bottomSheetSense = BottomSheet("sense")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

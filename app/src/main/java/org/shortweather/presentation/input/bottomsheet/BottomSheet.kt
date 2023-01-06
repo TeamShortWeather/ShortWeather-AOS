@@ -18,7 +18,7 @@ import org.shortweather.presentation.input.viewmodel.InputInfoViewModel
 class BottomSheet(val target: String) : BottomSheetDialogFragment() {
     private lateinit var binding: BottomSheetContentBinding
     private lateinit var list: MutableList<BottomSheetItem>
-    val viewModel by activityViewModels<InputInfoViewModel>() // 이제 이 뷰모델은 activity의 뷰모델 객체를 공유하는 개념, 별개의 객체가 아니다.
+    private val viewModel by activityViewModels<InputInfoViewModel>() // 이제 이 뷰모델은 activity의 뷰모델 객체를 공유하는 개념, 별개의 객체가 아니다.
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
