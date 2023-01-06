@@ -22,7 +22,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
         binding.vm = viewModel // 데이터바인딩
         binding.lifecycleOwner = this
 
-        binding.btnInputInfoNext.isEnabled = false // 최초에는 Enable 상태 false
+        binding.btnInputInfoNext.isEnabled = false // 최초에는 다음 버튼의 Enable 상태 false
         setOnClickListener()
         setObservers()
     }
@@ -61,8 +61,8 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
     }
 
     private fun setOnClickListener() {
-        // 다음 버튼을 누르면 InputTimeActivity로 이동
-        binding.btnInputInfoNext.setOnClickListener() { // 다음 버튼 클릭 시 InputTimeActivity로 이동
+        binding.btnInputInfoNext.setOnClickListener() { // 다음 버튼 클릭 시 InputTimeActivity로 이동,
+            // intent로 선택한 3개의 값을 다음 activity에 전달해주어야함
             startActivity(Intent(this, InputTimeActivity::class.java))
             finish()
         }

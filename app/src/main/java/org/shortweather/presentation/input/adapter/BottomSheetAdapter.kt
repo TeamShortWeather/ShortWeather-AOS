@@ -33,15 +33,6 @@ class BottomSheetAdapter(
             listener.onItemClick(position, item)
         }
     }
-/*
-
-    fun setItem(items: MutableList<BottomSheetItem>) {
-        if (!items.isNullOrEmpty()) {
-            itemList = items
-            notifyDataSetChanged()
-        }
-    }
-*/
 
     inner class Holder(
         binding: ItemBottomSheetBinding
