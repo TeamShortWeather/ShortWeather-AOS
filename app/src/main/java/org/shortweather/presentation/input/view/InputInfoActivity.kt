@@ -68,14 +68,23 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
         }
 
         binding.layoutGender.setOnClickListener() { // 성별 선택란 클릭 시
+            binding.vInputInfoGenderLine.setBackgroundResource(R.color.short_weather_blue)
+            binding.tvInputInfoGender.setTextColor(R.color.short_weather_black)
+            binding.btnGender.setBackgroundResource(R.drawable.ic_expand)
             bottomSheetGender.show(supportFragmentManager, BottomSheet.TAG)
         }
 
         binding.layoutAge.setOnClickListener() { // 연령 선택란 클릭 시
+            binding.vInputInfoAgeLine.setBackgroundResource(R.color.short_weather_blue)
+            binding.tvInputInfoAge.setTextColor(R.color.short_weather_black)
+            binding.btnAge.setBackgroundResource(R.drawable.ic_expand)
             bottomSheetAge.show(supportFragmentManager, BottomSheet.TAG)
         }
 
         binding.layoutSense.setOnClickListener() { // 민감도 선택란 클릭 시
+            binding.vInputInfoSenseLine.setBackgroundResource(R.color.short_weather_blue)
+            binding.tvInputInfoSense.setTextColor(R.color.short_weather_black)
+            binding.btnSense.setBackgroundResource(R.drawable.ic_expand)
             bottomSheetSense.show(supportFragmentManager, BottomSheet.TAG)
         }
     }

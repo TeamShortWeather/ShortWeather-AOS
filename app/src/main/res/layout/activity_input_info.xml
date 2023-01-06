@@ -71,6 +71,7 @@
                 tools:text="여자" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_gender"
                 android:layout_width="14dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="8dp"
@@ -125,6 +126,7 @@
                 tools:text="10대" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_age"
                 android:layout_width="14dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="8dp"
@@ -179,6 +181,7 @@
                 tools:text="추위를 잘 타요" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_sense"
                 android:layout_width="14dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="8dp"
