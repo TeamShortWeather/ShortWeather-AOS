@@ -1,41 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/weekly_weather_header_day"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:text="@string/weekly_weather_header_day"
-        android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
-        android:textColor="@color/short_weather_gray_7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <TextView
-        android:id="@+id/weekly_weather_header_time"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="81dp"
-        android:text="@string/weekly_weather_header_time"
-        android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
-        android:textColor="@color/short_weather_gray_7"
-        app:layout_constraintStart_toEndOf="@+id/weekly_weather_header_day"
-        app:layout_constraintTop_toTopOf="@+id/weekly_weather_header_day" />
+    </data>
 
-    <TextView
-        android:id="@+id/weekly_weather_header_temperature"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="74dp"
-        android:text="@string/weekly_weather_header_temperature"
-        android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
-        android:textColor="@color/short_weather_gray_7"
-        app:layout_constraintStart_toEndOf="@id/weekly_weather_header_time"
-        app:layout_constraintTop_toTopOf="@id/weekly_weather_header_time" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/weekly_weather_header_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="29dp"
+            android:text="@string/weekly_weather_header_day"
+            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textColor="@color/short_weather_gray_7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/weekly_weather_header_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="81dp"
+            android:text="@string/weekly_weather_header_time"
+            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textColor="@color/short_weather_gray_7"
+            app:layout_constraintStart_toEndOf="@+id/weekly_weather_header_day"
+            app:layout_constraintTop_toTopOf="@+id/weekly_weather_header_day" />
+
+        <TextView
+            android:id="@+id/weekly_weather_header_temperature"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="74dp"
+            android:text="@string/weekly_weather_header_temperature"
+            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textColor="@color/short_weather_gray_7"
+            app:layout_constraintStart_toEndOf="@id/weekly_weather_header_time"
+            app:layout_constraintTop_toTopOf="@id/weekly_weather_header_time" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
