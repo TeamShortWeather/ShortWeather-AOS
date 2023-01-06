@@ -7,9 +7,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_weekly_weather_calendar"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
+        app:layout_constraintEnd_toStartOf="@id/layout_weekly_weather_day_info"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -26,18 +28,22 @@
             android:id="@+id/tv_weekly_weather_calendar_day"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:text="12.20"
             android:textAppearance="@style/TextAppearance.ShortWeather.Body2"
             app:layout_constraintStart_toStartOf="@id/tv_weekly_weather_calendar_week"
-            app:layout_constraintTop_toBottomOf="@+id/tv_weekly_weather_calendar_week" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_weekly_weather_calendar_week"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="8dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_weekly_weather_day_info"
         android:layout_width="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/layout_weekly_weather_night_info"
         android:layout_height="wrap_content"
-        android:layout_marginStart="66dp"
+        android:layout_marginStart="68.5dp"
         android:layout_marginTop="3dp"
         app:layout_constraintStart_toEndOf="@id/layout_weekly_weather_calendar"
         app:layout_constraintTop_toTopOf="parent">
@@ -56,7 +62,8 @@
 
         <TextView
             android:id="@+id/tv_weekly_weather_day_info"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_height="wrap_content"
             android:text="60%"
             android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
@@ -75,6 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        app:layout_constraintEnd_toStartOf="@id/layout_weekly_weather_temp_info"
         android:layout_marginTop="3dp"
         app:layout_constraintStart_toEndOf="@id/layout_weekly_weather_day_info"
         app:layout_constraintTop_toTopOf="parent">
@@ -93,11 +101,12 @@
 
         <TextView
             android:id="@+id/tv_weekly_weather_night_info"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="60%"
             android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
             android:textColor="@color/short_weather_gray_4"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_weekly_weather_night_info"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -110,6 +119,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_weekly_weather_temp_info"
         android:layout_width="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/layout_weekly_weather_night_info"
         android:layout_marginTop="5dp"
@@ -120,7 +130,7 @@
 
         <TextView
             android:id="@+id/tv_weekly_weather_temp_up"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-10°"
             app:layout_constraintTop_toTopOf="parent"
@@ -130,7 +140,7 @@
 
         <TextView
             android:id="@+id/tv_weekly_weather_temp_down"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-31°"
             app:layout_constraintTop_toTopOf="parent"
