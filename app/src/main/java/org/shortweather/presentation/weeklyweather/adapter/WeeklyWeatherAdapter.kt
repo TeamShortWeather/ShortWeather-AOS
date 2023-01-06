@@ -1,6 +1,6 @@
 package org.shortweather.presentation.weeklyweather.adapter
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,45 +9,22 @@ import org.shortweather.data.source.remote.ResponseWeeklyWeather
 import org.shortweather.databinding.ItemWeeklyWeatherBinding
 import org.shortweather.databinding.ItemWeeklyWeatherHeaderBinding
 
-class WeeklyWeatherAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val inflater by lazy { LayoutInflater.from(context) }
+class WeeklyWeatherAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private lateinit var inflater: LayoutInflater
     private val weeklyList = mutableListOf<ResponseWeeklyWeather?>()
 
-    class WeeklyWeatherViewHolder(private val binding: ItemWeeklyWeatherBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun onBind(weather: ResponseWeeklyWeather) {
-            binding.tvWeeklyWeatherCalendarWeek.text = weather.weekly_weather_calender_week
-            binding.tvWeeklyWeatherCalendarDay.text = weather.weekly_weather_calendar_day
-            binding.ivWeeklyWeatherDayInfo.setImageResource(R.drawable.ic_weekly_weather_example)
-            binding.tvWeeklyWeatherDayInfo.text = weather.weekly_weather_day_rain
-            binding.ivWeeklyWeatherNightInfo.setImageResource(R.drawable.ic_weekly_weather_example)
-            binding.tvWeeklyWeatherNightInfo.text = weather.weekly_weather_day_rain
-            binding.tvWeeklyWeatherTempUp.text = weather.weekly_weather_temp_up
-            binding.tvWeeklyWeatherTempDown.text = weather.weekly_weather_temp_down
-        }
-    }
-
-    class HeadViewHolder(
-        private val binding: ItemWeeklyWeatherHeaderBinding
-    ) : RecyclerView.ViewHolder(binding.root)
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        if (!::inflater.isInitialized) {
+            inflater = LayoutInflater.from(parent.context)
+        }
         return when (viewType) {
-            TYPE_HEADER ->
-                HeadViewHolder(
+            VIEW_TYPE_HEADER ->
+                WeeklyWeatherHeaderViewHolder(
                     ItemWeeklyWeatherHeaderBinding.inflate(inflater, parent, false)
                 )
             else -> WeeklyWeatherViewHolder(
                 ItemWeeklyWeatherBinding.inflate(inflater, parent, false)
             )
-        }
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return if (weeklyList[position] == null) {
-            TYPE_HEADER
-        } else {
-            TYPE_ITEM
         }
     }
 
@@ -60,13 +37,31 @@ class WeeklyWeatherAdapter(context: Context) : RecyclerView.Adapter<RecyclerView
 
     override fun getItemCount(): Int = weeklyList.size
 
+    override fun getItemViewType(position: Int): Int =
+        if (weeklyList[position] == null) VIEW_TYPE_HEADER else VIEW_TYPE_ITEM
+
+    @SuppressLint("NotifyDataSetChanged")
     fun setWeatherList(weeklyList: List<ResponseWeeklyWeather?>) {
         this.weeklyList.addAll(weeklyList)
         notifyDataSetChanged()
     }
 
+    class WeeklyWeatherViewHolder(private val binding: ItemWeeklyWeatherBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun onBind(weather: ResponseWeeklyWeather) {
+            binding.responseWeeklyWeather = weather
+            binding.executePendingBindings()
+            binding.ivWeeklyWeatherDayInfo.setImageResource(R.drawable.ic_weekly_weather_example)
+            binding.ivWeeklyWeatherNightInfo.setImageResource(R.drawable.ic_weekly_weather_example)
+        }
+    }
+
+    class WeeklyWeatherHeaderViewHolder(
+        private val binding: ItemWeeklyWeatherHeaderBinding
+    ) : RecyclerView.ViewHolder(binding.root)
+
     companion object {
-        private const val TYPE_HEADER = 0
-        private const val TYPE_ITEM = 1
+        private const val VIEW_TYPE_HEADER = 0
+        private const val VIEW_TYPE_ITEM = 1
     }
 }
