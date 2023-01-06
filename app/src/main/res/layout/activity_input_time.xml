@@ -30,7 +30,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
             android:text="@string/input_time_wake"
-            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
             android:textColor="@color/short_weather_gray_7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_input_time_header" />
@@ -84,7 +84,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="30dp"
             android:text="@string/input_time_out"
-            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
             android:textColor="@color/short_weather_gray_7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_time_wake" />
@@ -137,7 +137,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="30dp"
             android:text="@string/input_time_return"
-            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
             android:textColor="@color/short_weather_gray_7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_time_out" />
@@ -191,7 +191,7 @@
             android:layout_marginStart="34dp"
             android:layout_marginBottom="14dp"
             android:text="@string/input_time_description"
-            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
             android:textColor="@color/short_weather_gray_4"
             app:layout_constraintBottom_toTopOf="@+id/btn_input_time_check"
             app:layout_constraintStart_toStartOf="parent" />
