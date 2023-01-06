@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_today_weather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_today_weather_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                android:textColor="@color/short_weather_gray_7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="어제보다 -2°" />
+
+            <TextView
+                android:id="@+id/tv_today_weather_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/short_weather_black"
+                app:layout_constraintStart_toStartOf="@id/tv_today_weather_subtitle"
+                app:layout_constraintTop_toBottomOf="@id/tv_today_weather_subtitle"
+                tools:text="어제보다 추워요" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_today_weather_newsflash"
+                android:layout_width="0dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="23dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_today_weather_title" />
+
+            <ImageView
+                android:id="@+id/iv_today_weather_background"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="158dp"
+                android:background="@drawable/bg_day"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_today_weather_main" />
+
+            <ImageView
+                android:id="@+id/iv_today_weather_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="76dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/img_lightning"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_today_weather_newsflash" />
+
+            <TextView
+                android:id="@+id/tv_today_weather_main_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="구름 많음"
+                android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+                android:textColor="@color/short_weather_gray_5"
+                app:layout_constraintEnd_toEndOf="@id/iv_today_weather_main"
+                app:layout_constraintStart_toStartOf="@id/iv_today_weather_main"
+                app:layout_constraintTop_toBottomOf="@id/iv_today_weather_main" />
+
+            <TextView
+                android:id="@+id/tv_today_weather_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.ShortWeather.weather1"
+                android:textColor="@color/short_weather_black"
+                app:layout_constraintEnd_toStartOf="@id/tv_today_weather_max_temperature"
+                app:layout_constraintStart_toEndOf="@id/tv_today_weather_min_temperature"
+                app:layout_constraintTop_toBottomOf="@id/tv_today_weather_main_description"
+                tools:text="-10°" />
+
+            <TextView
+                android:id="@+id/tv_today_weather_min_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.ShortWeather.weather2"
+                app:layout_constraintBottom_toBottomOf="@id/tv_today_weather_temperature"
+                app:layout_constraintStart_toStartOf="@id/iv_today_weather_main"
+                app:layout_constraintTop_toTopOf="@id/tv_today_weather_temperature"
+                tools:text="-12°" />
+
+            <TextView
+                android:id="@+id/tv_today_weather_max_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.ShortWeather.weather2"
+                app:layout_constraintBottom_toBottomOf="@id/tv_today_weather_min_temperature"
+                app:layout_constraintEnd_toEndOf="@id/iv_today_weather_main"
+                app:layout_constraintTop_toTopOf="@id/tv_today_weather_min_temperature"
+                tools:text="-10°" />
+
+            <TextView
+                android:id="@+id/tv_today_weather_sub_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="26dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_today_weather_description"
+                android:maxLines="1"
+                android:paddingHorizontal="22dp"
+                android:paddingVertical="8dp"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                android:textColor="@color/short_weather_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_today_weather_temperature"
+                tools:text="강풍이강풍이불어요요요요요요요요" />
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="18dp"
+                android:padding="12dp"
+                android:src="@drawable/ic_toast"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_today_weather_sub_description" />
+
+            <ImageView
+                android:id="@+id/iv_today_weather_expand_down"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="81dp"
+                android:padding="12dp"
+                android:src="@drawable/ic_expand_down"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_today_weather_sub_description" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>
