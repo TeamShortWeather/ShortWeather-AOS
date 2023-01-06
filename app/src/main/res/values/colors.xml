@@ -24,4 +24,19 @@
     <color name="short_weather_blue">#5C7EFF</color>
     <color name="short_weather_beige">#FFF6DD</color>
     <color name="short_weather_red">#FF8383</color>
+    <color name="short_weather_weatherskyblue1">#E0F0FB</color>
+    <color name="short_weather_weatherskyblue2">#9AC4F3</color>
+    <color name="short_weather_weatherblue">#7390FF</color>
+    <color name="short_weather_dustgood1">#CDF1D5</color>
+    <color name="short_weather_dustgood2">#59B06D</color>
+    <color name="short_weather_dustnormal1">#FFEFB6</color>
+    <color name="short_weather_dustnormal2">#E0AE56</color>
+    <color name="short_weather_weatheryellow">#FFC700</color>
+    <color name="short_weather_weatherorange">#FF974B</color>
+    <color name="short_weather_dustbad1">#FFDADC</color>
+    <color name="short_weather_dustworst1">#EDC9C9</color>
+    <color name="short_weather_dustbad2">#E4626A</color>
+    <color name="short_weather_dustworst2">#8B3939</color>
+    <color name="short_weather_weatherpurple">#B774DA</color>
+    <color name="short_weather_weekend">#FF4F4F</color>
 </resources>
