@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="56dp"
             android:text="@string/input_header_top"
             android:textAppearance="@style/TextAppearance.ShortWeather.Headline1"
             app:layout_constraintStart_toStartOf="parent"
