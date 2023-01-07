@@ -41,8 +41,6 @@
     <string name="setting_out">외출시간 설정</string>
     <string name="setting_return">귀가시간 설정</string>
     <string name="setting_content_description">세팅화면 대체 텍스트</string>
-    <!-- TODO: Remove or change this placeholder text -->
-
 
     <!-- WeeklyWeather -->
     <string name="weekly_weather_header_day">일별예보</string>
