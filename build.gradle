@@ -13,6 +13,7 @@ buildscript {
         dotsindicator_version = '4.3'
         lottie_version = '5.2.0'
         swipe_refresh_layout_version = '1.1.0'
+        switch_button_version = "0.0.3@aar"
     }
     repositories {
         mavenCentral()
