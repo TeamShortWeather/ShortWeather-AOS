@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="org.shortweather.presentation.alarmsetting.viewmodel.AlarmSettingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +37,6 @@
             android:textAppearance="@style/TextAppearance.ShortWeather.Headline1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_alarm_setting_title" />
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_alarm_setting_all"
@@ -83,16 +84,15 @@
                 app:sb_show_indicator="false"
                 app:sb_uncheck_color="@color/short_weather_gray_2" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_alarm_setting_wake"
+            visibility="@{viewModel.isChange}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
             android:layout_marginEnd="17dp"
-            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/layout_alarm_setting_all"
             app:layout_constraintTop_toBottomOf="@+id/layout_alarm_setting_all">
@@ -136,11 +136,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_alarm_setting_sleep"
+            visibility="@{viewModel.isChange}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
             android:layout_marginEnd="17dp"
-            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/layout_alarm_setting_all"
             app:layout_constraintTop_toBottomOf="@+id/layout_alarm_setting_wake">
@@ -184,11 +184,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_alarm_setting_news"
+            visibility="@{viewModel.isChange}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
             android:layout_marginEnd="17dp"
-            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/layout_alarm_setting_all"
             app:layout_constraintTop_toBottomOf="@+id/layout_alarm_setting_sleep">
