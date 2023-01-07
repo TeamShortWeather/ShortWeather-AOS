@@ -20,22 +20,22 @@
         android:id="@+id/tv_setting_wake_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/setting_wake_up_header"
-        android:textAppearance="@style/TextAppearance.ShortWeather.Headline1"
         android:layout_marginStart="24dp"
         android:layout_marginTop="78dp"
+        android:text="@string/setting_wake_up_header"
+        android:textAppearance="@style/TextAppearance.ShortWeather.Headline1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_setting_wake_up_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="44dp"
         android:text="@string/input_time_wake_up"
         android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
         android:textColor="@color/short_weather_gray_7"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="44dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_setting_wake_time" />
 
@@ -77,7 +77,22 @@
             android:background="@color/short_weather_gray_1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_setting_wake_time_contents"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_setting_wake_time_contents" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_setting_wake_time_check"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/selector_input_btn_bg"
+        android:enabled="true"
+        android:text="@string/btn_txt_input_time_check"
+        android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+        android:textColor="@drawable/selector_input_btn_text_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
