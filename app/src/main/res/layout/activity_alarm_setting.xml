@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="org.shortweather.presentation.alarmsetting.viewmodel.AlarmSettingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +37,6 @@
             android:textAppearance="@style/TextAppearance.ShortWeather.Headline1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_alarm_setting_title" />
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_alarm_setting_all"
@@ -73,7 +74,7 @@
             <com.suke.widget.SwitchButton
                 android:id="@+id/btn_alarm_setting_all"
                 android:layout_width="63dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
                 android:layout_marginEnd="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -83,11 +84,11 @@
                 app:sb_show_indicator="false"
                 app:sb_uncheck_color="@color/short_weather_gray_2" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_alarm_setting_wake"
+            visibility="@{viewModel.isChange}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
@@ -135,6 +136,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_alarm_setting_sleep"
+            visibility="@{viewModel.isChange}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
@@ -182,6 +184,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_alarm_setting_news"
+            visibility="@{viewModel.isChange}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
