@@ -60,7 +60,7 @@
 
     <!-- AlarmSetting -->
     <string name="alarm_setting_title">알림 설정</string>
-    <string name="alarm_setting_subtitle">알림 받을 시간대를 \n 설정해주세요</string>
+    <string name="alarm_setting_subtitle">알림 받을 시간대를 \n설정해주세요</string>
     <string name="alarm_setting_all_title">전체 알림</string>
     <string name="alarm_setting_all_subtitle">날씨 정보를 알려드려요</string>
     <string name="alarm_setting_wake_title">기상시간대 알림</string>
