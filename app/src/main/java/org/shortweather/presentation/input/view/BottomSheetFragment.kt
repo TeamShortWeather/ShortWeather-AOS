@@ -24,7 +24,7 @@ class BottomSheetFragment(val target: String) : BottomSheetDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = BottomSheetContentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,12 +41,14 @@ class BottomSheetFragment(val target: String) : BottomSheetDialogFragment() {
         val adapter = BottomSheetAdapter(
             list,
             object : BottomSheetAdapter.OnItemClickListener { // 어댑터의 인터페이스 구현
-                override fun onItemClick(position: Int, item: BottomSheetItem) {
-                    if (target == "gender") {
+                override fun onItemClick(item: BottomSheetItem) = when (target) {
+                    "gender" -> {
                         viewModel.inputGender.value = item.contents
-                    } else if (target == "age") {
+                    }
+                    "age" -> {
                         viewModel.inputAge.value = item.contents
-                    } else {
+                    }
+                    else -> {
                         viewModel.inputSense.value = item.contents
                     }
                 }
@@ -98,7 +100,7 @@ class BottomSheetFragment(val target: String) : BottomSheetDialogFragment() {
     }
 
     companion object {
-        const val TAG = "BottomSheetGender"
+        const val TAG = "BottomSheet"
     }
 
 }
