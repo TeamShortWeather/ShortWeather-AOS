@@ -6,16 +6,15 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
 import org.shortweather.databinding.ActivityInputInfoBinding
-import org.shortweather.presentation.input.bottomsheet.BottomSheet
 import org.shortweather.presentation.input.viewmodel.InputInfoViewModel
 import org.shortweather.util.binding.BindingActivity
 
 @AndroidEntryPoint
 class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.activity_input_info) {
     private val viewModel by viewModels<InputInfoViewModel>()
-    private val bottomSheetGender = BottomSheet("gender") // 3개의 바텀시트 객체 생성
-    private val bottomSheetAge = BottomSheet("age")
-    private val bottomSheetSense = BottomSheet("sense")
+    private val bottomSheetGender = BottomSheetFragment("gender") // 3개의 바텀시트 객체 생성
+    private val bottomSheetAge = BottomSheetFragment("age")
+    private val bottomSheetSense = BottomSheetFragment("sense")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,21 +70,21 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
             binding.vInputInfoGenderLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputInfoGender.setTextColor(R.color.short_weather_black)
             binding.btnGender.setBackgroundResource(R.drawable.ic_expand)
-            bottomSheetGender.show(supportFragmentManager, BottomSheet.TAG)
+            bottomSheetGender.show(supportFragmentManager, BottomSheetFragment.TAG)
         }
 
         binding.layoutAge.setOnClickListener() { // 연령 선택란 클릭 시
             binding.vInputInfoAgeLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputInfoAge.setTextColor(R.color.short_weather_black)
             binding.btnAge.setBackgroundResource(R.drawable.ic_expand)
-            bottomSheetAge.show(supportFragmentManager, BottomSheet.TAG)
+            bottomSheetAge.show(supportFragmentManager, BottomSheetFragment.TAG)
         }
 
         binding.layoutSense.setOnClickListener() { // 민감도 선택란 클릭 시
             binding.vInputInfoSenseLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputInfoSense.setTextColor(R.color.short_weather_black)
             binding.btnSense.setBackgroundResource(R.drawable.ic_expand)
-            bottomSheetSense.show(supportFragmentManager, BottomSheet.TAG)
+            bottomSheetSense.show(supportFragmentManager, BottomSheetFragment.TAG)
         }
     }
 }

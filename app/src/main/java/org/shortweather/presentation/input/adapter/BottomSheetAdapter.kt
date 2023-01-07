@@ -1,49 +1,44 @@
-package org.shortweather.presentation.input
+package org.shortweather.presentation.input.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import org.shortweather.R
 import org.shortweather.databinding.ItemBottomSheetBinding
 
 class BottomSheetAdapter(
     private val list: MutableList<BottomSheetItem>,
     private val listener: OnItemClickListener
-) : RecyclerView.Adapter<BottomSheetAdapter.Holder>() {
+) : RecyclerView.Adapter<BottomSheetAdapter.InfoItemHolder>() {
     private var itemList: MutableList<BottomSheetItem> = list
-    private lateinit var binding: ItemBottomSheetBinding
+    private lateinit var inflater: LayoutInflater
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        binding = ItemBottomSheetBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return Holder(binding)
-    }
-
-    override fun getItemCount(): Int {
-        return itemList.size
-    }
-
-    override fun onBindViewHolder(holder: Holder, position: Int) {
-        val item = itemList[position]
-        holder.bind(item)
-
-        binding.root.setOnClickListener {
-            listener.onItemClick(position, item)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InfoItemHolder {
+        if (!::inflater.isInitialized) {
+            inflater = LayoutInflater.from(parent.context)
         }
+        return InfoItemHolder(ItemBottomSheetBinding.inflate(inflater, parent, false))
     }
 
-    inner class Holder(
-        binding: ItemBottomSheetBinding
-    ): RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: BottomSheetItem) {
+    override fun onBindViewHolder(holder: InfoItemHolder, position: Int) {
+        val item = itemList[position]
+        holder.onBind(item)
+    }
+
+    override fun getItemCount(): Int = itemList.size
+
+    inner class InfoItemHolder(
+        private val binding: ItemBottomSheetBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun onBind(item: BottomSheetItem) {
+            binding.root.setOnClickListener {
+                listener.onItemClick(item)
+            }
             binding.tvContents.text = item.contents
         }
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, item: BottomSheetItem)
+        fun onItemClick(item: BottomSheetItem)
     }
 }
 

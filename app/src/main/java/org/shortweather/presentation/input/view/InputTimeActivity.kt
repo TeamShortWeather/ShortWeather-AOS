@@ -2,25 +2,20 @@ package org.shortweather.presentation.input.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TimePicker
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
 import org.shortweather.databinding.ActivityInputTimeBinding
 import org.shortweather.presentation.MainActivity
-import org.shortweather.presentation.input.bottomsheet.BottomSheet
-import org.shortweather.presentation.input.bottomsheet.BottomSheetTime
-import org.shortweather.presentation.input.viewmodel.InputInfoViewModel
 import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
 import org.shortweather.util.binding.BindingActivity
 
 @AndroidEntryPoint
 class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.activity_input_time) {
     private val viewModel by viewModels<InputTimeViewModel>()
-    private val bottomSheetWake = BottomSheetTime("wake") // 3개의 바텀시트 객체 생성
-    private val bottomSheetOut = BottomSheetTime("out")
-    private val bottomSheetReturn = BottomSheetTime("return")
+    private val bottomSheetWake = BottomSheetTimeFragment("wake") // 3개의 바텀시트 객체 생성
+    private val bottomSheetOut = BottomSheetTimeFragment("out")
+    private val bottomSheetReturn = BottomSheetTimeFragment("return")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +27,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
         setObservers()
     }
 
-    private fun setObservers(){
+    private fun setObservers() {
         viewModel.timeWakeSuccess.observe(this) {
             if (viewModel.timeWakeSuccess.value == true) { // Success가 true = 아이템이 선택되었음을 의미
                 bottomSheetWake.dismiss() // 바텀시트 소멸
@@ -73,15 +68,15 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
         }
 
         binding.layoutTimeWake.setOnClickListener() { // 기상시간 선택
-            bottomSheetWake.show(supportFragmentManager, BottomSheetTime.TAG)
+            bottomSheetWake.show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
 
         binding.layoutTimeOut.setOnClickListener() { // 외출시간 선택
-            bottomSheetOut.show(supportFragmentManager, BottomSheetTime.TAG)
+            bottomSheetOut.show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
 
         binding.layoutTimeReturn.setOnClickListener() { // 귀가시간 선택
-            bottomSheetReturn.show(supportFragmentManager, BottomSheetTime.TAG)
+            bottomSheetReturn.show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
     }
 }

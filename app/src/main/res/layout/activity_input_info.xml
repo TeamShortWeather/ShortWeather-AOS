@@ -44,7 +44,7 @@
             android:layout_marginTop="32dp"
             android:selectable="true"
             android:text="@string/input_gender"
-            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
             android:textColor="@{vm.isGenderSelected ? @color/short_weather_gray_7 : @color/short_weather_red}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_input_info_header_bottom" />
@@ -100,7 +100,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="30dp"
             android:text="@string/input_age"
-            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
             android:textColor="@{vm.isAgeSelected ? @color/short_weather_gray_7 : @color/short_weather_red}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_gender" />
@@ -155,7 +155,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="30dp"
             android:text="@string/input_sensitivity"
-            android:textAppearance="@style/TextAppearance.ShortWeather.caption1"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
             android:textColor="@{vm.isSenseSelected ? @color/short_weather_gray_7 : @color/short_weather_red}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_age" />

@@ -1,4 +1,4 @@
-package org.shortweather.presentation.input.bottomsheet
+package org.shortweather.presentation.input.view
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -10,20 +10,22 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
 import org.shortweather.databinding.BottomSheetContentBinding
-import org.shortweather.presentation.input.BottomSheetAdapter
-import org.shortweather.presentation.input.BottomSheetItem
+import org.shortweather.presentation.input.adapter.BottomSheetAdapter
+import org.shortweather.presentation.input.adapter.BottomSheetItem
 import org.shortweather.presentation.input.viewmodel.InputInfoViewModel
 
 @AndroidEntryPoint
-class BottomSheet(val target: String) : BottomSheetDialogFragment() {
-    private lateinit var binding: BottomSheetContentBinding
+class BottomSheetFragment(val target: String) : BottomSheetDialogFragment() {
+    private var _binding: BottomSheetContentBinding? = null
+    private val binding: BottomSheetContentBinding
+        get() = requireNotNull(_binding) { "${this::class.java.simpleName} error." }
     private lateinit var list: MutableList<BottomSheetItem>
     private val viewModel by activityViewModels<InputInfoViewModel>() // 이제 이 뷰모델은 activity의 뷰모델 객체를 공유하는 개념, 별개의 객체가 아니다.
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        binding = BottomSheetContentBinding.inflate(inflater, container, false)
+        _binding = BottomSheetContentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -39,17 +41,24 @@ class BottomSheet(val target: String) : BottomSheetDialogFragment() {
         val adapter = BottomSheetAdapter(
             list,
             object : BottomSheetAdapter.OnItemClickListener { // 어댑터의 인터페이스 구현
-                override fun onItemClick(position: Int, item: BottomSheetItem) {
-                    if (target == "gender") {
+                override fun onItemClick(item: BottomSheetItem) = when (target) {
+                    "gender" -> {
                         viewModel.inputGender.value = item.contents
-                    } else if (target == "age") {
+                    }
+                    "age" -> {
                         viewModel.inputAge.value = item.contents
-                    } else {
+                    }
+                    else -> {
                         viewModel.inputSense.value = item.contents
                     }
                 }
             })
         binding.rvContents.adapter = adapter // 리사이클러뷰에 어댑터 연결
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun viewKindCheck() { // 바텀시트의 종류가 성별/연령/민감도인지 확인하고 이에 대응하여 아이템들을 생성함,

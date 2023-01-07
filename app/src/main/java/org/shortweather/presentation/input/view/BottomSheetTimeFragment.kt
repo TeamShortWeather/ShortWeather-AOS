@@ -1,10 +1,9 @@
-package org.shortweather.presentation.input.bottomsheet
+package org.shortweather.presentation.input.view
 
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.res.Resources
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,8 +18,12 @@ import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
 import java.util.*
 
 @AndroidEntryPoint
-class BottomSheetTime(val target: String) : BottomSheetDialogFragment(), TimePicker.OnTimeChangedListener {
-    private lateinit var binding: BottomSheetTimeContentBinding
+class BottomSheetTimeFragment(val target: String) : BottomSheetDialogFragment(),
+    TimePicker.OnTimeChangedListener {
+    private var _binding: BottomSheetTimeContentBinding? = null
+    private val binding: BottomSheetTimeContentBinding
+        get() = requireNotNull(_binding) { "${this::class.java.simpleName} error." }
+
     private val viewModel by activityViewModels<InputTimeViewModel>() // 이제 이 뷰모델은 activity의 뷰모델 객체를 공유하는 개념, 별개의 객체가 아니다.
     private lateinit var times: String
     private var timeInterval = 0
@@ -29,10 +32,7 @@ class BottomSheetTime(val target: String) : BottomSheetDialogFragment(), TimePic
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        binding = BottomSheetTimeContentBinding.inflate(inflater, container, false)
-        binding.tpInputTime.setOnTimeChangedListener(this)
-        setTimeInterval(binding.tpInputTime)
-        setOnClickListeners()
+        _binding = BottomSheetTimeContentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,7 +43,15 @@ class BottomSheetTime(val target: String) : BottomSheetDialogFragment(), TimePic
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.tpInputTime.setOnTimeChangedListener(this)
+        setTimeInterval(binding.tpInputTime)
+        setOnClickListeners()
         viewKindCheck()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun viewKindCheck() { // 바텀시트의 종류가 성별/연령/민감도인지 확인하고 이에 대응하여 아이템들을 생성함,
@@ -72,7 +80,7 @@ class BottomSheetTime(val target: String) : BottomSheetDialogFragment(), TimePic
 
     @SuppressLint("PrivateApi")
     private fun setTimeInterval(timePicker: TimePicker) {
-        timeInterval = if(target == "wake") 30 else 60  // 기상시간은 30분 간격, 나머지는 60분 간격
+        timeInterval = if (target == "wake") 30 else 60  // 기상시간은 30분 간격, 나머지는 60분 간격
         val displayedValues: ArrayList<String> = ArrayList()
         val minutePicker: NumberPicker = timePicker.findViewById(
             Resources.getSystem().getIdentifier(
@@ -94,31 +102,31 @@ class BottomSheetTime(val target: String) : BottomSheetDialogFragment(), TimePic
         times = makeTime(hourOfDay, (minute * timeInterval).toString())
     }
 
-    private fun setOnClickListeners(){
-        binding.btnBottonSheetTime.setOnClickListener(){
+    private fun setOnClickListeners() {
+        binding.btnBottonSheetTime.setOnClickListener() {
             if (target == "wake") {
-                viewModel.timeWake.value = if(noChangeflag) initTime() else times
+                viewModel.timeWake.value = if (noChangeflag) initTime() else times
             } else if (target == "out") {
-                viewModel.timeOut.value = if(noChangeflag) initTime() else times
+                viewModel.timeOut.value = if (noChangeflag) initTime() else times
             } else {
-                viewModel.timeReturn.value = if(noChangeflag) initTime() else times
+                viewModel.timeReturn.value = if (noChangeflag) initTime() else times
             }
         }
     }
 
     private fun makeTime(hour: Int, minute: String): String {
         var realminute = minute
-        if(minute.toInt() < 10){
+        if (minute.toInt() < 10) {
             realminute = "0".plus(minute)
         }
-        return if(hour > 12){
-            "오후 ${hour-12}시 ${realminute}분"
+        return if (hour > 12) {
+            "오후 ${hour - 12}시 ${realminute}분"
         } else {
             "오전 ${hour}시 ${realminute}분"
         }
     }
 
-    private fun initTime(): String{
+    private fun initTime(): String {
         val minute = binding.tpInputTime.minute * timeInterval
         return makeTime(binding.tpInputTime.hour, minute.toString())
     }
