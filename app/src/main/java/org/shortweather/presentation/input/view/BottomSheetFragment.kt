@@ -24,7 +24,7 @@ class BottomSheetFragment(val target: String) : BottomSheetDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = BottomSheetContentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -100,7 +100,7 @@ class BottomSheetFragment(val target: String) : BottomSheetDialogFragment() {
     }
 
     companion object {
-        const val TAG = "BottomSheetGender"
+        const val TAG = "BottomSheet"
     }
 
 }

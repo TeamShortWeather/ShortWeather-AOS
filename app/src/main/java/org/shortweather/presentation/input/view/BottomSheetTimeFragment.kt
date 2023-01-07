@@ -31,7 +31,7 @@ class BottomSheetTimeFragment(val target: String) : BottomSheetDialogFragment(),
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = BottomSheetTimeContentBinding.inflate(inflater, container, false)
         return binding.root
     }
