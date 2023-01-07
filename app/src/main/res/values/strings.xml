@@ -62,6 +62,19 @@
     <string name="custom_weather_day">일출/일몰</string>
     <string name="custom_weather_ultrafine_dust">초미세먼지</string>
 
+    <!-- AlarmSetting -->
+    <string name="alarm_setting_title">알림 설정</string>
+    <string name="alarm_setting_subtitle">알림 받을 시간대를 \n설정해주세요</string>
+    <string name="alarm_setting_all_title">전체 알림</string>
+    <string name="alarm_setting_all_subtitle">날씨 정보를 알려드려요</string>
+    <string name="alarm_setting_wake_title">기상시간대 알림</string>
+    <string name="alarm_setting_wake_subtitle">기상시간에 맞춰서 날씨를 알려드려요</string>
+    <string name="alarm_setting_sleep_title">취침시간대 알림</string>
+    <string name="alarm_setting_sleep_subtitle">취침시간에 맞춰서 날씨를 알려드려요</string>
+    <string name="alarm_setting_news_title">특보 알림</string>
+    <string name="alarm_setting_news_subtitle">실시간 날씨 특보를 알려드려요</string>
+
+
     <!-- TodayWeather -->
     <string name="today_weather_fine_dust">미세</string>
     <string name="today_weather_ultrafine_dust">초미세</string>
