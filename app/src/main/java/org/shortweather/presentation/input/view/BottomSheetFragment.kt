@@ -15,16 +15,18 @@ import org.shortweather.presentation.input.adapter.BottomSheetItem
 import org.shortweather.presentation.input.viewmodel.InputInfoViewModel
 
 @AndroidEntryPoint
-class BottomSheetFragment(val target: String) : BottomSheetDialogFragment() {
+class BottomSheetFragment() : BottomSheetDialogFragment() {
     private var _binding: BottomSheetContentBinding? = null
     private val binding: BottomSheetContentBinding
         get() = requireNotNull(_binding) { "${this::class.java.simpleName} error." }
     private lateinit var list: MutableList<BottomSheetItem>
+    private var target: String? = null
     private val viewModel by activityViewModels<InputInfoViewModel>() // 이제 이 뷰모델은 activity의 뷰모델 객체를 공유하는 개념, 별개의 객체가 아니다.
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        target = requireArguments().getString("target") ?: ""
         _binding = BottomSheetContentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -101,6 +103,13 @@ class BottomSheetFragment(val target: String) : BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "BottomSheet"
+
+        @JvmStatic
+        fun newInstance(target: String) = BottomSheetFragment().apply {
+            arguments = Bundle().apply {
+                putString("target", target)
+            }
+        }
     }
 
 }

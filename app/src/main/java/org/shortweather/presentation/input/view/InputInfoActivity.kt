@@ -12,9 +12,9 @@ import org.shortweather.util.binding.BindingActivity
 @AndroidEntryPoint
 class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.activity_input_info) {
     private val viewModel by viewModels<InputInfoViewModel>()
-    private val bottomSheetGender = BottomSheetFragment("gender") // 3개의 바텀시트 객체 생성
-    private val bottomSheetAge = BottomSheetFragment("age")
-    private val bottomSheetSense = BottomSheetFragment("sense")
+    private val bottomSheetGender = BottomSheetFragment.newInstance("gender") // 3개의 바텀시트 객체 생성
+    private val bottomSheetAge = BottomSheetFragment.newInstance("age")
+    private val bottomSheetSense = BottomSheetFragment.newInstance("sense")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +63,6 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
         binding.btnInputInfoNext.setOnClickListener() { // 다음 버튼 클릭 시 InputTimeActivity로 이동,
             // intent로 선택한 3개의 값을 다음 activity에 전달해주어야함
             startActivity(Intent(this, InputTimeActivity::class.java))
-            finish()
         }
 
         binding.layoutGender.setOnClickListener() { // 성별 선택란 클릭 시

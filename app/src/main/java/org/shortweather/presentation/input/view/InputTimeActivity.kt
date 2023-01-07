@@ -13,9 +13,9 @@ import org.shortweather.util.binding.BindingActivity
 @AndroidEntryPoint
 class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.activity_input_time) {
     private val viewModel by viewModels<InputTimeViewModel>()
-    private val bottomSheetWake = BottomSheetTimeFragment("wake") // 3개의 바텀시트 객체 생성
-    private val bottomSheetOut = BottomSheetTimeFragment("out")
-    private val bottomSheetReturn = BottomSheetTimeFragment("return")
+    private val bottomSheetWake = BottomSheetTimeFragment.newInstance("wake") // 3개의 바텀시트 객체 생성
+    private val bottomSheetOut = BottomSheetTimeFragment.newInstance("out")
+    private val bottomSheetReturn = BottomSheetTimeFragment.newInstance("return")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

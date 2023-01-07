@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="org.shortweather.presentation.alarmsetting.viewmodel.AlarmSettingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.alarmsetting.view.AlarmSettingActivity">
+
+        <TextView
+            android:id="@+id/tv_alarm_setting_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="2dp"
+            android:text="@string/alarm_setting_title"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+            android:textColor="@color/short_weather_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_alarm_setting_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/alarm_setting_subtitle"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Headline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alarm_setting_title" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_alarm_setting_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="34dp"
+            android:layout_marginEnd="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alarm_setting_subtitle">
+
+            <TextView
+                android:id="@+id/tv_alarm_setting_all_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/alarm_setting_all_title"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_alarm_setting_all_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/alarm_setting_all_subtitle"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_alarm_setting_all_title" />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/btn_alarm_setting_all"
+                android:layout_width="63dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="17dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:sb_checked_color="@color/short_weather_blue"
+                app:sb_show_indicator="false"
+                app:sb_uncheck_color="@color/short_weather_gray_2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_alarm_setting_wake"
+            visibility="@{viewModel.isChange}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/layout_alarm_setting_all"
+            app:layout_constraintTop_toBottomOf="@+id/layout_alarm_setting_all">
+
+            <TextView
+                android:id="@+id/alarm_setting_wake_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/alarm_setting_wake_title"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/alarm_setting_wake_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/alarm_setting_wake_subtitle"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alarm_setting_wake_title" />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/btn_alarm_setting_wake"
+                android:layout_width="63dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="17dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:sb_checked_color="@color/short_weather_blue"
+                app:sb_show_indicator="false"
+                app:sb_uncheck_color="@color/short_weather_gray_2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_alarm_setting_sleep"
+            visibility="@{viewModel.isChange}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/layout_alarm_setting_all"
+            app:layout_constraintTop_toBottomOf="@+id/layout_alarm_setting_wake">
+
+            <TextView
+                android:id="@+id/alarm_setting_sleep_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/alarm_setting_sleep_title"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/alarm_setting_sleep_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/alarm_setting_sleep_subtitle"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alarm_setting_sleep_title" />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/btn_alarm_setting_sleep"
+                android:layout_width="63dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="17dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:sb_checked_color="@color/short_weather_blue"
+                app:sb_show_indicator="false"
+                app:sb_uncheck_color="@color/short_weather_gray_2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_alarm_setting_news"
+            visibility="@{viewModel.isChange}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/layout_alarm_setting_all"
+            app:layout_constraintTop_toBottomOf="@+id/layout_alarm_setting_sleep">
+
+            <TextView
+                android:id="@+id/alarm_setting_news_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/alarm_setting_news_title"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/alarm_setting_news_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/alarm_setting_news_subtitle"
+                android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alarm_setting_news_title" />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/btn_alarm_setting_news"
+                android:layout_width="63dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="17dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:sb_checked_color="@color/short_weather_blue"
+                app:sb_show_indicator="false"
+                app:sb_uncheck_color="@color/short_weather_gray_2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
