@@ -41,7 +41,7 @@
                 tools:text="어제보다 추워요" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_today_weather_newsflash"
+                android:id="@+id/rv_today_weather_tag"
                 android:layout_width="0dp"
                 android:layout_height="26dp"
                 android:layout_marginStart="23dp"
@@ -51,29 +51,31 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_today_weather_title" />
+                app:layout_constraintTop_toBottomOf="@id/tv_today_weather_title"
+                tools:listitem="@layout/item_today_weather_fine_dust" />
 
             <ImageView
                 android:id="@+id/iv_today_weather_background"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="158dp"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/bg_day"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/iv_today_weather_main" />
+                app:layout_constraintTop_toTopOf="@id/iv_today_weather_main"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/iv_today_weather_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="76dp"
-                android:layout_marginTop="12dp"
-                android:src="@drawable/img_lightning"
+                android:layout_marginTop="6dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_today_weather_newsflash" />
+                app:layout_constraintTop_toBottomOf="@id/rv_today_weather_tag"
+                tools:src="@drawable/img_lotcloud_day" />
 
             <TextView
                 android:id="@+id/tv_today_weather_main_description"
@@ -81,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:gravity="center"
+                android:paddingVertical="4dp"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
                 android:textColor="@color/short_weather_gray_5"
                 app:layout_constraintEnd_toEndOf="@id/iv_today_weather_main"
@@ -92,8 +95,10 @@
                 android:id="@+id/tv_today_weather_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
+                android:layout_marginTop="21dp"
+                android:height="72sp"
+                android:gravity="bottom"
+                android:paddingHorizontal="15dp"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Weather1"
                 android:textColor="@color/short_weather_black"
                 app:layout_constraintEnd_toStartOf="@id/tv_today_weather_max_temperature"
@@ -105,8 +110,12 @@
                 android:id="@+id/tv_today_weather_min_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="5dp"
+                android:paddingHorizontal="3dp"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Weather2"
-                app:layout_constraintBottom_toBottomOf="@id/tv_today_weather_temperature"
+                android:textColor="@color/short_weather_blue"
+                app:layout_constraintEnd_toStartOf="@id/tv_today_weather_temperature"
                 app:layout_constraintStart_toStartOf="@id/iv_today_weather_main"
                 app:layout_constraintTop_toTopOf="@id/tv_today_weather_temperature"
                 tools:text="-12°" />
@@ -115,10 +124,15 @@
                 android:id="@+id/tv_today_weather_max_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="14dp"
+                android:paddingHorizontal="3dp"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Weather2"
-                app:layout_constraintBottom_toBottomOf="@id/tv_today_weather_min_temperature"
+                android:textColor="@color/short_weather_weekend"
                 app:layout_constraintEnd_toEndOf="@id/iv_today_weather_main"
-                app:layout_constraintTop_toTopOf="@id/tv_today_weather_min_temperature"
+
+                app:layout_constraintStart_toEndOf="@id/tv_today_weather_temperature"
+                app:layout_constraintTop_toTopOf="@id/tv_today_weather_temperature"
                 tools:text="-10°" />
 
             <TextView
@@ -127,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="26dp"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/bg_today_weather_description"
+                android:background="@drawable/bg_today_weather_sub_description"
                 android:maxLines="1"
                 android:paddingHorizontal="22dp"
                 android:paddingVertical="8dp"
