@@ -21,11 +21,7 @@ class SplashActivity: BindingActivity<ActivitySplashBinding>(R.layout.activity_s
         setContentView(R.layout.activity_splash)
 
         Handler(Looper.getMainLooper()).postDelayed({
-
-            //main activity 시작
             startActivity(Intent(this, InputInfoActivity::class.java))
-
-            //액티비티 닫기
             finish()
         }, SPLASH_TIME)
     }

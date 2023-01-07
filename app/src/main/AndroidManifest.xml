@@ -20,10 +20,12 @@
             android:exported="false" />
         <activity
             android:name=".presentation.input.view.InputInfoActivity"
-            android:exported="false" />
+            android:exported="false" >
+        </activity>
         <activity
             android:name=".presentation.input.view.InputTimeActivity"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
         <activity
             android:name=".presentation.splash.SplashActivity"
             android:exported="true">
