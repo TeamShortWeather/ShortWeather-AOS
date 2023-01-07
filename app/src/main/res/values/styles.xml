@@ -73,4 +73,20 @@
         <item name="itemTextAppearance">@style/TextAppearance.ShortWeather.Subhead2</item>
         <item name="itemTextColor">@color/short_weather_black</item>
     </style>
+
+    <style name="CustomBottomSheet" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+        <item name="android:colorBackground">@color/short_weather_white</item>
+        <item name="behavior_draggable">true</item>
+    </style>
+
+    <style name="BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+
+    <style name="CustomTimePicker">
+        <item name="android:textColorPrimary">@color/short_weather_black</item><!-- text color -->
+        <item name="android:textAppearance">@style/TextAppearance.ShortWeather.Subhead1</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>

@@ -22,8 +22,8 @@
     <color name="short_weather_gray_0">#F8F8F8</color>
     <color name="short_weather_white">#FFFFFF</color>
     <color name="short_weather_blue">#5C7EFF</color>
-    <color name="short_weather_red">#FF8383</color>
     <color name="short_weather_beige">#FFF6DD</color>
+    <color name="short_weather_red">#FF8383</color>
     <color name="short_weather_weatherskyblue1">#E0F0FB</color>
     <color name="short_weather_weatherskyblue2">#9AC4F3</color>
     <color name="short_weather_weatherblue">#7390FF</color>
@@ -39,4 +39,5 @@
     <color name="short_weather_dustworst2">#8B3939</color>
     <color name="short_weather_weatherpurple">#B774DA</color>
     <color name="short_weather_weekend">#FF4F4F</color>
+    <color name="short_weather_transparency_white">#73FFFFFF</color>
 </resources>

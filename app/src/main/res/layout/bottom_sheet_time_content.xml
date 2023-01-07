@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/CustomBottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_bottom_sheet"
+    android:orientation="vertical"
+    app:behavior_peekHeight="100dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/drag_handle_time"
+        android:layout_width="44dp"
+        android:layout_height="4dp"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="158dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/ic_bottom_sheet_drag_view" />
+
+    <TextView
+        android:id="@+id/tv_bottom_sheet_time_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:textAppearance="@style/TextAppearance.ShortWeather.Headline2" />
+
+    <TimePicker
+        android:id="@+id/tp_input_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="36dp"
+        android:theme="@style/CustomTimePicker"
+        android:timePickerMode="spinner" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_botton_sheet_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_bottom_sheet_btn_blue"
+        android:enabled="true"
+        android:text="@string/btn_txt_input_time_save"
+        android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+        android:textColor="@color/short_weather_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</LinearLayout>
