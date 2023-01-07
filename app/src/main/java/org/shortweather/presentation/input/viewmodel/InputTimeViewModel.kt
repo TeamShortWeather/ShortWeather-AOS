@@ -5,14 +5,41 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import org.shortweather.util.Event
 import javax.inject.Inject
 
 @HiltViewModel
 class InputTimeViewModel @Inject constructor() : ViewModel() {
 
-    var timeWake = MutableLiveData<String>(" ") // 최초상태를 의미하는 하나의 공백 삽입
-    var timeOut = MutableLiveData<String>(" ")
-    var timeReturn = MutableLiveData<String>(" ")
+    val timeWake = MutableLiveData(" ") // 최초상태를 의미하는 하나의 공백 삽입
+    val timeOut = MutableLiveData(" ")
+    val timeReturn = MutableLiveData(" ")
+    val timeSettingWake = MutableLiveData(" ")
+    val timeSettingOut = MutableLiveData(" ")
+    val timeSettingReturn = MutableLiveData(" ")
+    private val _isWakeDestroy = MutableLiveData<Event<Boolean>>()
+    val isWakeDestroy: LiveData<Event<Boolean>>
+        get() = _isWakeDestroy
+
+    private val _isOutDestroy = MutableLiveData<Event<Boolean>>()
+    val isOutDestroy: LiveData<Event<Boolean>>
+        get() = _isOutDestroy
+
+    private val _isReturnDestroy = MutableLiveData<Event<Boolean>>()
+    val isReturnDestroy: LiveData<Event<Boolean>>
+        get() = _isReturnDestroy
+
+    fun setIsWakeDestroy(select: Boolean) {
+        _isWakeDestroy.value = Event(select)
+    }
+
+    fun setIsOutDestroy(select: Boolean) {
+        _isOutDestroy.value = Event(select)
+    }
+
+    fun setIsReturnDestroy(select: Boolean) {
+        _isReturnDestroy.value = Event(select)
+    }
 
     val timeWakeSelected: LiveData<Boolean> =
         Transformations.map(timeWake) { it -> // 선택되지 않았다면 빈칸 -> false처리됨

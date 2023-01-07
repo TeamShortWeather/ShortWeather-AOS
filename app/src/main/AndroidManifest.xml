@@ -25,6 +25,12 @@
             android:name=".presentation.input.view.InputTimeActivity"
             android:exported="false" />
         <activity
+            android:name=".presentation.setting.view.OtherTimeSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.setting.view.WakeTimeSettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.splash.SplashActivity"
             android:exported="true">
             <intent-filter>

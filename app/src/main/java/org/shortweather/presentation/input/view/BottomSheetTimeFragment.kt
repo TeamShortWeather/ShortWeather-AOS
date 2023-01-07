@@ -18,32 +18,40 @@ import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
 import java.util.*
 
 @AndroidEntryPoint
-class BottomSheetTimeFragment(val target: String) : BottomSheetDialogFragment(),
-    TimePicker.OnTimeChangedListener {
+class BottomSheetTimeFragment : BottomSheetDialogFragment() {
     private var _binding: BottomSheetTimeContentBinding? = null
     private val binding: BottomSheetTimeContentBinding
         get() = requireNotNull(_binding) { "${this::class.java.simpleName} error." }
-
-    private val viewModel by activityViewModels<InputTimeViewModel>() // 이제 이 뷰모델은 activity의 뷰모델 객체를 공유하는 개념, 별개의 객체가 아니다.
-    private lateinit var times: String
+    private val viewModel by activityViewModels<InputTimeViewModel>() // 이제 이 뷰모델은 activity의 뷰모델 객체를 공유함. 별개의 객체가 아니다.
+    private var target: String? = null
     private var timeInterval = 0
-    private var noChangeflag: Boolean = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        target = requireArguments().getString("target") ?: ""
         _binding = BottomSheetTimeContentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onCancel(dialog: DialogInterface) {
         super.onCancel(dialog)
+        when (target) {
+            "wake" -> {
+                viewModel.setIsWakeDestroy(true)
+            }
+            "out" -> {
+                viewModel.setIsOutDestroy(true)
+            }
+            else -> {
+                viewModel.setIsReturnDestroy(true)
+            }
+        }
         inputCancel()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tpInputTime.setOnTimeChangedListener(this)
         setTimeInterval(binding.tpInputTime)
         setOnClickListeners()
         viewKindCheck()
@@ -55,27 +63,31 @@ class BottomSheetTimeFragment(val target: String) : BottomSheetDialogFragment(),
     }
 
     private fun viewKindCheck() { // 바텀시트의 종류가 성별/연령/민감도인지 확인하고 이에 대응하여 아이템들을 생성함,
-        if (target == "wake") {
-            binding.tvBottomSheetTimeHeader.text = getString(R.string.setting_wake_up)
-        } else if (target == "out") {
-            binding.tvBottomSheetTimeHeader.text = getString(R.string.setting_out)
-        } else {
-            binding.tvBottomSheetTimeHeader.text = getString(R.string.setting_return)
+        when (target) {
+            "wake" -> {
+                binding.tvBottomSheetTimeHeader.text = getString(R.string.setting_wake_up)
+            }
+            "out" -> {
+                binding.tvBottomSheetTimeHeader.text = getString(R.string.setting_out)
+            }
+            else -> {
+                binding.tvBottomSheetTimeHeader.text = getString(R.string.setting_return)
+            }
         }
     }
 
     private fun inputCancel() { // 입력 실패 상황 (바텀시트가 등장한 상태에서 아무것도 선택하지 않고 바텀시트 이탈 시)
-        if (target == "wake") {
-            viewModel.timeWake.value = "" // 아무 값도 선택하지 않은 상태이므로 빈칸 처리 -> 뷰모델에서 false 처리됨
-        } else if (target == "out") {
-            viewModel.timeOut.value = ""
-        } else {
-            viewModel.timeReturn.value = ""
+        when (target) {
+            "wake" -> {
+                viewModel.timeWake.value = "" // 아무 값도 선택하지 않은 상태이므로 빈칸 처리 -> 뷰모델에서 false 처리됨
+            }
+            "out" -> {
+                viewModel.timeOut.value = ""
+            }
+            else -> {
+                viewModel.timeReturn.value = ""
+            }
         }
-    }
-
-    companion object {
-        const val TAG = "BottomSheetTime"
     }
 
     @SuppressLint("PrivateApi")
@@ -97,19 +109,34 @@ class BottomSheetTimeFragment(val target: String) : BottomSheetDialogFragment(),
         minutePicker.displayedValues = displayedValues.toTypedArray()
     }
 
-    override fun onTimeChanged(view: TimePicker, hourOfDay: Int, minute: Int) {
-        noChangeflag = false
-        times = makeTime(hourOfDay, (minute * timeInterval).toString())
-    }
-
     private fun setOnClickListeners() {
-        binding.btnBottonSheetTime.setOnClickListener() {
-            if (target == "wake") {
-                viewModel.timeWake.value = if (noChangeflag) initTime() else times
-            } else if (target == "out") {
-                viewModel.timeOut.value = if (noChangeflag) initTime() else times
-            } else {
-                viewModel.timeReturn.value = if (noChangeflag) initTime() else times
+        binding.btnBottonSheetTime.setOnClickListener {
+            when (target) {
+                "wake" -> {
+                    val minute = binding.tpInputTime.minute * timeInterval
+                    viewModel.timeWake.value = makeTime(binding.tpInputTime.hour, minute.toString())
+                    viewModel.timeSettingWake.value =
+                        makeTime(binding.tpInputTime.hour, minute.toString())
+                    viewModel.setIsWakeDestroy(true)
+                    dismiss()
+                }
+                "out" -> {
+                    val minute = binding.tpInputTime.minute * timeInterval
+                    viewModel.timeOut.value = makeTime(binding.tpInputTime.hour, minute.toString())
+                    viewModel.timeSettingOut.value =
+                        makeTime(binding.tpInputTime.hour, minute.toString())
+                    viewModel.setIsOutDestroy(true)
+                    dismiss()
+                }
+                else -> {
+                    val minute = binding.tpInputTime.minute * timeInterval
+                    viewModel.timeReturn.value =
+                        makeTime(binding.tpInputTime.hour, minute.toString())
+                    viewModel.timeSettingReturn.value =
+                        makeTime(binding.tpInputTime.hour, minute.toString())
+                    viewModel.setIsReturnDestroy(true)
+                    dismiss()
+                }
             }
         }
     }
@@ -119,16 +146,29 @@ class BottomSheetTimeFragment(val target: String) : BottomSheetDialogFragment(),
         if (minute.toInt() < 10) {
             realminute = "0".plus(minute)
         }
-        return if (hour > 12) {
-            "오후 ${hour - 12}시 ${realminute}분"
+        return if (hour > 12 || hour == 0) {
+            if (hour == 0) {
+                "오전 12시 ${realminute}분"
+            } else {
+                "오후 ${hour - 12}시 ${realminute}분"
+            }
         } else {
-            "오전 ${hour}시 ${realminute}분"
+            if (hour == 12) {
+                "오후 12시 ${realminute}분"
+            } else {
+                "오전 ${hour}시 ${realminute}분"
+            }
         }
     }
 
-    private fun initTime(): String {
-        val minute = binding.tpInputTime.minute * timeInterval
-        return makeTime(binding.tpInputTime.hour, minute.toString())
-    }
+    companion object {
+        const val TAG = "BottomSheetTime"
 
+        @JvmStatic
+        fun newInstance(target: String) = BottomSheetTimeFragment().apply {
+            arguments = Bundle().apply {
+                putString("target", target)
+            }
+        }
+    }
 }
