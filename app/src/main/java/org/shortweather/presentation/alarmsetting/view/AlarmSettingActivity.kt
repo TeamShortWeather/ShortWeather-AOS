@@ -1,28 +1,30 @@
 package org.shortweather.presentation.alarmsetting.view
 
 import android.os.Bundle
-import androidx.core.view.isVisible
+import androidx.activity.viewModels
 import org.shortweather.R
 import org.shortweather.databinding.ActivityAlarmSettingBinding
+import org.shortweather.presentation.alarmsetting.viewmodel.AlarmSettingViewModel
 import org.shortweather.util.binding.BindingActivity
 
 class AlarmSettingActivity :
     BindingActivity<ActivityAlarmSettingBinding>(R.layout.activity_alarm_setting) {
+    private val viewModel by viewModels<AlarmSettingViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        setOnCheckedChangeListener()
+    }
 
-        binding.btnAlarmSettingAll.setOnCheckedChangeListener { view, isChecked ->
+    private fun setOnCheckedChangeListener() {
+        binding.btnAlarmSettingAll.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                binding.layoutAlarmSettingWake.isVisible = true
-                binding.layoutAlarmSettingSleep.isVisible = true
-                binding.layoutAlarmSettingNews.isVisible = true
+                viewModel.setIsChange(true)
             } else {
-                binding.layoutAlarmSettingWake.isVisible = false
-                binding.layoutAlarmSettingSleep.isVisible = false
-                binding.layoutAlarmSettingNews.isVisible = false
+                viewModel.setIsChange(false)
             }
         }
     }
