@@ -1,6 +1,7 @@
 package org.shortweather.presentation.todayweather.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import org.shortweather.R
@@ -17,6 +18,9 @@ class TodayWeatherFragment :
         super.onViewCreated(view, savedInstanceState)
 
         setAdapter()
+        binding.srlTodayWeather.setOnRefreshListener {
+            binding.srlTodayWeather.isRefreshing = false
+        }
     }
 
     private fun setAdapter() {

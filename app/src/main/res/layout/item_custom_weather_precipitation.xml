@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="customWeatherPrecipitation"
+            type="org.shortweather.data.model.CustomWeatherPrecipitation" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp">
+
+        <TextView
+            android:id="@+id/tv_custom_weather_precipitation_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{customWeatherPrecipitation.time}"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
+            android:textColor="@color/short_weather_gray_7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_custom_weather_precipitation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_weekly_weather_example"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_precipitation_time" />
+
+        <TextView
+            android:id="@+id/tv_custom_weather_precipitation_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{customWeatherPrecipitation.precipitationLevel}"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
+            android:textColor="@color/short_weather_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/iv_custom_weather_precipitation"
+            app:layout_constraintStart_toStartOf="@id/iv_custom_weather_precipitation"
+            app:layout_constraintTop_toBottomOf="@id/iv_custom_weather_precipitation" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
