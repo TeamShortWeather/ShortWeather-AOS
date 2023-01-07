@@ -39,4 +39,5 @@
     <color name="short_weather_dustworst2">#8B3939</color>
     <color name="short_weather_weatherpurple">#B774DA</color>
     <color name="short_weather_weekend">#FF4F4F</color>
+    <color name="short_weather_transparency_white">#73FFFFFF</color>
 </resources>

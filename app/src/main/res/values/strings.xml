@@ -44,9 +44,6 @@
     <string name="setting_wake_up_header">기상시간을 변경해주세요</string>
     <string name="setting_content_description">세팅화면 대체 텍스트</string>
 
-
-
-
     <!-- WeeklyWeather -->
     <string name="weekly_weather_header_day">일별예보</string>
     <string name="weekly_weather_header_time">오전 / 오후</string>
@@ -64,4 +61,8 @@
     <string name="custom_weather_humidity">습도</string>
     <string name="custom_weather_day">일출/일몰</string>
     <string name="custom_weather_ultrafine_dust">초미세먼지</string>
+
+    <!-- TodayWeather -->
+    <string name="today_weather_fine_dust">미세</string>
+    <string name="today_weather_ultrafine_dust">초미세</string>
 </resources>
