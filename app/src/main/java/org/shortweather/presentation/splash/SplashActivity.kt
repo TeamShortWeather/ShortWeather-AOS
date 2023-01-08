@@ -18,7 +18,6 @@ class SplashActivity: BindingActivity<ActivitySplashBinding>(R.layout.activity_s
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
 
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, InputInfoActivity::class.java))

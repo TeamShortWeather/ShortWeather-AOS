@@ -2,6 +2,7 @@ package org.shortweather.presentation.input.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
@@ -24,6 +25,10 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
 
         binding.btnInputTimeCheck.isEnabled = false // 최초에는 확인 버튼의 Enable 상태 false
         setOnClickListener()
+        val token = intent.getStringExtra("devicetoken")
+        val gender = intent.getStringExtra("gender")
+        val age = intent.getStringExtra("age")
+        val sense = intent.getStringExtra("sense")
         setObservers()
     }
 
@@ -63,6 +68,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
     private fun setOnClickListener() {
         // 확인 버튼을 누르면 MainActivity로 이동
         binding.btnInputTimeCheck.setOnClickListener() { // 메인 화면으로 이동
+            // 서버에 7개의 데이터 전송 로직 필요
             startActivity(Intent(this, MainActivity::class.java)) // 서버에 전달해주는 로직 추후에 필요
             finish()
         }
