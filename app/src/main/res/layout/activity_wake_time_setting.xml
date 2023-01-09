@@ -61,7 +61,7 @@
             android:id="@+id/tv_setting_wake_time_contents"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@={vm.timeSettingWake}"
+            android:text="@={vm.timeWake}"
             android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
             tools:text="오전 8시 00분" />
 
