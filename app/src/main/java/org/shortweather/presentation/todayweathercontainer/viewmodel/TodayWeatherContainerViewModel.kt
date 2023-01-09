@@ -1,4 +1,4 @@
-package org.shortweather.presentation.todayweathercontainer
+package org.shortweather.presentation.todayweathercontainer.viewmodel
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

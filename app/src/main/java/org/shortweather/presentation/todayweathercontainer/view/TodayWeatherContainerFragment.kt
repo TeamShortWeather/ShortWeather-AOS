@@ -8,7 +8,7 @@ import org.shortweather.R
 import org.shortweather.databinding.FragmentTodayWeatherContainerBinding
 import org.shortweather.presentation.customweather.view.CustomWeatherFragment
 import org.shortweather.presentation.todayweather.view.TodayWeatherFragment
-import org.shortweather.presentation.todayweathercontainer.TodayWeatherContainerViewModel
+import org.shortweather.presentation.todayweathercontainer.viewmodel.TodayWeatherContainerViewModel
 import org.shortweather.presentation.todayweathercontainer.adapter.TodayWeatherContainerAdapter
 import org.shortweather.util.binding.BindingFragment
 
