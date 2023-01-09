@@ -6,11 +6,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import org.shortweather.databinding.ActivitySplashBinding
-import org.shortweather.presentation.MainActivity
 import org.shortweather.presentation.input.view.InputInfoActivity
-import org.shortweather.util.TokenSharedPreference
 import org.shortweather.util.binding.BindingActivity
 
 @AndroidEntryPoint

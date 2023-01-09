@@ -9,7 +9,7 @@ import org.shortweather.R
 import org.shortweather.databinding.ActivityInputTimeBinding
 import org.shortweather.presentation.MainActivity
 import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
-import org.shortweather.util.TokenSharedPreference
+import org.shortweather.util.ShortWeatherSharedPreference
 import org.shortweather.util.binding.BindingActivity
 
 @AndroidEntryPoint
@@ -60,7 +60,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
         // 확인 버튼을 누르면 MainActivity로 이동
         binding.btnInputTimeCheck.setOnClickListener() { // 메인 화면으로 이동
             // 서버에 7개의 데이터 전송 로직 필요
-            val token = TokenSharedPreference.getToken(this)
+            val token = ShortWeatherSharedPreference.getToken(this)
             Log.d("token", "token:".plus(token))
             startActivity(Intent(this, MainActivity::class.java)) // 서버에 전달해주는 로직 추후에 필요
             finish()
