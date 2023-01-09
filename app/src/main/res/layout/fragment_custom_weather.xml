@@ -10,454 +10,461 @@
             type="org.shortweather.presentation.customweather.viewmodel.CustomWeatherViewModel" />
     </data>
 
-    <ScrollView
+    <org.shortweather.util.NestedScrollableHost
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
+            android:id="@+id/sv_custom_weather"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
-            <TextView
-                android:id="@+id/tv_custom_weather_going_out"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:text="@string/custom_weather_going_out"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
-                android:textColor="@color/short_weather_gray_7"
-                app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_going_home"
-                app:layout_constraintEnd_toEndOf="@id/tv_custom_weather_going_out_time"
-                app:layout_constraintStart_toStartOf="@id/tv_custom_weather_going_out_time"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_custom_weather_going_home"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:text="@string/custom_weather_going_home"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
-                android:textColor="@color/short_weather_gray_7"
-                app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_going_out"
-                app:layout_constraintEnd_toEndOf="@id/tv_custom_weather_going_home_time"
-                app:layout_constraintStart_toStartOf="@id/tv_custom_weather_going_home_time"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_custom_weather_going_out_time"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                android:textColor="@color/short_weather_black"
-                app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_going_home_time"
-                app:layout_constraintEnd_toEndOf="@id/iv_custom_weather_going_out"
-                app:layout_constraintStart_toStartOf="@id/iv_custom_weather_going_out"
-                app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_going_out"
-                tools:text="오전 8시" />
-
-            <TextView
-                android:id="@+id/tv_custom_weather_going_home_time"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                android:textColor="@color/short_weather_black"
-                app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_going_out_time"
-                app:layout_constraintEnd_toEndOf="@id/iv_custom_weather_going_home"
-                app:layout_constraintStart_toStartOf="@id/iv_custom_weather_going_home"
-                app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_going_home"
-                tools:text="오후 8시" />
-
-            <ImageView
-                android:id="@+id/iv_custom_weather_going_out"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="56dp"
-                android:layout_marginTop="11dp"
-                android:src="@drawable/img_lotcloud_day"
-                app:layout_constraintBottom_toBottomOf="@id/iv_custom_weather_going_home"
-                app:layout_constraintDimensionRatio="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_going_out_time" />
-
-            <ImageView
-                android:id="@+id/iv_custom_weather_going_home"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="11dp"
-                android:layout_marginEnd="56dp"
-                android:src="@drawable/img_lotcloud_day"
-                app:layout_constraintBottom_toBottomOf="@id/iv_custom_weather_going_out"
-                app:layout_constraintDimensionRatio="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_going_home_time" />
-
-            <TextView
-                android:id="@+id/tv_custom_weather_going_out_temperature"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="11dp"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
-                android:textColor="@color/short_weather_black"
-                app:layout_constraintEnd_toEndOf="@id/iv_custom_weather_going_out"
-                app:layout_constraintStart_toStartOf="@id/iv_custom_weather_going_out"
-                app:layout_constraintTop_toBottomOf="@id/iv_custom_weather_going_out"
-                tools:text="-12°" />
-
-            <TextView
-                android:id="@+id/tv_custom_weather_going_home_temperature"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="11dp"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
-                android:textColor="@color/short_weather_black"
-                app:layout_constraintEnd_toEndOf="@id/iv_custom_weather_going_home"
-                app:layout_constraintStart_toStartOf="@id/iv_custom_weather_going_home"
-                app:layout_constraintTop_toBottomOf="@id/iv_custom_weather_going_home"
-                tools:text="-7°" />
-
-            <TextView
-                android:id="@+id/tv_custom_weather_time_zone_weather"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="33dp"
-                android:text="@string/custom_weather_time_zone_weather"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead4"
-                android:textColor="@color/short_weather_black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_going_out_temperature" />
-
-            <TextView
-                android:id="@+id/tv_custom_weather_select_weather"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background='@{viewModel.isWeather ? @drawable/bg_blue_circle : @drawable/bg_gray_circle}'
-                android:paddingHorizontal="65.5dp"
-                android:paddingVertical="7dp"
-                android:text="@string/custom_weather_weather"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead3"
-                android:textColor='@{viewModel.isWeather ? @color/short_weather_white : @color/short_weather_gray_7}'
-                app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_select_precipitation"
-                app:layout_constraintStart_toStartOf="@id/tv_custom_weather_time_zone_weather"
-                app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_time_zone_weather" />
-
-            <TextView
-                android:id="@+id/tv_custom_weather_select_precipitation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="24dp"
-                android:background='@{viewModel.isPrecipitation ? @drawable/bg_blue_circle : @drawable/bg_gray_circle}'
-                android:paddingHorizontal="65.5dp"
-                android:paddingVertical="7dp"
-                android:text="@string/custom_weather_precipitation"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead3"
-                android:textColor='@{viewModel.isPrecipitation ? @color/short_weather_white : @color/short_weather_gray_7}'
-                app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_select_weather"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_custom_weather_select_weather"
-                app:layout_constraintTop_toTopOf="@id/tv_custom_weather_select_weather" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_custom_weather"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="82dp"
-                android:layout_marginHorizontal="25dp"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_select_weather"
-                tools:listitem="@layout/item_custom_weather_weather" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_custom_weather_today_weather_info"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="56dp"
-                android:text="@string/custom_weather_today_weather_info"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                android:textColor="@color/short_weather_black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_custom_weather" />
+                <TextView
+                    android:id="@+id/tv_custom_weather_going_out"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="@string/custom_weather_going_out"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
+                    android:textColor="@color/short_weather_gray_7"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_going_home"
+                    app:layout_constraintEnd_toEndOf="@id/tv_custom_weather_going_out_time"
+                    app:layout_constraintStart_toStartOf="@id/tv_custom_weather_going_out_time"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_custom_weather_humidity"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_today_weather_info">
+                <TextView
+                    android:id="@+id/tv_custom_weather_going_home"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="@string/custom_weather_going_home"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
+                    android:textColor="@color/short_weather_gray_7"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_going_out"
+                    app:layout_constraintEnd_toEndOf="@id/tv_custom_weather_going_home_time"
+                    app:layout_constraintStart_toStartOf="@id/tv_custom_weather_going_home_time"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <TextView
+                    android:id="@+id/tv_custom_weather_going_out_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                    android:textColor="@color/short_weather_black"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_going_home_time"
+                    app:layout_constraintEnd_toEndOf="@id/iv_custom_weather_going_out"
+                    app:layout_constraintStart_toStartOf="@id/iv_custom_weather_going_out"
+                    app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_going_out"
+                    tools:text="오전 8시" />
+
+                <TextView
+                    android:id="@+id/tv_custom_weather_going_home_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                    android:textColor="@color/short_weather_black"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_going_out_time"
+                    app:layout_constraintEnd_toEndOf="@id/iv_custom_weather_going_home"
+                    app:layout_constraintStart_toStartOf="@id/iv_custom_weather_going_home"
+                    app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_going_home"
+                    tools:text="오후 8시" />
+
+                <ImageView
+                    android:id="@+id/iv_custom_weather_going_out"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="11dp"
+                    android:src="@drawable/img_lotcloud_day"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_custom_weather_going_home"
+                    app:layout_constraintDimensionRatio="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_going_out_time" />
+
+                <ImageView
+                    android:id="@+id/iv_custom_weather_going_home"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginEnd="56dp"
+                    android:src="@drawable/img_lotcloud_day"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_custom_weather_going_out"
+                    app:layout_constraintDimensionRatio="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_going_home_time" />
+
+                <TextView
+                    android:id="@+id/tv_custom_weather_going_out_temperature"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
+                    android:textColor="@color/short_weather_black"
+                    app:layout_constraintEnd_toEndOf="@id/iv_custom_weather_going_out"
+                    app:layout_constraintStart_toStartOf="@id/iv_custom_weather_going_out"
+                    app:layout_constraintTop_toBottomOf="@id/iv_custom_weather_going_out"
+                    tools:text="-12°" />
+
+                <TextView
+                    android:id="@+id/tv_custom_weather_going_home_temperature"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
+                    android:textColor="@color/short_weather_black"
+                    app:layout_constraintEnd_toEndOf="@id/iv_custom_weather_going_home"
+                    app:layout_constraintStart_toStartOf="@id/iv_custom_weather_going_home"
+                    app:layout_constraintTop_toBottomOf="@id/iv_custom_weather_going_home"
+                    tools:text="-7°" />
+
+                <TextView
+                    android:id="@+id/tv_custom_weather_time_zone_weather"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="33dp"
+                    android:text="@string/custom_weather_time_zone_weather"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Subhead4"
+                    android:textColor="@color/short_weather_black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_going_out_temperature" />
+
+                <TextView
+                    android:id="@+id/tv_custom_weather_select_weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background='@{viewModel.isWeather ? @drawable/bg_blue_circle : @drawable/bg_gray_circle}'
+                    android:paddingHorizontal="65.5dp"
+                    android:paddingVertical="7dp"
+                    android:text="@string/custom_weather_weather"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Subhead3"
+                    android:textColor='@{viewModel.isWeather ? @color/short_weather_white : @color/short_weather_gray_7}'
+                    app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_select_precipitation"
+                    app:layout_constraintStart_toStartOf="@id/tv_custom_weather_time_zone_weather"
+                    app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_time_zone_weather" />
+
+                <TextView
+                    android:id="@+id/tv_custom_weather_select_precipitation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="24dp"
+                    android:background='@{viewModel.isPrecipitation ? @drawable/bg_blue_circle : @drawable/bg_gray_circle}'
+                    android:paddingHorizontal="65.5dp"
+                    android:paddingVertical="7dp"
+                    android:text="@string/custom_weather_precipitation"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Subhead3"
+                    android:textColor='@{viewModel.isPrecipitation ? @color/short_weather_white : @color/short_weather_gray_7}'
+                    app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_select_weather"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_custom_weather_select_weather"
+                    app:layout_constraintTop_toTopOf="@id/tv_custom_weather_select_weather" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_custom_weather"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="82dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_select_weather"
+                    tools:listitem="@layout/item_custom_weather_weather" />
 
-                    <TextView
-                        android:id="@+id/tv_custom_weather_humidity"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginVertical="29dp"
-                        android:text="@string/custom_weather_humidity"
-                        android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                        android:textColor="@color/short_weather_black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/iv_custom_weather_humidity"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/tv_custom_weather_today_weather_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="56dp"
+                    android:text="@string/custom_weather_today_weather_info"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                    android:textColor="@color/short_weather_black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_custom_weather" />
 
-                    <ImageView
-                        android:id="@+id/iv_custom_weather_humidity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:src="@drawable/ic_weekly_weather_example"
-                        app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_humidity_info"
-                        app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_humidity_info"
-                        app:layout_constraintStart_toEndOf="@id/tv_custom_weather_humidity"
-                        app:layout_constraintTop_toTopOf="@id/tv_custom_weather_humidity_info" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_custom_weather_humidity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_today_weather_info">
 
-                    <TextView
-                        android:id="@+id/tv_custom_weather_humidity_info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="30dp"
-                        android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                        android:textColor="@color/short_weather_black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="30%" />
+                        <TextView
+                            android:id="@+id/tv_custom_weather_humidity"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_marginVertical="29dp"
+                            android:text="@string/custom_weather_humidity"
+                            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                            android:textColor="@color/short_weather_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/iv_custom_weather_humidity"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <ImageView
+                            android:id="@+id/iv_custom_weather_humidity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/ic_weekly_weather_example"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_humidity_info"
+                            app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_humidity_info"
+                            app:layout_constraintStart_toEndOf="@id/tv_custom_weather_humidity"
+                            app:layout_constraintTop_toTopOf="@id/tv_custom_weather_humidity_info" />
 
-            </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/tv_custom_weather_humidity_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="30dp"
+                            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                            android:textColor="@color/short_weather_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_custom_weather_day"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cv_custom_weather_humidity">
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="30%" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/tv_custom_weather_day"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginVertical="29dp"
-                        android:text="@string/custom_weather_day"
-                        android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                        android:textColor="@color/short_weather_black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_sunrise_info"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:id="@+id/iv_custom_weather_sunrise"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/ic_weekly_weather_example"
-                        app:layout_constraintBottom_toTopOf="@id/tv_custom_weather_sunrise_info"
-                        app:layout_constraintEnd_toEndOf="@id/tv_custom_weather_sunrise_info"
-                        app:layout_constraintStart_toStartOf="@id/tv_custom_weather_sunrise_info"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_custom_weather_day"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cv_custom_weather_humidity">
 
-                    <TextView
-                        android:id="@+id/tv_custom_weather_sunrise_info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:gravity="center"
-                        android:paddingHorizontal="8dp"
-                        android:textAppearance="@style/TextAppearance.ShortWeather.Caption2"
-                        android:textColor="@color/short_weather_black"
-                        app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_sunset_info"
-                        app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_sunset_info"
-                        app:layout_constraintStart_toEndOf="@id/tv_custom_weather_day"
-                        app:layout_constraintTop_toTopOf="@id/tv_custom_weather_sunset_info"
-                        tools:text="7:20" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/iv_custom_weather_sunset"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/ic_weekly_weather_example"
-                        app:layout_constraintBottom_toTopOf="@id/tv_custom_weather_sunset_info"
-                        app:layout_constraintEnd_toEndOf="@id/tv_custom_weather_sunset_info"
-                        app:layout_constraintStart_toStartOf="@id/tv_custom_weather_sunset_info"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/tv_custom_weather_day"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_marginVertical="29dp"
+                            android:text="@string/custom_weather_day"
+                            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                            android:textColor="@color/short_weather_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_sunrise_info"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/tv_custom_weather_sunset_info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="25dp"
-                        android:layout_marginBottom="12dp"
-                        android:paddingHorizontal="8dp"
-                        android:textAppearance="@style/TextAppearance.ShortWeather.Caption2"
-                        android:textColor="@color/short_weather_black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/tv_custom_weather_sunrise_info"
-                        app:layout_constraintTop_toBottomOf="@id/iv_custom_weather_sunset"
-                        tools:text="7:20" />
+                        <ImageView
+                            android:id="@+id/iv_custom_weather_sunrise"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:src="@drawable/ic_weekly_weather_example"
+                            app:layout_constraintBottom_toTopOf="@id/tv_custom_weather_sunrise_info"
+                            app:layout_constraintEnd_toEndOf="@id/tv_custom_weather_sunrise_info"
+                            app:layout_constraintStart_toStartOf="@id/tv_custom_weather_sunrise_info"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/tv_custom_weather_sunrise_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:gravity="center"
+                            android:paddingHorizontal="8dp"
+                            android:textAppearance="@style/TextAppearance.ShortWeather.Caption2"
+                            android:textColor="@color/short_weather_black"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_sunset_info"
+                            app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_sunset_info"
+                            app:layout_constraintStart_toEndOf="@id/tv_custom_weather_day"
+                            app:layout_constraintTop_toTopOf="@id/tv_custom_weather_sunset_info"
+                            tools:text="7:20" />
 
-            </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/iv_custom_weather_sunset"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:src="@drawable/ic_weekly_weather_example"
+                            app:layout_constraintBottom_toTopOf="@id/tv_custom_weather_sunset_info"
+                            app:layout_constraintEnd_toEndOf="@id/tv_custom_weather_sunset_info"
+                            app:layout_constraintStart_toStartOf="@id/tv_custom_weather_sunset_info"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_custom_weather_fine_dust"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cv_custom_weather_day">
+                        <TextView
+                            android:id="@+id/tv_custom_weather_sunset_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="25dp"
+                            android:layout_marginBottom="12dp"
+                            android:paddingHorizontal="8dp"
+                            android:textAppearance="@style/TextAppearance.ShortWeather.Caption2"
+                            android:textColor="@color/short_weather_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/tv_custom_weather_sunrise_info"
+                            app:layout_constraintTop_toBottomOf="@id/iv_custom_weather_sunset"
+                            tools:text="7:20" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/tv_custom_weather_fine_dust"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginVertical="29dp"
-                        android:text="@string/custom_weather_fine_dust"
-                        android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                        android:textColor="@color/short_weather_black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/iv_custom_weather_fine_dust"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:id="@+id/iv_custom_weather_fine_dust"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="25dp"
-                        android:src="@drawable/ic_weekly_weather_example"
-                        app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_fine_dust_info"
-                        app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_fine_dust_info"
-                        app:layout_constraintStart_toEndOf="@id/tv_custom_weather_fine_dust"
-                        app:layout_constraintTop_toTopOf="@id/tv_custom_weather_fine_dust_info" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_custom_weather_fine_dust"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cv_custom_weather_day">
 
-                    <TextView
-                        android:id="@+id/tv_custom_weather_fine_dust_info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="30dp"
-                        android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                        android:textColor="@color/short_weather_black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="나쁨" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/tv_custom_weather_fine_dust"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_marginVertical="29dp"
+                            android:text="@string/custom_weather_fine_dust"
+                            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                            android:textColor="@color/short_weather_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/iv_custom_weather_fine_dust"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/iv_custom_weather_fine_dust"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="25dp"
+                            android:src="@drawable/ic_weekly_weather_example"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_fine_dust_info"
+                            app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_fine_dust_info"
+                            app:layout_constraintStart_toEndOf="@id/tv_custom_weather_fine_dust"
+                            app:layout_constraintTop_toTopOf="@id/tv_custom_weather_fine_dust_info" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_custom_weather_ultrafine_dust"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="32dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cv_custom_weather_fine_dust">
+                        <TextView
+                            android:id="@+id/tv_custom_weather_fine_dust_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="30dp"
+                            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                            android:textColor="@color/short_weather_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="나쁨" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/tv_custom_weather_ultrafine_dust"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginVertical="29dp"
-                        android:text="@string/custom_weather_ultrafine_dust"
-                        android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                        android:textColor="@color/short_weather_black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/iv_custom_weather_ultrafine_dust"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:id="@+id/iv_custom_weather_ultrafine_dust"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="25dp"
-                        android:src="@drawable/ic_weekly_weather_example"
-                        app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_ultrafine_dust_info"
-                        app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_ultrafine_dust_info"
-                        app:layout_constraintStart_toEndOf="@id/tv_custom_weather_ultrafine_dust"
-                        app:layout_constraintTop_toTopOf="@id/tv_custom_weather_ultrafine_dust_info" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_custom_weather_ultrafine_dust"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="32dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cv_custom_weather_fine_dust">
 
-                    <TextView
-                        android:id="@+id/tv_custom_weather_ultrafine_dust_info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="30dp"
-                        android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                        android:textColor="@color/short_weather_black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="심각" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/tv_custom_weather_ultrafine_dust"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_marginVertical="29dp"
+                            android:text="@string/custom_weather_ultrafine_dust"
+                            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                            android:textColor="@color/short_weather_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/iv_custom_weather_ultrafine_dust"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/iv_custom_weather_ultrafine_dust"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="25dp"
+                            android:src="@drawable/ic_weekly_weather_example"
+                            app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_ultrafine_dust_info"
+                            app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_ultrafine_dust_info"
+                            app:layout_constraintStart_toEndOf="@id/tv_custom_weather_ultrafine_dust"
+                            app:layout_constraintTop_toTopOf="@id/tv_custom_weather_ultrafine_dust_info" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/tv_custom_weather_ultrafine_dust_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="30dp"
+                            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                            android:textColor="@color/short_weather_black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="심각" />
 
-    </ScrollView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </org.shortweather.util.NestedScrollableHost>
 </layout>

@@ -5,12 +5,14 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
 import org.shortweather.databinding.FragmentTodayWeatherBinding
 import org.shortweather.presentation.todayweather.adapter.TodayWeatherAdapter
 import org.shortweather.presentation.todayweather.viewmodel.TodayWeatherViewModel
 import org.shortweather.util.binding.BindingFragment
 
+@AndroidEntryPoint
 class TodayWeatherFragment :
     BindingFragment<FragmentTodayWeatherBinding>(R.layout.fragment_today_weather) {
     private val viewModel: TodayWeatherViewModel by viewModels()

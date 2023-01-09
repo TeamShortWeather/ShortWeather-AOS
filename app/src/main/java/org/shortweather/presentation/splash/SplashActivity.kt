@@ -11,15 +11,15 @@ import org.shortweather.presentation.input.view.InputInfoActivity
 import org.shortweather.util.binding.BindingActivity
 
 @AndroidEntryPoint
-class SplashActivity: BindingActivity<ActivitySplashBinding>(R.layout.activity_splash) {
+class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_splash) {
     private val SPLASH_TIME: Long = 3000  //3 sec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Handler(Looper.getMainLooper()).postDelayed({
             //if(서버에 디바이스 토큰을 전송한 상태가 아니라면 false 처리되는 flag){
-                startActivity(Intent(this, InputInfoActivity::class.java))
-                finish()
+            startActivity(Intent(this, InputInfoActivity::class.java))
+            finish()
             /*} else {
                 startActivity(Intent(this, InputInfoActivity::class.java))
                 finish()

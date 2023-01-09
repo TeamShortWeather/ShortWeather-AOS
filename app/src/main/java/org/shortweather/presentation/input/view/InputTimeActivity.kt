@@ -28,36 +28,17 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
 
     private fun setObservers() {
         viewModel.timeWakeSuccess.observe(this) {
-            if (viewModel.timeWakeSuccess.value == true) { // Success가 true = 아이템이 선택되었음을 의미
-                if (viewModel.timeReturnSuccess.value == true && viewModel.timeOutSuccess.value == true) { // 만약 다른 두 정보가 모두 입력되었다면
-                    binding.btnInputTimeCheck.isEnabled = true // 버튼 활성화
-                }
-            } else { // 만약 하나라도 입력이 되어있지 않으면 버튼은 비활성화 상태 유지
-                binding.btnInputTimeCheck.isEnabled = false
-            }
+            binding.btnInputTimeCheck.isEnabled = viewModel.checkAllTimeFiled()
         }
         viewModel.timeOutSuccess.observe(this) {
-            if (viewModel.timeOutSuccess.value == true) {
-                if (viewModel.timeReturnSuccess.value == true && viewModel.timeWakeSuccess.value == true) {
-                    binding.btnInputTimeCheck.isEnabled = true
-                }
-            } else {
-                binding.btnInputTimeCheck.isEnabled = false
-            }
+            binding.btnInputTimeCheck.isEnabled = viewModel.checkAllTimeFiled()
         }
         viewModel.timeReturnSuccess.observe(this) {
-            if (viewModel.timeReturnSuccess.value == true) {
-                if (viewModel.timeOutSuccess.value == true && viewModel.timeWakeSuccess.value == true) {
-                    binding.btnInputTimeCheck.isEnabled = true
-                }
-            } else {
-                binding.btnInputTimeCheck.isEnabled = false
-            }
+            binding.btnInputTimeCheck.isEnabled = viewModel.checkAllTimeFiled()
         }
     }
 
     private fun setOnClickListener() {
-        // 확인 버튼을 누르면 MainActivity로 이동
         binding.btnInputTimeCheck.setOnClickListener() { // 메인 화면으로 이동
             // 서버에 7개의 데이터 전송 로직 필요
             val token = ShortWeatherSharedPreference.getToken(this)
@@ -67,19 +48,22 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
         }
 
         binding.layoutTimeWake.setOnClickListener() { // 기상시간 선택
-            BottomSheetTimeFragment.newInstance("wake").show(supportFragmentManager, BottomSheetTimeFragment.TAG)
+            BottomSheetTimeFragment.newInstance("wake")
+                .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
 
         binding.layoutTimeOut.setOnClickListener() { // 외출시간 선택
-            BottomSheetTimeFragment.newInstance("out").show(supportFragmentManager, BottomSheetTimeFragment.TAG)
+            BottomSheetTimeFragment.newInstance("out")
+                .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
 
         binding.layoutTimeReturn.setOnClickListener() { // 귀가시간 선택
-            BottomSheetTimeFragment.newInstance("return").show(supportFragmentManager, BottomSheetTimeFragment.TAG)
+            BottomSheetTimeFragment.newInstance("return")
+                .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
     }
 
-    private fun saveInfo(){
+    private fun saveInfo() {
         val gender = intent.getStringExtra("gender")
         val age = intent.getStringExtra("age")
         val sense = intent.getStringExtra("sense")
