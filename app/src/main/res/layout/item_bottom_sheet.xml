@@ -8,7 +8,6 @@
         android:id="@+id/tv_contents"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="TextView"
         android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
         android:textColor="@color/short_weather_gray_7"
         android:layout_marginStart="24dp"
