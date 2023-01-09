@@ -1,12 +1,10 @@
 package org.shortweather.presentation.input.viewmodel
 
-import android.icu.text.IDNA.Info
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import org.shortweather.data.model.InfoDTO
 import org.shortweather.util.Event
 import javax.inject.Inject
 
