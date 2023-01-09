@@ -49,21 +49,24 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
             binding.vInputInfoGenderLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputInfoGender.setTextColor(R.color.short_weather_black)
             binding.btnGender.setBackgroundResource(R.drawable.ic_expand)
-            BottomSheetFragment.newInstance("gender").show(supportFragmentManager, BottomSheetFragment.TAG)
+            BottomSheetFragment.newInstance("gender")
+                .show(supportFragmentManager, BottomSheetFragment.TAG)
         }
 
         binding.layoutAge.setOnClickListener() { // 연령 선택란 클릭 시
             binding.vInputInfoAgeLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputInfoAge.setTextColor(R.color.short_weather_black)
             binding.btnAge.setBackgroundResource(R.drawable.ic_expand)
-            BottomSheetFragment.newInstance("age").show(supportFragmentManager, BottomSheetFragment.TAG)
+            BottomSheetFragment.newInstance("age")
+                .show(supportFragmentManager, BottomSheetFragment.TAG)
         }
 
         binding.layoutSense.setOnClickListener() { // 민감도 선택란 클릭 시
             binding.vInputInfoSenseLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputInfoSense.setTextColor(R.color.short_weather_black)
             binding.btnSense.setBackgroundResource(R.drawable.ic_expand)
-            BottomSheetFragment.newInstance("sense").show(supportFragmentManager, BottomSheetFragment.TAG)
+            BottomSheetFragment.newInstance("sense")
+                .show(supportFragmentManager, BottomSheetFragment.TAG)
         }
     }
 

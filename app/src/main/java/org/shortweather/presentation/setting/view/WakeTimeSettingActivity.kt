@@ -42,7 +42,8 @@ class WakeTimeSettingActivity :
 
         binding.layoutSettingWakeTime.setOnClickListener() { // 기상시간 선택
             binding.vSettingWakeTimeLine.setBackgroundResource(R.color.short_weather_blue)
-            BottomSheetTimeFragment.newInstance("wake").show(supportFragmentManager, BottomSheetTimeFragment.TAG)
+            BottomSheetTimeFragment.newInstance("wake")
+                .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
     }
 }

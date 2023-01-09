@@ -116,19 +116,17 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
                 "wake" -> {
                     viewModel.setTimeWake(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsWakeDestroy(true)
-                    dismiss()
                 }
                 "out" -> {
                     viewModel.setTimeOut(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsOutDestroy(true)
-                    dismiss()
                 }
                 else -> {
                     viewModel.setTimeReturn(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsReturnDestroy(true)
-                    dismiss()
                 }
             }
+            dismiss() // 아이템이 선택되었으므로 바텀시트 소멸
         }
     }
 

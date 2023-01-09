@@ -48,19 +48,22 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
         }
 
         binding.layoutTimeWake.setOnClickListener() { // 기상시간 선택
-            BottomSheetTimeFragment.newInstance("wake").show(supportFragmentManager, BottomSheetTimeFragment.TAG)
+            BottomSheetTimeFragment.newInstance("wake")
+                .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
 
         binding.layoutTimeOut.setOnClickListener() { // 외출시간 선택
-            BottomSheetTimeFragment.newInstance("out").show(supportFragmentManager, BottomSheetTimeFragment.TAG)
+            BottomSheetTimeFragment.newInstance("out")
+                .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
 
         binding.layoutTimeReturn.setOnClickListener() { // 귀가시간 선택
-            BottomSheetTimeFragment.newInstance("return").show(supportFragmentManager, BottomSheetTimeFragment.TAG)
+            BottomSheetTimeFragment.newInstance("return")
+                .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
     }
 
-    private fun saveInfo(){
+    private fun saveInfo() {
         val gender = intent.getStringExtra("gender")
         val age = intent.getStringExtra("age")
         val sense = intent.getStringExtra("sense")
