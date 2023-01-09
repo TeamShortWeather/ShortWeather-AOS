@@ -39,23 +39,21 @@ class InputTimeViewModel @Inject constructor() : ViewModel() {
     private val _isWakeDestroy = MutableLiveData<Event<Boolean>>()
     val isWakeDestroy: LiveData<Event<Boolean>>
         get() = _isWakeDestroy
-
-    private val _isOutDestroy = MutableLiveData<Event<Boolean>>()
-    val isOutDestroy: LiveData<Event<Boolean>>
-        get() = _isOutDestroy
-
-    private val _isReturnDestroy = MutableLiveData<Event<Boolean>>()
-    val isReturnDestroy: LiveData<Event<Boolean>>
-        get() = _isReturnDestroy
-
     fun setIsWakeDestroy(select: Boolean) {
         _isWakeDestroy.value = Event(select)
     }
 
+    private val _isOutDestroy = MutableLiveData<Event<Boolean>>()
+    val isOutDestroy: LiveData<Event<Boolean>>
+        get() = _isOutDestroy
     fun setIsOutDestroy(select: Boolean) {
         _isOutDestroy.value = Event(select)
     }
 
+
+    private val _isReturnDestroy = MutableLiveData<Event<Boolean>>()
+    val isReturnDestroy: LiveData<Event<Boolean>>
+        get() = _isReturnDestroy
     fun setIsReturnDestroy(select: Boolean) {
         _isReturnDestroy.value = Event(select)
     }
@@ -86,5 +84,9 @@ class InputTimeViewModel @Inject constructor() : ViewModel() {
         Transformations.map(timeReturn) {
             !(it.equals(" ") || it.equals(""))
         }
+
+    fun checkAllTimeFiled(): Boolean{ // 모든 시간이 정상적으로 입력되었다면 true
+        return (timeReturnSuccess.value!! && timeOutSuccess.value!! && timeWakeSuccess.value!!)
+    }
 
 }
