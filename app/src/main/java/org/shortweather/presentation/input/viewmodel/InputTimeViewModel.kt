@@ -12,18 +12,18 @@ import javax.inject.Inject
 class InputTimeViewModel @Inject constructor() : ViewModel() {
 
     val timeWake = MutableLiveData(" ") // 최초상태를 의미하는 하나의 공백 삽입
-    fun setTimeWake(wake: String) {
-        timeWake.value = wake
+    fun setTimeWake(waketime: String) {
+        timeWake.value = waketime
     }
 
     val timeOut = MutableLiveData(" ")
-    fun setTimeOut(out: String) {
-        timeOut.value = out
+    fun setTimeOut(outtime: String) {
+        timeOut.value = outtime
     }
 
     val timeReturn = MutableLiveData(" ")
-    fun setTimeReturn(returns: String) {
-        timeReturn.value = returns
+    fun setTimeReturn(returnstime: String) {
+        timeReturn.value = returnstime
     }
 
     private val _gender = MutableLiveData(" ")
