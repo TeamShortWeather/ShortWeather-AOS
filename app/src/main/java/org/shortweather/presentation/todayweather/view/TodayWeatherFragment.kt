@@ -1,6 +1,8 @@
 package org.shortweather.presentation.todayweather.view
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,13 +20,23 @@ class TodayWeatherFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setOnRefreshListener()
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        setOnClickListener()
         setAdapter()
+        setOnRefreshListener()
     }
 
     private fun setOnRefreshListener() {
         binding.srlTodayWeather.setOnRefreshListener {
             binding.srlTodayWeather.isRefreshing = false
+        }
+    }
+
+    private fun setOnClickListener() {
+        binding.ivTodayWeatherInfo.setOnClickListener {
+            viewModel.setToastEvent(true)
+            Handler(Looper.getMainLooper()).postDelayed({ viewModel.setToastEvent(false) }, 2000)
         }
     }
 

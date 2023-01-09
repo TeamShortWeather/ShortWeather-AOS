@@ -5,7 +5,9 @@
 
     <data>
 
-
+        <variable
+            name="viewModel"
+            type="org.shortweather.presentation.todayweather.viewmodel.TodayWeatherViewModel" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -132,7 +134,6 @@
                 android:textAppearance="@style/TextAppearance.ShortWeather.Weather2"
                 android:textColor="@color/short_weather_weekend"
                 app:layout_constraintEnd_toEndOf="@id/iv_today_weather_main"
-
                 app:layout_constraintStart_toEndOf="@id/tv_today_weather_temperature"
                 app:layout_constraintTop_toTopOf="@id/tv_today_weather_temperature"
                 tools:text="-10°" />
@@ -155,6 +156,7 @@
                 tools:text="강풍이강풍이불어요요요요요요요요" />
 
             <ImageView
+                android:id="@+id/iv_today_weather_info"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="24dp"
@@ -163,6 +165,47 @@
                 android:src="@drawable/ic_toast"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_today_weather_sub_description" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_today_weather_toast"
+                visibility="@{viewModel.isSelect}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/bg_today_weather_toast"
+                app:layout_constraintBottom_toBottomOf="@id/iv_today_weather_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_today_weather_info"
+                app:layout_constraintTop_toTopOf="@id/iv_today_weather_info">
+
+                <TextView
+                    android:id="@+id/tv_today_weather_toast_subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20dp"
+                    android:paddingTop="12dp"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
+                    android:textColor="@color/short_weather_black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="어제는 -19°로" />
+
+                <TextView
+                    android:id="@+id/tv_view_today_weather_toast_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20dp"
+                    android:paddingBottom="12dp"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+                    android:textColor="@color/short_weather_blue"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/tv_today_weather_toast_subtitle"
+                    app:layout_constraintStart_toStartOf="@id/tv_today_weather_toast_subtitle"
+                    app:layout_constraintTop_toBottomOf="@id/tv_today_weather_toast_subtitle"
+                    tools:text="함박눈이펑펑왔어요가나다라마바사" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
                 android:id="@+id/iv_today_weather_expand_down"
