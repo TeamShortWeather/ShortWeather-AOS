@@ -39,7 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".util.MyFirebaseMessagingService"
+        <service android:name=".util.ShortWeatherFirebaseMessagingService"
             android:stopWithTask="false"
             android:exported="false">
             <intent-filter>
