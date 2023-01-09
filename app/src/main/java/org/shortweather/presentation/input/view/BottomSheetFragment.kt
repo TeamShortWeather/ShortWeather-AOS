@@ -46,12 +46,15 @@ class BottomSheetFragment() : BottomSheetDialogFragment() {
                 override fun onItemClick(item: BottomSheetItem) = when (target) {
                     "gender" -> {
                         viewModel.inputGender.value = item.contents
+                        dismiss()
                     }
                     "age" -> {
                         viewModel.inputAge.value = item.contents
+                        dismiss()
                     }
                     else -> {
                         viewModel.inputSense.value = item.contents
+                        dismiss()
                     }
                 }
             })

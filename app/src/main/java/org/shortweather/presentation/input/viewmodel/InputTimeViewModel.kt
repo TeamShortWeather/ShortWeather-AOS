@@ -1,10 +1,12 @@
 package org.shortweather.presentation.input.viewmodel
 
+import android.icu.text.IDNA.Info
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import org.shortweather.data.model.InfoDTO
 import org.shortweather.util.Event
 import javax.inject.Inject
 
@@ -17,6 +19,25 @@ class InputTimeViewModel @Inject constructor() : ViewModel() {
     val timeSettingWake = MutableLiveData(" ")
     val timeSettingOut = MutableLiveData(" ")
     val timeSettingReturn = MutableLiveData(" ")
+
+    private val _gender = MutableLiveData(" ")
+    val gender: LiveData<String>
+        get() = _gender
+
+    private val _age = MutableLiveData(" ")
+    val age: LiveData<String>
+        get() = _age
+
+    private val _sense = MutableLiveData(" ")
+    val sense: LiveData<String>
+        get() = _sense
+
+    fun setBeforeInfo(gender: String, age: String, sense: String){
+        _gender.value = gender
+        _age.value = age
+        _sense.value = sense
+    }
+
     private val _isWakeDestroy = MutableLiveData<Event<Boolean>>()
     val isWakeDestroy: LiveData<Event<Boolean>>
         get() = _isWakeDestroy

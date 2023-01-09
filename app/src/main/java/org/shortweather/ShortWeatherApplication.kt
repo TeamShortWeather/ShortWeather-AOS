@@ -2,7 +2,6 @@ package org.shortweather
 
 import android.app.Application
 import android.content.SharedPreferences
-import android.util.Log
 import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.HiltAndroidApp
 
@@ -11,7 +10,7 @@ import dagger.hilt.android.HiltAndroidApp
 class ShortWeatherApplication : Application(){
     override fun onCreate() {
         super.onCreate()
-        FirebaseMessaging.getInstance().token.addOnSuccessListener {
+            FirebaseMessaging.getInstance().token.addOnSuccessListener {
             if(!it.isNullOrEmpty()){
                 val sharedPreferences = getSharedPreferences("sFile1", MODE_PRIVATE)
                 val editor: SharedPreferences.Editor = sharedPreferences.edit()
@@ -21,5 +20,4 @@ class ShortWeatherApplication : Application(){
             }
         }
     }
-
 }
