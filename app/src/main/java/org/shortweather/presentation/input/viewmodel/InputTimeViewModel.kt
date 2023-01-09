@@ -12,23 +12,21 @@ import javax.inject.Inject
 class InputTimeViewModel @Inject constructor() : ViewModel() {
 
     val timeWake = MutableLiveData(" ") // 최초상태를 의미하는 하나의 공백 삽입
+    fun setTimeWake(wake: String){
+        timeWake.value = wake
+    }
     val timeOut = MutableLiveData(" ")
+    fun setTimeOut(out: String){
+        timeOut.value = out
+    }
     val timeReturn = MutableLiveData(" ")
-    val timeSettingWake = MutableLiveData(" ")
-    val timeSettingOut = MutableLiveData(" ")
-    val timeSettingReturn = MutableLiveData(" ")
+    fun setTimeReturn(returns: String){
+        timeReturn.value = returns
+    }
 
     private val _gender = MutableLiveData(" ")
-    val gender: LiveData<String>
-        get() = _gender
-
     private val _age = MutableLiveData(" ")
-    val age: LiveData<String>
-        get() = _age
-
     private val _sense = MutableLiveData(" ")
-    val sense: LiveData<String>
-        get() = _sense
 
     fun setBeforeInfo(gender: String, age: String, sense: String){
         _gender.value = gender
@@ -59,11 +57,11 @@ class InputTimeViewModel @Inject constructor() : ViewModel() {
     }
 
     val timeWakeSelected: LiveData<Boolean> =
-        Transformations.map(timeWake) { it -> // 선택되지 않았다면 빈칸 -> false처리됨
+        Transformations.map(timeWake) { it -> // 선택되지 않았다면 빈칸 -> false처리
             it.isNotEmpty()
         }
     val timeWakeSuccess: LiveData<Boolean> =
-        Transformations.map(timeWake) { it -> // 하나의 공백(최초상태)가 아니면서 빈칸도 아님 -> 내용 담겼음을 확인
+        Transformations.map(timeWake) { it -> // 하나의 공백(최초상태)가 아니면서 빈칸도 아님 -> 바텀시트 아이템이 입력됨
             !(it.equals(" ") || it.equals(""))
         }
 

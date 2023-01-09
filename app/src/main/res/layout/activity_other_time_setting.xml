@@ -61,7 +61,7 @@
             android:id="@+id/tv_setting_out_time_contents"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@={vm.timeSettingOut}"
+            android:text="@={vm.timeOut}"
             android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
             tools:text="오전 8시 00분" />
 
@@ -114,7 +114,7 @@
             android:id="@+id/tv_setting_return_time_contents"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@={vm.timeSettingReturn}"
+            android:text="@={vm.timeReturn}"
             android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
             tools:text="오전 8시 00분" />
 

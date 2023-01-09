@@ -66,7 +66,7 @@
                 android:id="@+id/tv_input_info_gender_contents"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@={vm._inputGender}"
+                android:text="@={vm.inputGender}"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
                 tools:text="여자" />
 
@@ -121,7 +121,7 @@
                 android:id="@+id/tv_input_info_age_contents"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@={vm._inputAge}"
+                android:text="@={vm.inputAge}"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
                 tools:text="10대" />
 
@@ -176,7 +176,7 @@
                 android:id="@+id/tv_input_info_sense_contents"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@={vm._inputSense}"
+                android:text="@={vm.inputSense}"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead1"
                 tools:text="추위를 잘 타요" />
 

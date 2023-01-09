@@ -7,55 +7,49 @@ import javax.inject.Inject
 @HiltViewModel
 class InputInfoViewModel @Inject constructor() : ViewModel() {
 
-    val _inputGender = MutableLiveData<String>(" ") // 최초상태를 의미하는 하나의 공백 삽입
-    val inputGender: LiveData<String>
-        get() = _inputGender
+    val inputGender = MutableLiveData<String>(" ") // 최초상태를 의미하는 하나의 공백 삽입
     fun getGender(): String{
-        return _inputGender.value!!
+        return inputGender.value!!
     }
     fun setGender(gender: String){
-        _inputGender.value = gender
+        inputGender.value = gender
     }
 
-    val _inputAge = MutableLiveData<String>(" ")
-    val inputAge: LiveData<String>
-        get() = _inputAge
+    val inputAge = MutableLiveData<String>(" ")
     fun getAge(): String{
-        return _inputGender.value!!
+        return inputGender.value!!
     }
     fun setAge(age: String){
-        _inputAge.value = age
+        inputAge.value = age
     }
 
-    val _inputSense = MutableLiveData<String>(" ")
-    val inputSense: LiveData<String>
-        get() = _inputSense
+    val inputSense = MutableLiveData<String>(" ")
     fun getSense(): String{
-        return _inputGender.value!!
+        return inputGender.value!!
     }
     fun setSense(sense: String){
-        _inputSense.value = sense
+        inputSense.value = sense
     }
 
 
-    val isGenderSelected: LiveData<Boolean> = Transformations.map(_inputGender) { it -> // 선택되지 않았다면 빈칸 -> false처리됨
+    val isGenderSelected: LiveData<Boolean> = Transformations.map(inputGender) { it -> // 선택되지 않았다면 빈칸 -> false처리됨
         it.isNotEmpty()
     }
-    val isGenderSuccess: LiveData<Boolean> = Transformations.map(_inputGender) { it -> // 하나의 공백(최초상태)가 아니면서 빈칸도 아님 -> 내용 담겼음을 확인
+    val isGenderSuccess: LiveData<Boolean> = Transformations.map(inputGender) { it -> // 하나의 공백(최초상태)가 아니면서 빈칸도 아님 -> 내용 담겼음을 확인
         !(it.equals(" ") || it.equals(""))
     }
 
-    val isAgeSelected: LiveData<Boolean> = Transformations.map(_inputAge) { it ->
+    val isAgeSelected: LiveData<Boolean> = Transformations.map(inputAge) { it ->
         it.isNotEmpty()
     }
-    val isAgeSuccess: LiveData<Boolean> = Transformations.map(_inputAge) { it ->
+    val isAgeSuccess: LiveData<Boolean> = Transformations.map(inputAge) { it ->
         !(it.equals(" ") || it.equals(""))
     }
 
-    val isSenseSelected: LiveData<Boolean> = Transformations.map(_inputSense) { it ->
+    val isSenseSelected: LiveData<Boolean> = Transformations.map(inputSense) { it ->
         it.isNotEmpty()
     }
-    val isSenseSuccess: LiveData<Boolean> = Transformations.map(_inputSense) { it ->
+    val isSenseSuccess: LiveData<Boolean> = Transformations.map(inputSense) { it ->
         !(it.equals(" ") || it.equals(""))
     }
 

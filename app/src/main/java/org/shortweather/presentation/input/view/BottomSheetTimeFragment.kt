@@ -79,13 +79,13 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
     private fun inputCancel() { // 입력 실패 상황 (바텀시트가 등장한 상태에서 아무것도 선택하지 않고 바텀시트 이탈 시)
         when (target) {
             "wake" -> {
-                viewModel.timeWake.value = "" // 아무 값도 선택하지 않은 상태이므로 빈칸 처리 -> 뷰모델에서 false 처리됨
+                viewModel.setTimeWake("")
             }
             "out" -> {
-                viewModel.timeOut.value = ""
+                viewModel.setTimeOut("")
             }
             else -> {
-                viewModel.timeReturn.value = ""
+                viewModel.setTimeReturn("")
             }
         }
     }
@@ -111,29 +111,20 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
 
     private fun setOnClickListeners() {
         binding.btnBottonSheetTime.setOnClickListener {
+            val minute = binding.tpInputTime.minute * timeInterval
             when (target) {
                 "wake" -> {
-                    val minute = binding.tpInputTime.minute * timeInterval
-                    viewModel.timeWake.value = makeTime(binding.tpInputTime.hour, minute.toString())
-                    viewModel.timeSettingWake.value =
-                        makeTime(binding.tpInputTime.hour, minute.toString())
+                    viewModel.setTimeWake(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsWakeDestroy(true)
                     dismiss()
                 }
                 "out" -> {
-                    val minute = binding.tpInputTime.minute * timeInterval
-                    viewModel.timeOut.value = makeTime(binding.tpInputTime.hour, minute.toString())
-                    viewModel.timeSettingOut.value =
-                        makeTime(binding.tpInputTime.hour, minute.toString())
+                    viewModel.setTimeOut(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsOutDestroy(true)
                     dismiss()
                 }
                 else -> {
-                    val minute = binding.tpInputTime.minute * timeInterval
-                    viewModel.timeReturn.value =
-                        makeTime(binding.tpInputTime.hour, minute.toString())
-                    viewModel.timeSettingReturn.value =
-                        makeTime(binding.tpInputTime.hour, minute.toString())
+                    viewModel.setTimeReturn(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsReturnDestroy(true)
                     dismiss()
                 }
