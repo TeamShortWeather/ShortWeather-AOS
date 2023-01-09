@@ -45,13 +45,16 @@ class BottomSheetFragment() : BottomSheetDialogFragment() {
             object : BottomSheetAdapter.OnItemClickListener { // 어댑터의 인터페이스 구현
                 override fun onItemClick(item: BottomSheetItem) = when (target) {
                     "gender" -> {
-                        viewModel.inputGender.value = item.contents
+                        viewModel.setGender(item.contents)
+                        dismiss()
                     }
                     "age" -> {
-                        viewModel.inputAge.value = item.contents
+                        viewModel.setAge(item.contents)
+                        dismiss()
                     }
                     else -> {
-                        viewModel.inputSense.value = item.contents
+                        viewModel.setSense(item.contents)
+                        dismiss()
                     }
                 }
             })
@@ -93,11 +96,11 @@ class BottomSheetFragment() : BottomSheetDialogFragment() {
 
     private fun inputCancel() { // 입력 실패 상황 (바텀시트가 등장한 상태에서 아무것도 선택하지 않고 바텀시트 이탈 시)
         if (target == "gender") {
-            viewModel.inputGender.value = "" // 아무 값도 선택하지 않은 상태이므로 빈칸 처리 -> 뷰모델에서 false 처리됨
+            viewModel.setGender("") // 아무 값도 선택하지 않은 상태이므로 빈칸 처리 -> 뷰모델에서 false 처리됨
         } else if (target == "age") {
-            viewModel.inputAge.value = ""
+            viewModel.setAge("")
         } else {
-            viewModel.inputSense.value = ""
+            viewModel.setSense("")
         }
     }
 

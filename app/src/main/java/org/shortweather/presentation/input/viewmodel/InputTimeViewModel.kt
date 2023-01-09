@@ -12,41 +12,61 @@ import javax.inject.Inject
 class InputTimeViewModel @Inject constructor() : ViewModel() {
 
     val timeWake = MutableLiveData(" ") // 최초상태를 의미하는 하나의 공백 삽입
+    fun setTimeWake(waketime: String) {
+        timeWake.value = waketime
+    }
+
     val timeOut = MutableLiveData(" ")
+    fun setTimeOut(outtime: String) {
+        timeOut.value = outtime
+    }
+
     val timeReturn = MutableLiveData(" ")
-    val timeSettingWake = MutableLiveData(" ")
-    val timeSettingOut = MutableLiveData(" ")
-    val timeSettingReturn = MutableLiveData(" ")
+    fun setTimeReturn(returnstime: String) {
+        timeReturn.value = returnstime
+    }
+
+    private val _gender = MutableLiveData(" ")
+    private val _age = MutableLiveData(" ")
+    private val _sense = MutableLiveData(" ")
+
+    fun setBeforeInfo(gender: String, age: String, sense: String) {
+        _gender.value = gender
+        _age.value = age
+        _sense.value = sense
+    }
+
     private val _isWakeDestroy = MutableLiveData<Event<Boolean>>()
     val isWakeDestroy: LiveData<Event<Boolean>>
         get() = _isWakeDestroy
-
-    private val _isOutDestroy = MutableLiveData<Event<Boolean>>()
-    val isOutDestroy: LiveData<Event<Boolean>>
-        get() = _isOutDestroy
-
-    private val _isReturnDestroy = MutableLiveData<Event<Boolean>>()
-    val isReturnDestroy: LiveData<Event<Boolean>>
-        get() = _isReturnDestroy
 
     fun setIsWakeDestroy(select: Boolean) {
         _isWakeDestroy.value = Event(select)
     }
 
+    private val _isOutDestroy = MutableLiveData<Event<Boolean>>()
+    val isOutDestroy: LiveData<Event<Boolean>>
+        get() = _isOutDestroy
+
     fun setIsOutDestroy(select: Boolean) {
         _isOutDestroy.value = Event(select)
     }
+
+
+    private val _isReturnDestroy = MutableLiveData<Event<Boolean>>()
+    val isReturnDestroy: LiveData<Event<Boolean>>
+        get() = _isReturnDestroy
 
     fun setIsReturnDestroy(select: Boolean) {
         _isReturnDestroy.value = Event(select)
     }
 
     val timeWakeSelected: LiveData<Boolean> =
-        Transformations.map(timeWake) { it -> // 선택되지 않았다면 빈칸 -> false처리됨
+        Transformations.map(timeWake) { it -> // 선택되지 않았다면 빈칸 -> false처리
             it.isNotEmpty()
         }
     val timeWakeSuccess: LiveData<Boolean> =
-        Transformations.map(timeWake) { it -> // 하나의 공백(최초상태)가 아니면서 빈칸도 아님 -> 내용 담겼음을 확인
+        Transformations.map(timeWake) { it -> // 하나의 공백(최초상태)가 아니면서 빈칸도 아님 -> 바텀시트 아이템이 입력됨
             !(it.equals(" ") || it.equals(""))
         }
 
@@ -67,5 +87,9 @@ class InputTimeViewModel @Inject constructor() : ViewModel() {
         Transformations.map(timeReturn) {
             !(it.equals(" ") || it.equals(""))
         }
+
+    fun checkAllTimeFiled(): Boolean { // 모든 시간이 정상적으로 입력되었다면 true
+        return (timeReturnSuccess.value!! && timeOutSuccess.value!! && timeWakeSuccess.value!!)
+    }
 
 }

@@ -14,7 +14,6 @@ import org.shortweather.util.binding.BindingActivity
 class WakeTimeSettingActivity :
     BindingActivity<ActivityWakeTimeSettingBinding>(R.layout.activity_wake_time_setting) {
     private val viewModel by viewModels<InputTimeViewModel>()
-    private val bottomSheetSettingWake = BottomSheetTimeFragment.newInstance("wake")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +42,8 @@ class WakeTimeSettingActivity :
 
         binding.layoutSettingWakeTime.setOnClickListener() { // 기상시간 선택
             binding.vSettingWakeTimeLine.setBackgroundResource(R.color.short_weather_blue)
-            bottomSheetSettingWake.show(supportFragmentManager, BottomSheetTimeFragment.TAG)
+            BottomSheetTimeFragment.newInstance("wake")
+                .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
     }
 }
