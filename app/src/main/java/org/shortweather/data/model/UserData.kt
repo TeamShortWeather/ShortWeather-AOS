@@ -2,14 +2,6 @@ package org.shortweather.data.model
 
 import kotlinx.serialization.Serializable
 
-@Serializable
-data class BaseResponse<T>(
-    val status: Int,
-    val success: Boolean,
-    val message: String,
-    val data: T? = null
-)
-
 // 유저 등록 조회 Request -> Header로 바로 처리
 
 // 유저 등록 조회 Response
