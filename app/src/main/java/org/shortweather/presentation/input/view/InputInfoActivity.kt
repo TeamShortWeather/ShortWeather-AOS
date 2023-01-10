@@ -23,10 +23,10 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
         setObservers()
     }
 
-    private fun setObservers() { // 뷰모델 관찰 돌입, 리팩토링 필요
+    private fun setObservers() { // 각 정보들의 입력을 관찰하며 모든 정보가 입력되었을 경우 버튼 활성화
         viewModel.isGenderSuccess.observe(this) {
             binding.btnInputInfoNext.isEnabled = viewModel.checkAllInputFiled()
-        } // 이하 동문
+        }
         viewModel.isAgeSuccess.observe(this) {
             binding.btnInputInfoNext.isEnabled = viewModel.checkAllInputFiled()
         }
@@ -37,7 +37,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
 
     private fun setOnClickListener() {
         binding.btnInputInfoNext.setOnClickListener() { // 다음 버튼 클릭 시 InputTimeActivity로 이동,
-            // intent로 선택한 3개의 값을 다음 activity에 전달해주어야함
+            // intent를 통해 입력한 3개의 정보를 다음 activity에 전달
             val intent = Intent(this, InputTimeActivity::class.java)
             intent.putExtra("gender", viewModel.getGender())
             intent.putExtra("age", viewModel.getAge())

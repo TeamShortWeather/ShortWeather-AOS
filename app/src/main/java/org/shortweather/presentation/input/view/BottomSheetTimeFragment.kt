@@ -34,7 +34,7 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
         return binding.root
     }
 
-    override fun onCancel(dialog: DialogInterface) {
+    override fun onCancel(dialog: DialogInterface) { // 어떤 바텀시트에서 onCancel이 발생하는지 target을 통해 결정
         super.onCancel(dialog)
         when (target) {
             "wake" -> {
@@ -79,7 +79,7 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
     private fun inputCancel() { // 입력 실패 상황 (바텀시트가 등장한 상태에서 아무것도 선택하지 않고 바텀시트 이탈 시)
         when (target) {
             "wake" -> {
-                viewModel.setTimeWake("")
+                viewModel.setTimeWake("") // 시간 초기화
             }
             "out" -> {
                 viewModel.setTimeOut("")
@@ -110,7 +110,7 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
     }
 
     private fun setOnClickListeners() {
-        binding.btnBottonSheetTime.setOnClickListener {
+        binding.btnBottonSheetTime.setOnClickListener { // 시간 저장 버튼 클릭 시
             val minute = binding.tpInputTime.minute * timeInterval
             when (target) {
                 "wake" -> {
@@ -129,7 +129,7 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
                     viewModel.setIsReturnDestroy(true)
                 }
             }
-            dismiss() // 아이템이 선택되었으므로 바텀시트 소멸
+            dismiss() // 시간이 결정되었으므로 바텀시트 소멸
         }
     }
 

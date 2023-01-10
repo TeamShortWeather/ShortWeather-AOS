@@ -2,7 +2,6 @@ package org.shortweather.presentation.input.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
@@ -22,12 +21,12 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
         binding.vm = viewModel // 데이터바인딩
         binding.lifecycleOwner = this
         binding.btnInputTimeCheck.isEnabled = false // 최초에는 확인 버튼의 Enable 상태 false
-        saveInfo()
+        saveBeforeInfo()
         setOnClickListener()
         setObservers()
     }
 
-    private fun setObservers() {
+    private fun setObservers() { // 각 정보들의 입력을 관찰하며 모든 정보가 입력되었을 경우 버튼 활성화
         viewModel.timeWakeSuccess.observe(this) {
             binding.btnInputTimeCheck.isEnabled = viewModel.checkAllTimeFiled()
         }
@@ -37,7 +36,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
         viewModel.timeReturnSuccess.observe(this) {
             binding.btnInputTimeCheck.isEnabled = viewModel.checkAllTimeFiled()
         }
-        viewModel.accessTokenEvent.observe(this, EventObserver { accessToken ->
+        viewModel.accessTokenEvent.observe(this, EventObserver { accessToken -> // 액세스토큰 저장
             if (accessToken != null) {
                 ShortWeatherSharedPreference.setAccessToken(this, accessToken)
             }
@@ -45,11 +44,11 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
     }
 
     private fun setOnClickListener() {
-        binding.btnInputTimeCheck.setOnClickListener() { // 메인 화면으로 이동
+        binding.btnInputTimeCheck.setOnClickListener() { // 확인 버튼 클릭
             // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
-            viewModel.setDeviceToken("Kim")// 가상의 디바이스 토큰을 담은 테스트 코드
-            viewModel.createUser() // 서버통신 개시
-            startActivity(Intent(this, MainActivity::class.java)) // 서버에 전달해주는 로직 추후에 필요
+            viewModel.setDeviceToken("Park")// 가상의 디바이스 토큰을 담은 테스트 코드
+            viewModel.createUser() // 7개의 정보를 서버에 전송하고 메인 화면으로 이동
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
 
@@ -69,7 +68,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
         }
     }
 
-    private fun saveInfo() {
+    private fun saveBeforeInfo() { // 이전 activity에서 받은 3개의 정보를 저장
         val gender = intent.getStringExtra("gender")
         val age = intent.getStringExtra("age")
         val sense = intent.getStringExtra("sense")
