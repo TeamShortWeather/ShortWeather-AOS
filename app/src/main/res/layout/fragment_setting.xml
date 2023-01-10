@@ -37,7 +37,7 @@
                 android:layout_marginStart="33dp"
                 android:layout_marginTop="4dp"
                 android:contentDescription="@string/setting_content_description"
-                android:padding="12dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_expand_right"
                 app:layout_constraintStart_toEndOf="@+id/tv_setting_time"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -75,7 +75,7 @@
                 android:layout_marginStart="33dp"
                 android:layout_marginTop="4dp"
                 android:contentDescription="@string/setting_content_description"
-                android:padding="12dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_expand_right"
                 app:layout_constraintStart_toEndOf="@+id/tv_setting_alarm"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -111,7 +111,7 @@
                 android:layout_marginStart="33dp"
                 android:layout_marginTop="4dp"
                 android:contentDescription="@string/setting_content_description"
-                android:padding="12dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_expand_right"
                 app:layout_constraintStart_toEndOf="@+id/tv_setting_wake_up"
                 app:layout_constraintTop_toTopOf="parent" />
