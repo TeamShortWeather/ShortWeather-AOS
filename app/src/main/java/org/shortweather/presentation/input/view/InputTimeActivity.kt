@@ -9,6 +9,7 @@ import org.shortweather.R
 import org.shortweather.databinding.ActivityInputTimeBinding
 import org.shortweather.presentation.MainActivity
 import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
+import org.shortweather.util.EventObserver
 import org.shortweather.util.ShortWeatherSharedPreference
 import org.shortweather.util.binding.BindingActivity
 
@@ -36,12 +37,17 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
         viewModel.timeReturnSuccess.observe(this) {
             binding.btnInputTimeCheck.isEnabled = viewModel.checkAllTimeFiled()
         }
+        viewModel.accessTokenEvent.observe(this, EventObserver { accessToken ->
+            if (accessToken != null) {
+                ShortWeatherSharedPreference.setAccessToken(this, accessToken)
+            }
+        })
     }
 
     private fun setOnClickListener() {
         binding.btnInputTimeCheck.setOnClickListener() { // 메인 화면으로 이동
             // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
-            viewModel.setDeviceToken("sun")// 가상의 디바이스 토큰을 담은 테스트 코드
+            viewModel.setDeviceToken("Kim")// 가상의 디바이스 토큰을 담은 테스트 코드
             viewModel.createUser() // 서버통신 개시
             startActivity(Intent(this, MainActivity::class.java)) // 서버에 전달해주는 로직 추후에 필요
             finish()
