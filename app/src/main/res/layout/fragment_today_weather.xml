@@ -22,6 +22,7 @@
 
             <TextView
                 android:id="@+id/tv_today_weather_subtitle"
+                subTitle="@{viewModel.todayWeatherInfo.compareTemp}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -38,6 +39,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
+                android:text="@{viewModel.todayWeatherInfo.compareMessage}"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Display1"
                 android:textColor="@color/short_weather_black"
                 app:layout_constraintStart_toStartOf="@id/tv_today_weather_subtitle"
@@ -88,6 +90,7 @@
                 android:layout_marginTop="2dp"
                 android:gravity="center"
                 android:paddingVertical="4dp"
+                android:text="@{viewModel.todayWeatherInfo.image}"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
                 android:textColor="@color/short_weather_gray_5"
                 app:layout_constraintEnd_toEndOf="@id/iv_today_weather_main"
@@ -97,6 +100,7 @@
 
             <TextView
                 android:id="@+id/tv_today_weather_temperature"
+                temperature="@{viewModel.todayWeatherInfo.currentTemp}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="21dp"
@@ -112,6 +116,7 @@
 
             <TextView
                 android:id="@+id/tv_today_weather_min_temperature"
+                temperature="@{viewModel.todayWeatherInfo.minTemp}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
@@ -126,6 +131,7 @@
 
             <TextView
                 android:id="@+id/tv_today_weather_max_temperature"
+                temperature="@{viewModel.todayWeatherInfo.maxTemp}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -148,6 +154,7 @@
                 android:maxLines="1"
                 android:paddingHorizontal="22dp"
                 android:paddingVertical="8dp"
+                android:text="@{viewModel.todayWeatherInfo.weatherMessage}"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
                 android:textColor="@color/short_weather_black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -180,6 +187,7 @@
 
                 <TextView
                     android:id="@+id/tv_today_weather_toast_subtitle"
+                    toast="@{viewModel.todayWeatherToastInfo.temp}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="20dp"
@@ -197,6 +205,7 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="20dp"
                     android:paddingBottom="12dp"
+                    android:text="@{viewModel.todayWeatherToastInfo.weatherMessage}"
                     android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
                     android:textColor="@color/short_weather_blue"
                     app:layout_constraintBottom_toBottomOf="parent"
