@@ -47,7 +47,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
     private fun setOnClickListener() {
         binding.btnInputTimeCheck.setOnClickListener() { // 확인 버튼 클릭
             // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
-            viewModel.setDeviceToken("tack")// 가상의 디바이스 토큰을 담은 테스트 코드
+            viewModel.setDeviceToken("a")// 가상의 디바이스 토큰을 담은 테스트 코드
             viewModel.createUser() // 7개의 정보를 서버에 전송하고 메인 화면으로 이동
             val mainIntent = Intent(this@InputTimeActivity, MainActivity::class.java)
             mainIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -56,7 +56,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
 
         binding.layoutTimeWake.setOnClickListener() { // 기상시간 선택
             binding.vInputTimeWakeLine.setBackgroundResource(R.color.short_weather_blue)
-            binding.tvInputTimeWake.setTextColor(Color.parseColor("#717171"))
+            binding.tvInputTimeWake.setTextColor(getColor(R.color.short_weather_gray_7))
             binding.btnWake.setBackgroundResource(R.drawable.ic_expand)
             BottomSheetTimeFragment.newInstance("wake")
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
@@ -64,7 +64,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
 
         binding.layoutTimeOut.setOnClickListener() { // 외출시간 선택
             binding.vInputTimeOutLine.setBackgroundResource(R.color.short_weather_blue)
-            binding.tvInputTimeOut.setTextColor(Color.parseColor("#717171"))
+            binding.tvInputTimeOut.setTextColor(getColor(R.color.short_weather_gray_7))
             binding.btnOut.setBackgroundResource(R.drawable.ic_expand)
             BottomSheetTimeFragment.newInstance("out")
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
@@ -72,7 +72,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
 
         binding.layoutTimeReturn.setOnClickListener() { // 귀가시간 선택
             binding.vInputTimeReturnLine.setBackgroundResource(R.color.short_weather_blue)
-            binding.tvInputTimeReturn.setTextColor(Color.parseColor("#717171"))
+            binding.tvInputTimeReturn.setTextColor(getColor(R.color.short_weather_gray_7))
             binding.btnReturn.setBackgroundResource(R.drawable.ic_expand)
             BottomSheetTimeFragment.newInstance("return")
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
