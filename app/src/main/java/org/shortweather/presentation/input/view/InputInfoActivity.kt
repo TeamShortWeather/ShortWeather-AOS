@@ -50,7 +50,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
 
         binding.layoutGender.setOnClickListener() { // 성별 선택란 클릭 시
             binding.vInputInfoGenderLine.setBackgroundResource(R.color.short_weather_blue)
-            binding.tvInputInfoGender.setTextColor(Color.parseColor("#717171"))
+            binding.tvInputInfoGender.setTextColor(getColor(R.color.short_weather_gray_7))
             binding.btnGender.setBackgroundResource(R.drawable.ic_expand)
             BottomSheetFragment.newInstance("gender")
                 .show(supportFragmentManager, BottomSheetFragment.TAG)
@@ -58,7 +58,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
 
         binding.layoutAge.setOnClickListener() { // 연령 선택란 클릭 시
             binding.vInputInfoAgeLine.setBackgroundResource(R.color.short_weather_blue)
-            binding.tvInputInfoAge.setTextColor(Color.parseColor("#717171"))
+            binding.tvInputInfoAge.setTextColor(getColor(R.color.short_weather_gray_7))
             binding.btnAge.setBackgroundResource(R.drawable.ic_expand)
             BottomSheetFragment.newInstance("age")
                 .show(supportFragmentManager, BottomSheetFragment.TAG)
@@ -66,7 +66,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
 
         binding.layoutSense.setOnClickListener() { // 민감도 선택란 클릭 시
             binding.vInputInfoSenseLine.setBackgroundResource(R.color.short_weather_blue)
-            binding.tvInputInfoSense.setTextColor(Color.parseColor("#717171"))
+            binding.tvInputInfoSense.setTextColor(getColor(R.color.short_weather_gray_7))
             binding.btnSense.setBackgroundResource(R.drawable.ic_expand)
             BottomSheetFragment.newInstance("sense")
                 .show(supportFragmentManager, BottomSheetFragment.TAG)
