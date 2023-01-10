@@ -10,6 +10,7 @@ import org.shortweather.R
 import org.shortweather.databinding.FragmentTodayWeatherBinding
 import org.shortweather.presentation.todayweather.adapter.TodayWeatherAdapter
 import org.shortweather.presentation.todayweather.viewmodel.TodayWeatherViewModel
+import org.shortweather.util.ShortWeatherSharedPreference
 import org.shortweather.util.binding.BindingFragment
 
 @AndroidEntryPoint
@@ -22,9 +23,10 @@ class TodayWeatherFragment :
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        viewModel.getTodayWeatherInfo(ShortWeatherSharedPreference.getAccessToken(requireContext()))
         setOnClickListener()
-        setAdapter()
         setOnRefreshListener()
+        setAdapter()
     }
 
     private fun setOnRefreshListener() {
@@ -35,14 +37,20 @@ class TodayWeatherFragment :
 
     private fun setOnClickListener() {
         binding.ivTodayWeatherInfo.setOnClickListener {
-            viewModel.setToastEvent(true)
+            viewModel.getTodayWeatherToastInfo(
+                ShortWeatherSharedPreference.getAccessToken(
+                    requireContext()
+                )
+            )
             Handler(Looper.getMainLooper()).postDelayed({ viewModel.setToastEvent(false) }, 2000)
         }
     }
 
     private fun setAdapter() {
         val adapter = TodayWeatherAdapter()
-        adapter.submitList(viewModel.getTags())
         binding.rvTodayWeatherTag.adapter = adapter
+        viewModel.tags.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
     }
 }
