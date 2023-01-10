@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="ultrafineDust"
+            type="org.shortweather.data.model.UltrafineDust" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,16 +14,16 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tv_today_weather_newsflash"
+            android:id="@+id/tv_today_weather_ultrafine_dust"
+            dustBackground="@{ultrafineDust.ultrafineDustLevel}"
+            dustTextColor="@{ultrafineDust.ultrafineDustLevel}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:background="@drawable/bg_good_dust"
             android:paddingHorizontal="16dp"
             android:paddingVertical="4dp"
             android:text="@string/today_weather_ultrafine_dust"
             android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
-            android:textColor="@color/short_weather_dustgood2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
