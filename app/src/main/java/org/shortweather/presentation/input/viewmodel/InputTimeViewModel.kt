@@ -74,7 +74,6 @@ class InputTimeViewModel @Inject constructor(
         _isOutDestroy.value = Event(select)
     }
 
-
     private val _isReturnDestroy = MutableLiveData<Event<Boolean>>()
     val isReturnDestroy: LiveData<Event<Boolean>>
         get() = _isReturnDestroy
@@ -138,6 +137,7 @@ class InputTimeViewModel @Inject constructor(
                 )
             }.fold({
                 _createUserEvent.value = Event(true)
+                _accessTokenEvent.value = Event(it.data?.accessToken)
             }, {
                 _createUserEvent.value = Event(false)
             })
@@ -152,9 +152,15 @@ class InputTimeViewModel @Inject constructor(
                 )
             }.fold({
                 _searchUserEvent.value = Event(true)
+                _accessTokenEvent.value = Event(it.data?.accessToken)
             }, {
                 _searchUserEvent.value = Event(false)
             })
         }
     }
+
+    private val _accessTokenEvent = MutableLiveData<Event<String?>>()
+    val accessTokenEvent: LiveData<Event<String?>>
+        get() = _accessTokenEvent
+
 }
