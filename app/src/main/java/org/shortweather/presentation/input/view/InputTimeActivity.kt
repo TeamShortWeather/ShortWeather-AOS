@@ -41,7 +41,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
     private fun setOnClickListener() {
         binding.btnInputTimeCheck.setOnClickListener() { // 메인 화면으로 이동
             // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
-            viewModel.setDeviceToken("afterlike")// 가상의 디바이스 토큰을 담은 테스트 코드
+            viewModel.setDeviceToken("sun")// 가상의 디바이스 토큰을 담은 테스트 코드
             viewModel.createUser() // 서버통신 개시
             startActivity(Intent(this, MainActivity::class.java)) // 서버에 전달해주는 로직 추후에 필요
             finish()

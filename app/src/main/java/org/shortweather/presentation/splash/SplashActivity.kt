@@ -6,6 +6,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.activity.viewModels
 import org.shortweather.databinding.ActivitySplashBinding
 import org.shortweather.presentation.MainActivity
@@ -23,7 +24,7 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.setDeviceToken("afterlike") // 테스트를 위한 가상의 디바이스 토큰 설정
+        viewModel.setDeviceToken("sun") // 테스트를 위한 가상의 디바이스 토큰 설정
         // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
         Handler(Looper.getMainLooper()).postDelayed({
             viewModel.searchUser() // 디바이스 토큰를 포함한 서버 요청을 통한 유저 조회
@@ -36,12 +37,10 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
             this@SplashActivity, EventObserver { isSuccess ->
                 if (isSuccess) {
                     startActivity(Intent(this, MainActivity::class.java))
-                    finish()
                 } else {
                     startActivity(Intent(this, InputInfoActivity::class.java))
-                    finish()
                 }
+                finish()
             })
     }
-
 }

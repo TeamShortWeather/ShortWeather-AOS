@@ -13,7 +13,6 @@ import javax.inject.Singleton
 object ServiceModule {
     @Provides
     @Singleton
-    fun providesAuthService(@NetworkModule.AuthRetrofit retrofit: Retrofit): AuthService =
+    fun providesAuthService(retrofit: Retrofit): AuthService =
         retrofit.create(AuthService::class.java)
-
 }
