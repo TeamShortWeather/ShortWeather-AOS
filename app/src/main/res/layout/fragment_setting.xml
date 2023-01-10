@@ -14,7 +14,6 @@
             android:id="@+id/layout_setting_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="123dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -22,6 +21,7 @@
                 android:id="@+id/tv_setting_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="13dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="91dp"
                 android:text="@string/setting_time"
@@ -32,12 +32,13 @@
 
             <ImageView
                 android:id="@+id/iv_next_btn1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="51dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="33dp"
                 android:layout_marginTop="4dp"
                 android:contentDescription="@string/setting_content_description"
-                android:src="@drawable/ic_next_btn"
+                android:padding="10dp"
+                android:src="@drawable/ic_expand_right"
                 app:layout_constraintStart_toEndOf="@+id/tv_setting_time"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,6 +57,7 @@
                 android:id="@+id/tv_setting_alarm"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="13dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="91dp"
                 android:text="@string/setting_alarm"
@@ -65,14 +67,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <ImageView
                 android:id="@+id/iv_next_btn2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="51dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="33dp"
                 android:layout_marginTop="4dp"
                 android:contentDescription="@string/setting_content_description"
-                android:src="@drawable/ic_next_btn"
+                android:padding="10dp"
+                android:src="@drawable/ic_expand_right"
                 app:layout_constraintStart_toEndOf="@+id/tv_setting_alarm"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,6 +95,7 @@
                 android:id="@+id/tv_setting_wake_up"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="13dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="91dp"
                 android:text="@string/setting_wake_up"
@@ -101,12 +106,13 @@
 
             <ImageView
                 android:id="@+id/iv_next_btn3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="51dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="33dp"
                 android:layout_marginTop="4dp"
                 android:contentDescription="@string/setting_content_description"
-                android:src="@drawable/ic_next_btn"
+                android:padding="10dp"
+                android:src="@drawable/ic_expand_right"
                 app:layout_constraintStart_toEndOf="@+id/tv_setting_wake_up"
                 app:layout_constraintTop_toTopOf="parent" />
 
