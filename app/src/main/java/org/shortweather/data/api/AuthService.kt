@@ -7,12 +7,18 @@ import org.shortweather.data.model.ResponseUserInfo
 import retrofit2.http.*
 
 interface AuthService {
-    @POST("auth") // 유저 정보 입력
+    /**
+     * 유저 정보 입력 API
+     */
+    @POST("auth")
     suspend fun createUser(
         @Body requestUserInfo: RequestUserInfo
     ): BaseResponse<ResponseUserInfo>
 
-    @GET("auth/login")// 유저 등록 조회
+    /**
+     * 유저 등록 조회 API
+     */
+    @GET("auth/login")
     suspend fun searchUser(
         @Header("deviceToken") deviceToken: String
     ): BaseResponse<ResponseUserCheck>
