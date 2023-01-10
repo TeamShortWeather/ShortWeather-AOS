@@ -1,13 +1,11 @@
 package org.shortweather.presentation.input.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.shortweather.data.model.RequestUserInfo
 import org.shortweather.domain.repository.AuthRepository
 import org.shortweather.util.Event
-import org.shortweather.util.ShortWeatherSharedPreference
 import javax.inject.Inject
 
 @HiltViewModel
