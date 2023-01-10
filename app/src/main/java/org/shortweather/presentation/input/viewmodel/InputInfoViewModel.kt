@@ -7,7 +7,7 @@ import javax.inject.Inject
 @HiltViewModel
 class InputInfoViewModel @Inject constructor() : ViewModel() {
 
-    val inputGender = MutableLiveData<String>(" ") // 최초상태를 의미하는 하나의 공백 삽입
+    val inputGender = MutableLiveData(" ") // 최초상태를 의미하는 하나의 공백 삽입
     fun getGender(): String {
         return inputGender.value!!
     }
@@ -16,18 +16,18 @@ class InputInfoViewModel @Inject constructor() : ViewModel() {
         inputGender.value = gender
     }
 
-    val inputAge = MutableLiveData<String>(" ")
+    val inputAge = MutableLiveData(" ")
     fun getAge(): String {
-        return inputGender.value!!
+        return inputAge.value!!
     }
 
     fun setAge(age: String) {
         inputAge.value = age
     }
 
-    val inputSense = MutableLiveData<String>(" ")
+    val inputSense = MutableLiveData(" ")
     fun getSense(): String {
-        return inputGender.value!!
+        return inputSense.value!!
     }
 
     fun setSense(sense: String) {

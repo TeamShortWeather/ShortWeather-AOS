@@ -1,15 +1,22 @@
 package org.shortweather.presentation.input.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import org.shortweather.data.model.RequestUserInfo
+import org.shortweather.domain.repository.AuthRepository
 import org.shortweather.util.Event
 import javax.inject.Inject
 
 @HiltViewModel
-class InputTimeViewModel @Inject constructor() : ViewModel() {
+class InputTimeViewModel @Inject constructor(
+    private val authRepository: AuthRepository
+) : ViewModel() {
+
+    val deviceToken = MutableLiveData("") // 최초상태를 의미하는 하나의 공백 삽입
+    fun setDeviceToken(Token: String) {
+        deviceToken.value = Token
+    }
 
     val timeWake = MutableLiveData(" ") // 최초상태를 의미하는 하나의 공백 삽입
     fun setTimeWake(waketime: String) {
@@ -88,8 +95,51 @@ class InputTimeViewModel @Inject constructor() : ViewModel() {
             !(it.equals(" ") || it.equals(""))
         }
 
+    private val _createUserEvent = MutableLiveData<Event<Boolean>>()
+    val createUserEvent: LiveData<Event<Boolean>>
+        get() = _createUserEvent
+
+    private val _searchUserEvent = MutableLiveData<Event<Boolean>>()
+    val searchUserEvent: LiveData<Event<Boolean>>
+        get() = _searchUserEvent
+
     fun checkAllTimeFiled(): Boolean { // 모든 시간이 정상적으로 입력되었다면 true
         return (timeReturnSuccess.value!! && timeOutSuccess.value!! && timeWakeSuccess.value!!)
     }
 
+    fun createUser() {
+        viewModelScope.launch {
+            runCatching {
+                authRepository.createUser(
+                    RequestUserInfo(
+                        _gender.value!!,
+                        _age.value!!,
+                        _sense.value!!,
+                        timeWake.value!!,
+                        timeOut.value!!,
+                        timeReturn.value!!,
+                        deviceToken.value!!
+                    )
+                )
+            }.fold({
+                _createUserEvent.value = Event(true)
+            }, {
+                _createUserEvent.value = Event(false)
+            })
+        }
+    }
+
+    fun searchUser() {
+        viewModelScope.launch {
+            runCatching {
+                authRepository.searchUser(
+                    deviceToken.value!!
+                )
+            }.fold({
+                _searchUserEvent.value = Event(true)
+            }, {
+                _searchUserEvent.value = Event(false)
+            })
+        }
+    }
 }
