@@ -42,4 +42,4 @@ class BottomSheetAdapter(
     }
 }
 
-data class BottomSheetItem(var contents: String)
+data class BottomSheetItem(var contents: String) // 선택할 아이템

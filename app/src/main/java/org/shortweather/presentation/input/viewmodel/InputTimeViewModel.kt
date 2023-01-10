@@ -14,83 +14,43 @@ class InputTimeViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val deviceToken = MutableLiveData("") // 최초상태를 의미하는 하나의 공백 삽입
-    fun setDeviceToken(Token: String) {
-        deviceToken.value = Token
-    }
-
     private val timeWakeReal = MutableLiveData("") // "0900" 형식으로 시간 저장
-    fun setTimeWakeReal(time: String) {
-        timeWakeReal.value = time
-    }
-
-    val timeWake = MutableLiveData(" ") // "오전 OO시 OO분" 형식으로 시간 저장
-    fun setTimeWake(waketime: String) {
-        timeWake.value = waketime
-    }
-
     private val timeOutReal = MutableLiveData("")
-    fun setTimeOutReal(time: String) {
-        timeOutReal.value = time
-    }
-
-    val timeOut = MutableLiveData(" ")
-    fun setTimeOut(outtime: String) {
-        timeOut.value = outtime
-    }
-
     private val timeReturnReal = MutableLiveData("")
-    fun setTimeReturnReal(time: String) {
-        timeReturnReal.value = time
-    }
-
+    val timeWake = MutableLiveData(" ") // "오전 OO시 OO분" 형식으로 시간 저장
+    val timeOut = MutableLiveData(" ")
     val timeReturn = MutableLiveData(" ")
-    fun setTimeReturn(returnstime: String) {
-        timeReturn.value = returnstime
-    }
+    private val gender = MutableLiveData(" ") // 이전 activity에서 얻은 3개의 정보를 서버 전송을 위해 저장
+    private val age = MutableLiveData(" ")
+    private val sense = MutableLiveData(" ")
 
-    private val _gender = MutableLiveData(" ")
-    private val _age = MutableLiveData(" ")
-    private val _sense = MutableLiveData(" ")
-
-    fun setBeforeInfo(gender: String, age: String, sense: String) {
-        _gender.value = gender
-        _age.value = age
-        _sense.value = sense
-    }
-
-    private val _isWakeDestroy = MutableLiveData<Event<Boolean>>()
+    private val _isWakeDestroy = MutableLiveData<Event<Boolean>>() // 특정 바텀시트가 종료되었는지 여부를 저장
     val isWakeDestroy: LiveData<Event<Boolean>>
         get() = _isWakeDestroy
-
-    fun setIsWakeDestroy(select: Boolean) {
-        _isWakeDestroy.value = Event(select)
-    }
-
     private val _isOutDestroy = MutableLiveData<Event<Boolean>>()
     val isOutDestroy: LiveData<Event<Boolean>>
         get() = _isOutDestroy
-
-    fun setIsOutDestroy(select: Boolean) {
-        _isOutDestroy.value = Event(select)
-    }
-
     private val _isReturnDestroy = MutableLiveData<Event<Boolean>>()
     val isReturnDestroy: LiveData<Event<Boolean>>
         get() = _isReturnDestroy
-
-    fun setIsReturnDestroy(select: Boolean) {
-        _isReturnDestroy.value = Event(select)
-    }
+    private val _createUserEvent = MutableLiveData<Event<Boolean>>() // 유저 추가 성공 여부를 일회성으로 관찰함
+    val createUserEvent: LiveData<Event<Boolean>>
+        get() = _createUserEvent
+    private val _searchUserEvent = MutableLiveData<Event<Boolean>>() // 유저 조회 성공 여부를 일회성으로 관찰함
+    val searchUserEvent: LiveData<Event<Boolean>>
+        get() = _searchUserEvent
+    private val _accessTokenEvent = MutableLiveData<Event<String?>>() // 액세스 토큰 추출 성공 여부를 일회성으로 관찰함
+    val accessTokenEvent: LiveData<Event<String?>>
+        get() = _accessTokenEvent
 
     val timeWakeSelected: LiveData<Boolean> =
-        Transformations.map(timeWake) { it -> // 선택되지 않았다면 빈칸 -> false처리
+        Transformations.map(timeWake) { it -> // 빈칸인지 아닌지 확인하여 시간 선택이 취소되었는지 관찰하기 위함
             it.isNotEmpty()
         }
     val timeWakeSuccess: LiveData<Boolean> =
-        Transformations.map(timeWake) { it -> // 하나의 공백(최초상태)가 아니면서 빈칸도 아님 -> 바텀시트 아이템이 입력됨
+        Transformations.map(timeWake) { it -> // "한칸 공백도 아니고 빈칸도 아님 -> 시간 선택 성공" 여부를 관찰하기 위함
             !(it.equals(" ") || it.equals(""))
         }
-
     val timeOutSelected: LiveData<Boolean> =
         Transformations.map(timeOut) {
             it.isNotEmpty()
@@ -99,7 +59,6 @@ class InputTimeViewModel @Inject constructor(
         Transformations.map(timeOut) {
             !(it.equals(" ") || it.equals(""))
         }
-
     val timeReturnSelected: LiveData<Boolean> =
         Transformations.map(timeReturn) {
             it.isNotEmpty()
@@ -109,58 +68,92 @@ class InputTimeViewModel @Inject constructor(
             !(it.equals(" ") || it.equals(""))
         }
 
-    private val _createUserEvent = MutableLiveData<Event<Boolean>>()
-    val createUserEvent: LiveData<Event<Boolean>>
-        get() = _createUserEvent
+    fun setDeviceToken(Token: String) { // 디바이스 토큰 설정
+        deviceToken.value = Token
+    }
 
-    private val _searchUserEvent = MutableLiveData<Event<Boolean>>()
-    val searchUserEvent: LiveData<Event<Boolean>>
-        get() = _searchUserEvent
+    fun setTimeWakeReal(time: String) {
+        timeWakeReal.value = time
+    }
+
+    fun setTimeWake(waketime: String) {
+        timeWake.value = waketime
+    }
+
+    fun setTimeOutReal(time: String) {
+        timeOutReal.value = time
+    }
+
+    fun setTimeOut(outtime: String) {
+        timeOut.value = outtime
+    }
+
+    fun setTimeReturnReal(time: String) {
+        timeReturnReal.value = time
+    }
+
+    fun setTimeReturn(returnstime: String) {
+        timeReturn.value = returnstime
+    }
+
+    fun setBeforeInfo(inputgender: String, inputage: String, inputsense: String) { // 첫번째 정보입력폼의 정보 저장
+        gender.value = inputgender
+        age.value = inputage
+        sense.value = inputsense
+    }
+
+    fun setIsWakeDestroy(select: Boolean) {
+        _isWakeDestroy.value = Event(select)
+    }
+
+    fun setIsOutDestroy(select: Boolean) {
+        _isOutDestroy.value = Event(select)
+    }
+
+    fun setIsReturnDestroy(select: Boolean) {
+        _isReturnDestroy.value = Event(select)
+    }
 
     fun checkAllTimeFiled(): Boolean { // 모든 시간이 정상적으로 입력되었다면 true
         return (timeReturnSuccess.value!! && timeOutSuccess.value!! && timeWakeSuccess.value!!)
     }
 
-    fun createUser() {
+    fun createUser() { // 정보입력폼에서 얻은 6개의 정보와 디바이스 토큰을 서버에 전송
         viewModelScope.launch {
             runCatching {
                 authRepository.createUser(
                     RequestUserInfo(
-                        _gender.value!!,
-                        _age.value!!,
-                        _sense.value!!,
+                        gender.value!!,
+                        age.value!!,
+                        sense.value!!,
                         timeWakeReal.value!!,
                         timeOutReal.value!!,
                         timeReturnReal.value!!,
                         deviceToken.value!!
                     )
                 )
-            }.fold({
+            }.fold({ // 전송 성공 시
                 _createUserEvent.value = Event(true)
                 _accessTokenEvent.value = Event(it.data?.accessToken)
-            }, {
+            }, { // 전송 실패 시
                 _createUserEvent.value = Event(false)
             })
         }
     }
 
-    fun searchUser() {
+    fun searchUser() { // 디바이스 토큰의 서버 존재 여부를 확인하기 위해 디바이스 토큰을 서버에 전송
         viewModelScope.launch {
             runCatching {
                 authRepository.searchUser(
                     deviceToken.value!!
                 )
-            }.fold({
+            }.fold({ // 전송 성공 시
                 _searchUserEvent.value = Event(true)
                 _accessTokenEvent.value = Event(it.data?.accessToken)
-            }, {
+            }, { // 전송 실패 시
                 _searchUserEvent.value = Event(false)
             })
         }
     }
-
-    private val _accessTokenEvent = MutableLiveData<Event<String?>>()
-    val accessTokenEvent: LiveData<Event<String?>>
-        get() = _accessTokenEvent
 
 }

@@ -11,6 +11,6 @@ import org.shortweather.util.ShortWeatherSharedPreference
 class ShortWeatherApplication : Application(){
     override fun onCreate() {
         super.onCreate()
-            ShortWeatherSharedPreference.setToken(this)
+            ShortWeatherSharedPreference.setDeviceToken(this)
     }
 }
