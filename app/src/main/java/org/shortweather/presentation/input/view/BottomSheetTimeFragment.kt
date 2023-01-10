@@ -114,14 +114,17 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
             val minute = binding.tpInputTime.minute * timeInterval
             when (target) {
                 "wake" -> {
+                    viewModel.setTimeWakeReal(makeRealTime(binding.tpInputTime.hour, minute))
                     viewModel.setTimeWake(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsWakeDestroy(true)
                 }
                 "out" -> {
+                    viewModel.setTimeOutReal(makeRealTime(binding.tpInputTime.hour, minute))
                     viewModel.setTimeOut(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsOutDestroy(true)
                 }
                 else -> {
+                    viewModel.setTimeReturnReal(makeRealTime(binding.tpInputTime.hour, minute))
                     viewModel.setTimeReturn(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsReturnDestroy(true)
                 }
@@ -131,6 +134,7 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
     }
 
     private fun makeTime(hour: Int, minute: String): String {
+        // "오전 OO시 OO분" 형식의 시간 반환
         var realminute = minute
         if (minute.toInt() < 10) {
             realminute = "0".plus(minute)
@@ -148,6 +152,13 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
                 "오전 ${hour}시 ${realminute}분"
             }
         }
+    }
+
+    private fun makeRealTime(hour: Int, minute: Int): String {
+        // "0900" 형식의 시간 반환
+        val formattedHour = if (hour < 10) "0".plus(hour.toString()) else hour.toString()
+        val formattedMinute = if (minute == 0) "00" else minute.toString()
+        return formattedHour.plus(formattedMinute)
     }
 
     companion object {

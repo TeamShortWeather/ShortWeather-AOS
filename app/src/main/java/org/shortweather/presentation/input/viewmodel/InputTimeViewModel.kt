@@ -13,19 +13,34 @@ class InputTimeViewModel @Inject constructor(
     private val authRepository: AuthRepository
 ) : ViewModel() {
 
-    val deviceToken = MutableLiveData("") // 최초상태를 의미하는 하나의 공백 삽입
+    private val deviceToken = MutableLiveData("") // 최초상태를 의미하는 하나의 공백 삽입
     fun setDeviceToken(Token: String) {
         deviceToken.value = Token
     }
 
-    val timeWake = MutableLiveData(" ") // 최초상태를 의미하는 하나의 공백 삽입
+    private val timeWakeReal = MutableLiveData("") // "0900" 형식으로 시간 저장
+    fun setTimeWakeReal(time: String) {
+        timeWakeReal.value = time
+    }
+
+    val timeWake = MutableLiveData(" ") // "오전 OO시 OO분" 형식으로 시간 저장
     fun setTimeWake(waketime: String) {
         timeWake.value = waketime
+    }
+
+    private val timeOutReal = MutableLiveData("")
+    fun setTimeOutReal(time: String) {
+        timeOutReal.value = time
     }
 
     val timeOut = MutableLiveData(" ")
     fun setTimeOut(outtime: String) {
         timeOut.value = outtime
+    }
+
+    private val timeReturnReal = MutableLiveData("")
+    fun setTimeReturnReal(time: String) {
+        timeReturnReal.value = time
     }
 
     val timeReturn = MutableLiveData(" ")
@@ -115,9 +130,9 @@ class InputTimeViewModel @Inject constructor(
                         _gender.value!!,
                         _age.value!!,
                         _sense.value!!,
-                        timeWake.value!!,
-                        timeOut.value!!,
-                        timeReturn.value!!,
+                        timeWakeReal.value!!,
+                        timeOutReal.value!!,
+                        timeReturnReal.value!!,
                         deviceToken.value!!
                     )
                 )
