@@ -34,7 +34,7 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
         return binding.root
     }
 
-    override fun onCancel(dialog: DialogInterface) {
+    override fun onCancel(dialog: DialogInterface) { // 어떤 바텀시트에서 onCancel이 발생하는지 target을 통해 결정
         super.onCancel(dialog)
         when (target) {
             "wake" -> {
@@ -62,7 +62,7 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
         _binding = null
     }
 
-    private fun viewKindCheck() { // 바텀시트의 종류가 성별/연령/민감도인지 확인하고 이에 대응하여 아이템들을 생성함,
+    private fun viewKindCheck() { // 바텀시트의 종류가 기상/외출/복귀시간인지 확인하고 이에 대응하여 아이템들을 생성함,
         when (target) {
             "wake" -> {
                 binding.tvBottomSheetTimeHeader.text = getString(R.string.setting_wake_up)
@@ -79,7 +79,7 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
     private fun inputCancel() { // 입력 실패 상황 (바텀시트가 등장한 상태에서 아무것도 선택하지 않고 바텀시트 이탈 시)
         when (target) {
             "wake" -> {
-                viewModel.setTimeWake("")
+                viewModel.setTimeWake("") // 시간 초기화
             }
             "out" -> {
                 viewModel.setTimeOut("")
@@ -91,7 +91,7 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
     }
 
     @SuppressLint("PrivateApi")
-    private fun setTimeInterval(timePicker: TimePicker) {
+    private fun setTimeInterval(timePicker: TimePicker) { // TimpPicker의 시간 간격을 조정하는 함수
         timeInterval = if (target == "wake") 30 else 60  // 기상시간은 30분 간격, 나머지는 60분 간격
         val displayedValues: ArrayList<String> = ArrayList()
         val minutePicker: NumberPicker = timePicker.findViewById(
@@ -110,26 +110,26 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
     }
 
     private fun setOnClickListeners() {
-        binding.btnBottonSheetTime.setOnClickListener {
+        binding.btnBottonSheetTime.setOnClickListener { // 시간 저장 버튼 클릭 시
             val minute = binding.tpInputTime.minute * timeInterval
             when (target) {
-                "wake" -> {
+                "wake" -> { // 기상시간 결정
                     viewModel.setTimeWakeReal(makeRealTime(binding.tpInputTime.hour, minute))
                     viewModel.setTimeWake(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsWakeDestroy(true)
                 }
-                "out" -> {
+                "out" -> { // 외출시간 결정
                     viewModel.setTimeOutReal(makeRealTime(binding.tpInputTime.hour, minute))
                     viewModel.setTimeOut(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsOutDestroy(true)
                 }
-                else -> {
+                else -> { // 복귀시간 결정
                     viewModel.setTimeReturnReal(makeRealTime(binding.tpInputTime.hour, minute))
                     viewModel.setTimeReturn(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsReturnDestroy(true)
                 }
             }
-            dismiss() // 아이템이 선택되었으므로 바텀시트 소멸
+            dismiss() // 시간이 결정되었으므로 바텀시트 소멸
         }
     }
 

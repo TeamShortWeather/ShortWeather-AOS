@@ -8,15 +8,37 @@ import javax.inject.Inject
 class InputInfoViewModel @Inject constructor() : ViewModel() {
 
     val inputGender = MutableLiveData(" ") // 최초상태를 의미하는 하나의 공백 삽입
-    fun getGender(): String {
+    val inputAge = MutableLiveData(" ")
+    val inputSense = MutableLiveData(" ")
+    val isGenderSelected: LiveData<Boolean> = // 빈칸인지 아닌지 확인하여 아이템 선택이 취소되었는지 관찰하기 위함
+        Transformations.map(inputGender) { it ->
+            it.isNotEmpty()
+        }
+    val isAgeSelected: LiveData<Boolean> = Transformations.map(inputAge) { it ->
+        it.isNotEmpty()
+    }
+    val isSenseSelected: LiveData<Boolean> = Transformations.map(inputSense) { it ->
+        it.isNotEmpty()
+    }
+    val isGenderSuccess: LiveData<Boolean> = // "한칸 공백도 아니고 빈칸도 아님 -> 아이템 선택 성공" 여부를 관찰하기 위함
+        Transformations.map(inputGender) { it ->
+            !(it.equals(" ") || it.equals(""))
+        }
+    val isAgeSuccess: LiveData<Boolean> = Transformations.map(inputAge) { it ->
+        !(it.equals(" ") || it.equals(""))
+    }
+    val isSenseSuccess: LiveData<Boolean> = Transformations.map(inputSense) { it ->
+        !(it.equals(" ") || it.equals(""))
+    }
+
+    fun getGender(): String { // getter
         return inputGender.value!!
     }
 
-    fun setGender(gender: String) {
+    fun setGender(gender: String) { // setter
         inputGender.value = gender
     }
 
-    val inputAge = MutableLiveData(" ")
     fun getAge(): String {
         return inputAge.value!!
     }
@@ -25,37 +47,12 @@ class InputInfoViewModel @Inject constructor() : ViewModel() {
         inputAge.value = age
     }
 
-    val inputSense = MutableLiveData(" ")
     fun getSense(): String {
         return inputSense.value!!
     }
 
     fun setSense(sense: String) {
         inputSense.value = sense
-    }
-
-
-    val isGenderSelected: LiveData<Boolean> =
-        Transformations.map(inputGender) { it -> // 선택되지 않았다면 빈칸 -> false처리됨
-            it.isNotEmpty()
-        }
-    val isGenderSuccess: LiveData<Boolean> =
-        Transformations.map(inputGender) { it -> // 하나의 공백(최초상태)가 아니면서 빈칸도 아님 -> 내용 담겼음을 확인
-            !(it.equals(" ") || it.equals(""))
-        }
-
-    val isAgeSelected: LiveData<Boolean> = Transformations.map(inputAge) { it ->
-        it.isNotEmpty()
-    }
-    val isAgeSuccess: LiveData<Boolean> = Transformations.map(inputAge) { it ->
-        !(it.equals(" ") || it.equals(""))
-    }
-
-    val isSenseSelected: LiveData<Boolean> = Transformations.map(inputSense) { it ->
-        it.isNotEmpty()
-    }
-    val isSenseSuccess: LiveData<Boolean> = Transformations.map(inputSense) { it ->
-        !(it.equals(" ") || it.equals(""))
     }
 
     fun checkAllInputFiled(): Boolean { // 모든 정보가 입력되면 다음 버튼을 활성화시키기 위한 함수

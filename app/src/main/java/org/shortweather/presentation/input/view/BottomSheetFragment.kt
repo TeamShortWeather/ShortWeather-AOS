@@ -43,7 +43,7 @@ class BottomSheetFragment() : BottomSheetDialogFragment() {
         val adapter = BottomSheetAdapter(
             list,
             object : BottomSheetAdapter.OnItemClickListener { // 어댑터의 인터페이스 구현
-                override fun onItemClick(item: BottomSheetItem) = when (target) {
+                override fun onItemClick(item: BottomSheetItem) = when (target) { // 아이템이 선택되면 데이터 갱신 후 바텀시트 소멸
                     "gender" -> {
                         viewModel.setGender(item.contents)
                         dismiss()
@@ -96,7 +96,7 @@ class BottomSheetFragment() : BottomSheetDialogFragment() {
 
     private fun inputCancel() { // 입력 실패 상황 (바텀시트가 등장한 상태에서 아무것도 선택하지 않고 바텀시트 이탈 시)
         if (target == "gender") {
-            viewModel.setGender("") // 아무 값도 선택하지 않은 상태이므로 빈칸 처리 -> 뷰모델에서 false 처리됨
+            viewModel.setGender("") // empty 처리 -> 뷰모델에서 false 처리되면서 빨간 하이라이트 발생
         } else if (target == "age") {
             viewModel.setAge("")
         } else {
