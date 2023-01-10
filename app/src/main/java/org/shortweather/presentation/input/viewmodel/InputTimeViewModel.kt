@@ -1,24 +1,46 @@
 package org.shortweather.presentation.input.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import org.shortweather.data.model.RequestUserInfo
+import org.shortweather.domain.repository.AuthRepository
 import org.shortweather.util.Event
 import javax.inject.Inject
 
 @HiltViewModel
-class InputTimeViewModel @Inject constructor() : ViewModel() {
+class InputTimeViewModel @Inject constructor(
+    private val authRepository: AuthRepository
+) : ViewModel() {
 
-    val timeWake = MutableLiveData(" ") // 최초상태를 의미하는 하나의 공백 삽입
+    private val deviceToken = MutableLiveData("") // 최초상태를 의미하는 하나의 공백 삽입
+    fun setDeviceToken(Token: String) {
+        deviceToken.value = Token
+    }
+
+    private val timeWakeReal = MutableLiveData("") // "0900" 형식으로 시간 저장
+    fun setTimeWakeReal(time: String) {
+        timeWakeReal.value = time
+    }
+
+    val timeWake = MutableLiveData(" ") // "오전 OO시 OO분" 형식으로 시간 저장
     fun setTimeWake(waketime: String) {
         timeWake.value = waketime
+    }
+
+    private val timeOutReal = MutableLiveData("")
+    fun setTimeOutReal(time: String) {
+        timeOutReal.value = time
     }
 
     val timeOut = MutableLiveData(" ")
     fun setTimeOut(outtime: String) {
         timeOut.value = outtime
+    }
+
+    private val timeReturnReal = MutableLiveData("")
+    fun setTimeReturnReal(time: String) {
+        timeReturnReal.value = time
     }
 
     val timeReturn = MutableLiveData(" ")
@@ -88,8 +110,51 @@ class InputTimeViewModel @Inject constructor() : ViewModel() {
             !(it.equals(" ") || it.equals(""))
         }
 
+    private val _createUserEvent = MutableLiveData<Event<Boolean>>()
+    val createUserEvent: LiveData<Event<Boolean>>
+        get() = _createUserEvent
+
+    private val _searchUserEvent = MutableLiveData<Event<Boolean>>()
+    val searchUserEvent: LiveData<Event<Boolean>>
+        get() = _searchUserEvent
+
     fun checkAllTimeFiled(): Boolean { // 모든 시간이 정상적으로 입력되었다면 true
         return (timeReturnSuccess.value!! && timeOutSuccess.value!! && timeWakeSuccess.value!!)
     }
 
+    fun createUser() {
+        viewModelScope.launch {
+            runCatching {
+                authRepository.createUser(
+                    RequestUserInfo(
+                        _gender.value!!,
+                        _age.value!!,
+                        _sense.value!!,
+                        timeWakeReal.value!!,
+                        timeOutReal.value!!,
+                        timeReturnReal.value!!,
+                        deviceToken.value!!
+                    )
+                )
+            }.fold({
+                _createUserEvent.value = Event(true)
+            }, {
+                _createUserEvent.value = Event(false)
+            })
+        }
+    }
+
+    fun searchUser() {
+        viewModelScope.launch {
+            runCatching {
+                authRepository.searchUser(
+                    deviceToken.value!!
+                )
+            }.fold({
+                _searchUserEvent.value = Event(true)
+            }, {
+                _searchUserEvent.value = Event(false)
+            })
+        }
+    }
 }

@@ -6,24 +6,41 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import androidx.activity.viewModels
 import org.shortweather.databinding.ActivitySplashBinding
+import org.shortweather.presentation.MainActivity
 import org.shortweather.presentation.input.view.InputInfoActivity
+import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
+import org.shortweather.util.EventObserver
+import org.shortweather.util.ShortWeatherSharedPreference
 import org.shortweather.util.binding.BindingActivity
+import org.shortweather.util.extension.showToast
 
 @AndroidEntryPoint
 class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_splash) {
-    private val SPLASH_TIME: Long = 3000  //3 sec
+    private val viewModel by viewModels<InputTimeViewModel>()
+    private val SPLASH_TIME: Long = 2800  //3 sec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.setDeviceToken("sun") // 테스트를 위한 가상의 디바이스 토큰 설정
+        // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
         Handler(Looper.getMainLooper()).postDelayed({
-            //if(서버에 디바이스 토큰을 전송한 상태가 아니라면 false 처리되는 flag){
-            startActivity(Intent(this, InputInfoActivity::class.java))
-            finish()
-            /*} else {
-                startActivity(Intent(this, InputInfoActivity::class.java))
-                finish()
-            }*/
+            viewModel.searchUser() // 디바이스 토큰를 포함한 서버 요청을 통한 유저 조회
+            setObservers() // 유저 조회 관련 LiveData 관찰
         }, SPLASH_TIME)
+    }
+
+    private fun setObservers() {
+        viewModel.searchUserEvent.observe(
+            this@SplashActivity, EventObserver { isSuccess ->
+                if (isSuccess) {
+                    startActivity(Intent(this, MainActivity::class.java))
+                } else {
+                    startActivity(Intent(this, InputInfoActivity::class.java))
+                }
+                finish()
+            })
     }
 }

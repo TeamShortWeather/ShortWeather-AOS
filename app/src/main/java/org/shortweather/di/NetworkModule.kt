@@ -13,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.shortweather.BuildConfig.BASE_URL
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
