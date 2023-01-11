@@ -47,15 +47,23 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
                 ShortWeatherSharedPreference.setAccessToken(this, accessToken)
             }
         })
-        viewModel.createUserEvent.observe(this, EventObserver { it -> // 액세스토큰 저장
-            if(it){
+        viewModel.createUserEvent.observe(this, EventObserver { it -> // 유저 등록 성공여부 관찰
+            if (it) { // 유저 등록 성공 시 MainActivity로 이동
                 val mainIntent = Intent(this@InputTimeActivity, MainActivity::class.java)
-                mainIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // 이전 activity 소멸
+                mainIntent.flags =
+                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // 이전 activity 소멸
                 startActivity(mainIntent)
-            } else {
-                showToast(getString(R.string.input_time_server_error))
+            } else { // 서버에 유저 등록 실패 시 "잠시만 기다려주세요.. "토스트 메시지 출력
+                showToast(getString(R.string.wait_server_error), false)
             }
         })
+        viewModel.serverConnectEvent.observe(
+            this,
+            EventObserver { it -> // http 연결 자체가 실패하면 "인터넷에 연결해 주세요.." 토스트 메시지 출력
+                if (!it) {
+                    showToast(getString(R.string.http_server_error), false)
+                }
+            })
     }
 
     private fun setOnClickListener() {
