@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ResponseUserCheck(
     val deviceToken: String,
-    val accessToken: String,
+    val accessToken: String?,
     val isExist: Boolean
 )
 
