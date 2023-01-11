@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ShortWeather</string>
+    <string name="app_name">숏웨더</string>
 
     <!-- Title -->
     <string name="title_today_weather">오늘 날씨</string>
@@ -33,6 +33,7 @@
     <string name="input_time_return">귀가시간</string>
     <string name="input_time_description">* 입력한 시간을 바탕으로 날씨를 알려드려요</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="input_time_server_error">서버와의 통신이 원활하지 않습니다.</string>
 
     <!--Setting-->
     <string name="setting_time">외출 / 귀가시간대 설정</string>
@@ -73,7 +74,6 @@
     <string name="alarm_setting_sleep_subtitle">취침시간에 맞춰서 날씨를 알려드려요</string>
     <string name="alarm_setting_news_title">특보 알림</string>
     <string name="alarm_setting_news_subtitle">실시간 날씨 특보를 알려드려요</string>
-
 
     <!-- TodayWeather -->
     <string name="today_weather_fine_dust">미세</string>

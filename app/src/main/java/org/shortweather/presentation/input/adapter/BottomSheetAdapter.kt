@@ -2,7 +2,9 @@ package org.shortweather.presentation.input.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.app.NotificationCompat.getColor
 import androidx.recyclerview.widget.RecyclerView
+import org.shortweather.R
 import org.shortweather.databinding.ItemBottomSheetBinding
 
 class BottomSheetAdapter(
@@ -42,4 +44,4 @@ class BottomSheetAdapter(
     }
 }
 
-data class BottomSheetItem(var contents: String)
+data class BottomSheetItem(var contents: String) // 선택할 아이템

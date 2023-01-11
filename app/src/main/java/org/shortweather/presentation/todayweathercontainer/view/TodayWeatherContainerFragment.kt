@@ -8,8 +8,9 @@ import org.shortweather.R
 import org.shortweather.databinding.FragmentTodayWeatherContainerBinding
 import org.shortweather.presentation.customweather.view.CustomWeatherFragment
 import org.shortweather.presentation.todayweather.view.TodayWeatherFragment
-import org.shortweather.presentation.todayweathercontainer.viewmodel.TodayWeatherContainerViewModel
+import org.shortweather.presentation.todayweathercontainer.OnPageDownClickListener
 import org.shortweather.presentation.todayweathercontainer.adapter.TodayWeatherContainerAdapter
+import org.shortweather.presentation.todayweathercontainer.viewmodel.TodayWeatherContainerViewModel
 import org.shortweather.util.binding.BindingFragment
 
 @AndroidEntryPoint
@@ -22,9 +23,22 @@ class TodayWeatherContainerFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setAdapter()
+        setOnPageDownClickListener()
+    }
+
+    private fun setAdapter() {
         binding.vpTodayWeatherContainer.adapter = TodayWeatherContainerAdapter(
             listOf(todayWeatherFragment, customWeatherFragment),
             requireActivity()
         )
+    }
+
+    private fun setOnPageDownClickListener() {
+        todayWeatherFragment.setOnPageDownClickListener(object : OnPageDownClickListener {
+            override fun pageDown() {
+                binding.vpTodayWeatherContainer.currentItem = 1
+            }
+        })
     }
 }

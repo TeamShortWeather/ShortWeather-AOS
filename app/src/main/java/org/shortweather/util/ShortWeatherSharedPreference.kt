@@ -1,29 +1,40 @@
 package org.shortweather.util
 
-import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import com.google.firebase.messaging.FirebaseMessaging
 
 object ShortWeatherSharedPreference {
-    fun getToken(context: Context): String { // 저장된 디바이스 토큰 반환
-        val prefs: SharedPreferences =
-            context.getSharedPreferences("sFile1", Context.MODE_PRIVATE)
-        Log.d("tag", prefs.getString("Token1", "").toString())
-        return prefs.getString("Token1", "").toString()
+    fun setAccessToken(context: Context, token: String) { // 액세스 토큰 설정
+        val sharedPreferences: SharedPreferences =
+            context.getSharedPreferences("tokens", Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.putString("AccessToken", token)
+        editor.commit()
     }
 
-    fun setToken(context: Context) {
+    fun getAccessToken(context: Context): String { // 저장된 액세스 토큰 반환
+        val prefs: SharedPreferences =
+            context.getSharedPreferences("tokens", Context.MODE_PRIVATE)
+        return prefs.getString("AccessToken", "").toString()
+    }
+
+    fun setDeviceToken(context: Context) { // 디바이스 토큰 설정
         FirebaseMessaging.getInstance().token.addOnSuccessListener {
             if (!it.isNullOrEmpty()) {
                 val sharedPreferences: SharedPreferences =
-                    context.getSharedPreferences("sFile1", Application.MODE_PRIVATE)
+                    context.getSharedPreferences("tokens", Context.MODE_PRIVATE)
                 val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                val token = it // 사용자가 입력한 저장할 데이터
-                editor.putString("Token1", token) // key, value를 이용하여 저장하는 형태
+                editor.putString("AccessToken", it)
                 editor.commit()
             }
         }
     }
+
+    fun getDeviceToken(context: Context): String { // 저장된 디바이스 토큰 반환
+        val prefs: SharedPreferences =
+            context.getSharedPreferences("tokens", Context.MODE_PRIVATE)
+        return prefs.getString("DeviceToken", "").toString()
+    }
+
 }

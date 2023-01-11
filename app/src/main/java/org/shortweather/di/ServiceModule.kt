@@ -5,7 +5,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.shortweather.data.api.AuthService
-import org.shortweather.data.api.CustomWeatherService
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -19,6 +18,6 @@ object ServiceModule {
 
     @Provides
     @Singleton
-    fun providesCustomWeatherService(retrofit: Retrofit): CustomWeatherService =
-        retrofit.create(CustomWeatherService::class.java)
+    fun providesTodayWeatherService(retrofit: Retrofit): TodayWeatherService =
+        retrofit.create(TodayWeatherService::class.java)
 }

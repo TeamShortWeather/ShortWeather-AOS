@@ -5,10 +5,8 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.shortweather.data.repository.AuthRepositoryImpl
-import org.shortweather.data.repository.CustomWeatherRepositoryImpl
 import org.shortweather.data.repository.SampleRepositoryImpl
 import org.shortweather.domain.repository.AuthRepository
-import org.shortweather.domain.repository.CustomWeatherRepository
 import org.shortweather.domain.repository.SampleRepository
 import javax.inject.Singleton
 
@@ -25,6 +23,5 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindsCustomWeatherRepository(customWeatherRepositoryImpl: CustomWeatherRepositoryImpl): CustomWeatherRepository
-
+    abstract fun bindsTodayWeatherRepository(todayWeatherRepositoryImpl: TodayWeatherRepositoryImpl): TodayWeatherRepository
 }
