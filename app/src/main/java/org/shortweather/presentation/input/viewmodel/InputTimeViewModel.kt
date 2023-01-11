@@ -44,6 +44,9 @@ class InputTimeViewModel @Inject constructor(
     private val _accessTokenEvent = MutableLiveData<Event<String?>>() // 액세스 토큰 추출 성공 여부를 일회성으로 관찰함
     val accessTokenEvent: LiveData<Event<String?>>
         get() = _accessTokenEvent
+    private val _serverConnectEvent = MutableLiveData<Event<Boolean>>() // 유저 추가 성공 여부를 일회성으로 관찰함
+    val serverConnectEvent: LiveData<Event<Boolean>>
+        get() = _serverConnectEvent
     private var isExist: Boolean = false
 
     fun getIsExist(): Boolean {
@@ -147,7 +150,11 @@ class InputTimeViewModel @Inject constructor(
                 _createUserEvent.value = Event(true) // 성공했다면 액세스토큰 저장 및 이벤트 성공처리
                 _accessTokenEvent.value = Event(it.data?.accessToken)
             }, {
-                _createUserEvent.value = Event(false)
+                if (it is HttpException) { // 400, 500 -> "잠시만 기다려주세요"
+                    _createUserEvent.value = Event(false) // 실패했다면 토스트 메시지 출력을 위한 이벤트
+                } else { // Http 실패 -> "인터넷에 연결해 주세요"
+                    _serverConnectEvent.value = Event(false)
+                }
             })
         }
     }
@@ -158,14 +165,19 @@ class InputTimeViewModel @Inject constructor(
                 authRepository.searchUser(
                     deviceToken.value!!
                 )
-            }.fold({
-                if(it.data?.isExist == true){
-                    isExist = it.data?.isExist!!
-                }
+            }.fold({ // 200
                 _searchUserEvent.value = Event(it.status) // 액세스토큰 및 상태값 저장
                 _accessTokenEvent.value = Event(it.data?.accessToken)
+                if (it.data?.isExist == true) { // 200이면서 이미 존재하는 유저
+                    isExist = it.data?.isExist!!
+                }
             }, {
-                _searchUserEvent.value = Event(null)
+                if (it is HttpException) { // 400, 500 -> "잠시만 기다려주세요"
+                    val code = it.code()
+                    _searchUserEvent.value = Event(code)
+                } else { // Http 실패 -> "인터넷에 연결해 주세요"
+                    _searchUserEvent.value = Event(0)
+                }
             })
         }
     }
