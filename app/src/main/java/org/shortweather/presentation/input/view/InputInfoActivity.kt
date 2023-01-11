@@ -10,6 +10,7 @@ import org.shortweather.R
 import org.shortweather.databinding.ActivityInputInfoBinding
 import org.shortweather.presentation.input.viewmodel.InputInfoViewModel
 import org.shortweather.util.binding.BindingActivity
+import org.shortweather.util.extension.onThrottleClick
 
 
 @AndroidEntryPoint
@@ -38,38 +39,37 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
     }
 
     private fun setOnClickListener() {
-        binding.btnInputInfoNext.setOnClickListener() { // 다음 버튼 클릭 시 InputTimeActivity로 이동,
+        binding.btnInputInfoNext.onThrottleClick { // 다음 버튼 클릭 시 InputTimeActivity로 이동,
             // intent를 통해 입력한 3개의 정보를 다음 activity에 전달
             val intent = Intent(this, InputTimeActivity::class.java)
             intent.putExtra("gender", viewModel.getGender())
             intent.putExtra("age", viewModel.getAge())
             intent.putExtra("sense", viewModel.getSense())
             startActivity(Intent(intent))
-            finish()
         }
 
-        binding.layoutGender.setOnClickListener() { // 성별 선택란 클릭 시
+        binding.layoutGender.onThrottleClick { // 성별 선택란 클릭 시
+            BottomSheetFragment.newInstance("gender")
+                .show(supportFragmentManager, BottomSheetFragment.TAG)
             binding.vInputInfoGenderLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputInfoGender.setTextColor(getColor(R.color.short_weather_gray_7))
             binding.btnGender.setBackgroundResource(R.drawable.ic_expand)
-            BottomSheetFragment.newInstance("gender")
-                .show(supportFragmentManager, BottomSheetFragment.TAG)
         }
 
-        binding.layoutAge.setOnClickListener() { // 연령 선택란 클릭 시
+        binding.layoutAge.onThrottleClick { // 연령 선택란 클릭 시
+            BottomSheetFragment.newInstance("age")
+                .show(supportFragmentManager, BottomSheetFragment.TAG)
             binding.vInputInfoAgeLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputInfoAge.setTextColor(getColor(R.color.short_weather_gray_7))
             binding.btnAge.setBackgroundResource(R.drawable.ic_expand)
-            BottomSheetFragment.newInstance("age")
-                .show(supportFragmentManager, BottomSheetFragment.TAG)
         }
 
-        binding.layoutSense.setOnClickListener() { // 민감도 선택란 클릭 시
+        binding.layoutSense.onThrottleClick { // 민감도 선택란 클릭 시
+            BottomSheetFragment.newInstance("sense")
+                .show(supportFragmentManager, BottomSheetFragment.TAG)
             binding.vInputInfoSenseLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputInfoSense.setTextColor(getColor(R.color.short_weather_gray_7))
             binding.btnSense.setBackgroundResource(R.drawable.ic_expand)
-            BottomSheetFragment.newInstance("sense")
-                .show(supportFragmentManager, BottomSheetFragment.TAG)
         }
     }
 

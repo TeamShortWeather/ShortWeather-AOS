@@ -1,11 +1,13 @@
 package org.shortweather.presentation.input.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.shortweather.data.model.RequestUserInfo
 import org.shortweather.domain.repository.AuthRepository
 import org.shortweather.util.Event
+import retrofit2.HttpException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,12 +38,17 @@ class InputTimeViewModel @Inject constructor(
     private val _createUserEvent = MutableLiveData<Event<Boolean>>() // 유저 추가 성공 여부를 일회성으로 관찰함
     val createUserEvent: LiveData<Event<Boolean>>
         get() = _createUserEvent
-    private val _searchUserEvent = MutableLiveData<Event<Boolean>>() // 유저 조회 성공 여부를 일회성으로 관찰함
-    val searchUserEvent: LiveData<Event<Boolean>>
+    private val _searchUserEvent = MutableLiveData<Event<Int?>>() // 유저 조회 성공 여부를 일회성으로 관찰함
+    val searchUserEvent: LiveData<Event<Int?>>
         get() = _searchUserEvent
     private val _accessTokenEvent = MutableLiveData<Event<String?>>() // 액세스 토큰 추출 성공 여부를 일회성으로 관찰함
     val accessTokenEvent: LiveData<Event<String?>>
         get() = _accessTokenEvent
+    private var isExist: Boolean = false
+
+    fun getIsExist(): Boolean {
+        return isExist
+    }
 
     val timeWakeSelected: LiveData<Boolean> =
         Transformations.map(timeWake) { it -> // 빈칸인지 아닌지 확인하여 시간 선택이 취소되었는지 관찰하기 위함
@@ -96,7 +103,11 @@ class InputTimeViewModel @Inject constructor(
         timeReturn.value = returnstime
     }
 
-    fun setBeforeInfo(inputgender: String, inputage: String, inputsense: String) { // 첫번째 정보입력폼의 정보 저장
+    fun setBeforeInfo(
+        inputgender: String,
+        inputage: String,
+        inputsense: String
+    ) { // 첫번째 정보입력폼의 정보 저장
         gender.value = inputgender
         age.value = inputage
         sense.value = inputsense
@@ -132,10 +143,10 @@ class InputTimeViewModel @Inject constructor(
                         deviceToken.value!!
                     )
                 )
-            }.fold({ // 전송 성공 시
-                _createUserEvent.value = Event(true)
+            }.fold({
+                _createUserEvent.value = Event(true) // 성공했다면 액세스토큰 저장 및 이벤트 성공처리
                 _accessTokenEvent.value = Event(it.data?.accessToken)
-            }, { // 전송 실패 시
+            }, {
                 _createUserEvent.value = Event(false)
             })
         }
@@ -147,11 +158,14 @@ class InputTimeViewModel @Inject constructor(
                 authRepository.searchUser(
                     deviceToken.value!!
                 )
-            }.fold({ // 전송 성공 시
-                _searchUserEvent.value = Event(true)
+            }.fold({
+                if(it.data?.isExist == true){
+                    isExist = it.data?.isExist!!
+                }
+                _searchUserEvent.value = Event(it.status) // 액세스토큰 및 상태값 저장
                 _accessTokenEvent.value = Event(it.data?.accessToken)
-            }, { // 전송 실패 시
-                _searchUserEvent.value = Event(false)
+            }, {
+                _searchUserEvent.value = Event(null)
             })
         }
     }
