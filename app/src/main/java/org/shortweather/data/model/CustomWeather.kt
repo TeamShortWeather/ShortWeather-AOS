@@ -12,7 +12,8 @@ data class ResponseCustomWeatherDetail(
     @Serializable
     data class ResponseGoOut(
         val time: String,
-        val temp: Int,
+        val temp : Int,
+        val day: Boolean,
         val image: String
     )
 
@@ -20,13 +21,14 @@ data class ResponseCustomWeatherDetail(
     data class ResponseGoHome(
         val time: String,
         val temp: Int,
+        val day: Boolean,
         val image: String
     )
 
     @Serializable
     data class ResponseTodayWeather(
         val humidity: Int,
-        val sunrise: String,
+        val surise: String,
         val sunset: String,
         val fineDust: Int,
         val ultraFineDust: Int
