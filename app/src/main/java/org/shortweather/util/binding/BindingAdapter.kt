@@ -22,8 +22,8 @@ fun View.setVisibility(isVisible: Boolean?) {
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("timeSetting", "isCurrent")
-fun TextView.setTimeText(timeText: String, isCurrent: Boolean) {
-    val hour = timeText.substring(0 until 2).toInt()
+fun TextView.setTimeText(timeText: String?, isCurrent: Boolean) {
+    val hour = timeText!!.substring(0 until 2).toInt()
     if (isCurrent) {
         this.text = "지금"
     } else {
@@ -45,13 +45,45 @@ fun TextView.setTimeText(timeText: String, isCurrent: Boolean) {
 }
 
 @SuppressLint("SetTextI18n")
+@BindingAdapter("goTimeSetting")
+fun TextView.setTitleTimeText(timeText: String?) {
+    val hour: Int? = timeText?.substring(0 until 2)?.toInt()
+    if (hour != null) {
+        when (hour) {
+            in 1..11 -> {
+                this.text = "오전 " + hour.toString() + "시"
+            }
+            0 -> {
+                this.text = "오전 12시"
+            }
+            12 -> {
+                this.text = "오후 12시"
+            }
+            else -> {
+                this.text = "오후 " + (hour - 12).toString() + "시"
+            }
+        }
+    }
+}
+
+@SuppressLint("SetTextI18n")
+@BindingAdapter("sunTimeSetting")
+fun TextView.setTimeSetting(sunTimeText: String?) {
+    if (sunTimeText != null) {
+        val hour = sunTimeText.substring(0 until 2)
+        val min = sunTimeText.substring(2 until 4)
+        this.text = "$hour:$min"
+    }
+}
+
+@SuppressLint("SetTextI18n")
 @BindingAdapter("tempSetting")
 fun TextView.setTempSetting(tempText: Int) {
     this.text = "$tempText°"
 }
 
 @BindingAdapter("dayImageSetting", "dayImageDay")
-fun ImageView.setImageSetting(imageSettingText: String, imageSettingDay: Boolean) {
+fun ImageView.setImageSetting(imageSettingText: String?, imageSettingDay: Boolean) {
     when (imageSettingText) {
         "맑음" -> {
             if (imageSettingDay) {
@@ -208,5 +240,25 @@ fun ImageView.setWeatherBackground(type: String?, isDay: Boolean) {
             }
         }
         else -> throw IllegalArgumentException("not found.")
+    }
+}
+
+@BindingAdapter("dustTextSetting")
+fun TextView.setDustTextSetting(dustText: Int) {
+    when (dustText) {
+        1 -> this.text = "좋음"
+        2 -> this.text = "보통"
+        3 -> this.text = "나쁨"
+        4 -> this.text = "심각"
+    }
+}
+
+@BindingAdapter("dustImageSetting")
+fun ImageView.setDustImageSetting(dustText: Int) {
+    when (dustText) {
+        1 -> this.setImageResource(R.drawable.ic_dust_good)
+        2 -> this.setImageResource(R.drawable.ic_dust_normal)
+        3 -> this.setImageResource(R.drawable.ic_dust_bad)
+        4 -> this.setImageResource(R.drawable.ic_dust_worst)
     }
 }
