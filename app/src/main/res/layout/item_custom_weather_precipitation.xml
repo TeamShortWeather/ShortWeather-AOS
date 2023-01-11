@@ -16,9 +16,10 @@
 
         <TextView
             android:id="@+id/tv_custom_weather_precipitation_time"
+            isCurrent="@{customWeatherPrecipitation.current}"
+            timeSetting="@{customWeatherPrecipitation.data.time}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{customWeatherPrecipitation.time}"
             android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
             android:textColor="@color/short_weather_gray_7"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,21 +28,21 @@
 
         <ImageView
             android:id="@+id/iv_custom_weather_precipitation"
+            precipitationImageSetting="@{customWeatherPrecipitation.data.rain}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:layout_marginTop="8dp"
-            android:src="@drawable/ic_weekly_weather_example"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_custom_weather_precipitation_time" />
 
         <TextView
             android:id="@+id/tv_custom_weather_precipitation_info"
+            precipitationSetting="@{customWeatherPrecipitation.data.rain}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{customWeatherPrecipitation.precipitationLevel}"
             android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
             android:textColor="@color/short_weather_black"
             app:layout_constraintBottom_toBottomOf="parent"
