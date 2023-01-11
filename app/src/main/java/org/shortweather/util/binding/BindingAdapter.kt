@@ -21,7 +21,11 @@ fun View.setVisibility(isVisible: Boolean?) {
 
 @BindingAdapter("subTitle")
 fun TextView.setSubTitle(temperature: Int) {
-    this.text = "어제보다 $temperature°"
+    if (temperature <= 0) {
+        this.text = "어제보다 $temperature°"
+    } else {
+        this.text = "어제보다 +$temperature°"
+    }
 }
 
 @BindingAdapter("temperature")

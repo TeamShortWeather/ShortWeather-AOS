@@ -23,7 +23,7 @@
             <TextView
                 android:id="@+id/tv_today_weather_subtitle"
                 subTitle="@{viewModel.todayWeatherInfo.compareTemp}"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="10dp"
@@ -36,7 +36,7 @@
 
             <TextView
                 android:id="@+id/tv_today_weather_title"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:text="@{viewModel.todayWeatherInfo.compareMessage}"
@@ -89,10 +89,11 @@
 
             <TextView
                 android:id="@+id/tv_today_weather_main_description"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:gravity="center"
+                android:maxLines="1"
                 android:paddingVertical="4dp"
                 android:text="@{viewModel.todayWeatherInfo.image}"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
@@ -150,7 +151,7 @@
 
             <TextView
                 android:id="@+id/tv_today_weather_sub_description"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="26dp"
                 android:layout_marginTop="18dp"
@@ -164,7 +165,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_today_weather_temperature"
-                tools:text="강풍이강풍이불어요요요요요요요요" />
+                tools:text="날이 맑아요" />
 
             <ImageView
                 android:id="@+id/iv_today_weather_info"
@@ -194,6 +195,7 @@
                     toast="@{viewModel.todayWeatherToastInfo.temp}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
                     android:paddingHorizontal="20dp"
                     android:paddingTop="12dp"
                     android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
@@ -207,6 +209,7 @@
                     android:id="@+id/tv_view_today_weather_toast_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
                     android:paddingHorizontal="20dp"
                     android:paddingBottom="12dp"
                     android:text="@{viewModel.todayWeatherToastInfo.weatherMessage}"
