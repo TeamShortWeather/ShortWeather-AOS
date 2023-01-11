@@ -166,11 +166,11 @@ class InputTimeViewModel @Inject constructor(
                     deviceToken.value!!
                 )
             }.fold({ // 200
-                _searchUserEvent.value = Event(it.status) // 액세스토큰 및 상태값 저장
-                _accessTokenEvent.value = Event(it.data?.accessToken)
-                if (it.data?.isExist == true) { // 200이면서 이미 존재하는 유저
+                if (it.data?.isExist == true) { // 200이면서 이미 존재하는 유저인지 확인
                     isExist = it.data?.isExist!!
                 }
+                _searchUserEvent.value = Event(it.status) // 액세스토큰 및 상태값 저장
+                _accessTokenEvent.value = Event(it.data?.accessToken)
             }, {
                 if (it is HttpException) { // 400, 500 -> "잠시만 기다려주세요"
                     val code = it.code()

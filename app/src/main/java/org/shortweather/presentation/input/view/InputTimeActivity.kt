@@ -49,7 +49,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
         })
         viewModel.createUserEvent.observe(this, EventObserver { it -> // 유저 등록 성공여부 관찰
             if (it) { // 유저 등록 성공 시 MainActivity로 이동
-                val mainIntent = Intent(this@InputTimeActivity, MainActivity::class.java)
+                val mainIntent = Intent(this, MainActivity::class.java)
                 mainIntent.flags =
                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // 이전 activity 소멸
                 startActivity(mainIntent)
