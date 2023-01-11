@@ -28,7 +28,7 @@ data class ResponseCustomWeatherDetail(
     @Serializable
     data class ResponseTodayWeather(
         val humidity: Int,
-        val surise: String,
+        val sunrise: String,
         val sunset: String,
         val fineDust: Int,
         val ultraFineDust: Int
