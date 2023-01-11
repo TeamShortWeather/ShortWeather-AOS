@@ -85,8 +85,8 @@
 
                 <ImageView
                     android:id="@+id/iv_custom_weather_going_out"
-                    dayImageDay="@{viewModel.customWeatherDetail.goOut.day}"
-                    dayImageSetting="@{viewModel.customWeatherDetail.goOut.image}"
+                    isDay="@{viewModel.customWeatherDetail.goOut.day}"
+                    weatherImageType="@{viewModel.customWeatherDetail.goOut.image}"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="56dp"
@@ -98,8 +98,8 @@
 
                 <ImageView
                     android:id="@+id/iv_custom_weather_going_home"
-                    dayImageDay="@{viewModel.customWeatherDetail.goHome.day}"
-                    dayImageSetting="@{viewModel.customWeatherDetail.goHome.image}"
+                    isDay="@{viewModel.customWeatherDetail.goHome.day}"
+                    weatherImageType="@{viewModel.customWeatherDetail.goHome.image}"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="11dp"
