@@ -36,8 +36,9 @@ class CustomWeatherPrecipitationAdapter :
         holder.onBind(currentList[position])
     }
 
-    class CustomWeatherPrecipitationViewHolder(private val binding: ItemCustomWeatherPrecipitationBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    class CustomWeatherPrecipitationViewHolder(
+        private val binding: ItemCustomWeatherPrecipitationBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(customWeatherPrecipitation: CustomWeatherPrecipitation) {
             binding.customWeatherPrecipitation = customWeatherPrecipitation
         }
