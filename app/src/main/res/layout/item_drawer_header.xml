@@ -7,32 +7,23 @@
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/iv_item_drawer_header_logo"
+        android:id="@+id/iv_drawer_header_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_hamberger_logo"
+        android:layout_marginTop="33dp"
+        android:src="@drawable/ic_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/iv_item_drawer_header_text_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:src="@drawable/ic_hamberger_text_logo"
-        app:layout_constraintBottom_toBottomOf="@id/iv_item_drawer_header_logo"
-        app:layout_constraintStart_toEndOf="@id/iv_item_drawer_header_logo" />
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="35dp"
         android:text="@string/drawer_menu"
         android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
         android:textColor="@color/short_weather_gray_6"
-        app:layout_constraintStart_toStartOf="@id/iv_item_drawer_header_logo"
-        app:layout_constraintTop_toBottomOf="@id/iv_item_drawer_header_logo" />
+        app:layout_constraintStart_toStartOf="@id/iv_drawer_header_logo"
+        app:layout_constraintTop_toBottomOf="@id/iv_drawer_header_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

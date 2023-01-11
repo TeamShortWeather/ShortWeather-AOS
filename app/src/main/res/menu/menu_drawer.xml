@@ -6,7 +6,7 @@
             android:icon="@drawable/ic_today"
             android:title="@string/title_today_weather" />
         <item
-            android:id="@+id/week_weather_menu_drawer"
+            android:id="@+id/weekly_weather_menu_drawer"
             android:icon="@drawable/ic_week"
             android:title="@string/title_week_weather" />
         <item
