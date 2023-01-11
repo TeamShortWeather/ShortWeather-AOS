@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.shortweather.data.model.*
 import org.shortweather.domain.repository.TodayWeatherRepository
+import org.shortweather.util.Event
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,12 +25,15 @@ class TodayWeatherViewModel @Inject constructor(
     private val _todayWeatherToastInfo = MutableLiveData<ResponseTodayWeatherToastInfo>()
     val todayWeatherToastInfo: LiveData<ResponseTodayWeatherToastInfo>
         get() = _todayWeatherToastInfo
+    private val _refreshEvent = MutableLiveData<Event<Boolean>>()
+    val refreshEvent: LiveData<Event<Boolean>>
+        get() = _refreshEvent
 
     fun setToastEvent(isSelect: Boolean) {
         this.isSelect.value = isSelect
     }
 
-    fun getTodayWeatherInfo(accessToken: String) {
+    fun getTodayWeatherInfo(accessToken: String, isRefresh: Boolean = false) {
         viewModelScope.launch {
             runCatching {
                 todayWeatherRepository.getTodayWeatherInfo(accessToken)
@@ -43,6 +47,9 @@ class TodayWeatherViewModel @Inject constructor(
                 tags.add(FineDust(todayWeatherInfo.fineDust))
                 tags.add(UltrafineDust(todayWeatherInfo.ultrafineDust))
                 _tags.value = tags
+                if (isRefresh) {
+                    _refreshEvent.value = Event(true)
+                }
             }, {
                 // error 처리 필요
             })
