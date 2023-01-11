@@ -15,8 +15,8 @@ import org.shortweather.util.Event
 import org.shortweather.util.EventObserver
 import org.shortweather.util.ShortWeatherSharedPreference
 import org.shortweather.util.binding.BindingActivity
+import org.shortweather.util.extension.onThrottleClick
 import org.shortweather.util.extension.showToast
-import org.shortweather.util.onThrottleClick
 
 @AndroidEntryPoint
 class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.activity_input_time) {
@@ -53,7 +53,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
                 mainIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // 이전 activity 소멸
                 startActivity(mainIntent)
             } else {
-                showToast(getString(R.string.input_time_server_error), false)
+                showToast(getString(R.string.input_time_server_error))
             }
         })
     }
@@ -61,7 +61,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
     private fun setOnClickListener() {
         binding.btnInputTimeCheck.onThrottleClick { // 확인 버튼 클릭
             // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
-            viewModel.setDeviceToken("b")// 가상의 디바이스 토큰을 담은 테스트 코드
+            viewModel.setDeviceToken("d")// 가상의 디바이스 토큰을 담은 테스트 코드
             viewModel.createUser() // 7개의 정보를 서버에 전송하고 메인 화면으로 이동 시도
         }
 

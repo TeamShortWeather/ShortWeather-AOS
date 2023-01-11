@@ -10,7 +10,7 @@ import org.shortweather.R
 import org.shortweather.databinding.ActivityInputInfoBinding
 import org.shortweather.presentation.input.viewmodel.InputInfoViewModel
 import org.shortweather.util.binding.BindingActivity
-import org.shortweather.util.onThrottleClick
+import org.shortweather.util.extension.onThrottleClick
 
 
 @AndroidEntryPoint
