@@ -11,10 +11,16 @@ interface CustomWeatherService {
 //    suspend fun getDetail(
 //    ): BaseResponse <ResponseCustomWeatherDetail>
 
+    /**
+     * 시간대별 날씨 화면 날씨 조회 API
+     */
     @GET("weather/today/detail/temp")
     suspend fun getTemp():
             BaseResponse<List<ResponseCustomWeatherTemp>>
 
+    /**
+     * 시간대별 날씨 화면 강수 조회 API
+     */
     @GET("weather/today/detail/rain")
     suspend fun getRain():
             BaseResponse<List<ResponseCustomWeatherRain>>
