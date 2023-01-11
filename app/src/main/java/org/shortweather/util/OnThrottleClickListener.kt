@@ -3,7 +3,7 @@ package org.shortweather.util
 import android.util.Log
 import android.view.View
 
-class OnThrottleClickListener(
+class OnThrottleClickListener( // 뷰의 중복 클릭을 막기 위한 리스너
     private val clickListener: View.OnClickListener,
     private val interval: Long = 500
 ) :
