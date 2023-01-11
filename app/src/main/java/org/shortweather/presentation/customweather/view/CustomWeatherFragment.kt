@@ -26,12 +26,14 @@ class CustomWeatherFragment :
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         initView()
+        setObserver()
         setOnClickListener()
         setOnScrollChangeListener()
     }
 
     private fun initView() {
         binding.rvCustomWeather.adapter = tempAdapter
+        viewModel.getTemp()
     }
 
     private fun setOnClickListener() {
@@ -40,22 +42,25 @@ class CustomWeatherFragment :
                 this@CustomWeatherFragment.viewModel.setTimeZoneWeather(WEATHER)
                 rvCustomWeather.adapter = tempAdapter
                 this@CustomWeatherFragment.viewModel.getTemp()
-                this@CustomWeatherFragment.viewModel.customWeatherTempList.observe(
-                    viewLifecycleOwner
-                ) {
-                    tempAdapter.submitList(it)
-                }
             }
             tvCustomWeatherSelectPrecipitation.setOnClickListener {
                 this@CustomWeatherFragment.viewModel.setTimeZoneWeather(FINE_DUST)
                 rvCustomWeather.adapter = precipitationAdapter
                 this@CustomWeatherFragment.viewModel.getRain()
-                this@CustomWeatherFragment.viewModel.customWeatherRainList.observe(
-                    viewLifecycleOwner
-                ) {
-                    precipitationAdapter.submitList(it)
-                }
             }
+        }
+    }
+
+    private fun setObserver() {
+        viewModel.customWeatherTempList.observe(
+            viewLifecycleOwner
+        ) {
+            tempAdapter.submitList(it)
+        }
+        viewModel.customWeatherRainList.observe(
+            viewLifecycleOwner
+        ) {
+            precipitationAdapter.submitList(it)
         }
     }
 
