@@ -36,6 +36,8 @@ class CustomWeatherTempAdapter :
         holder.onBind(currentList[position])
     }
 
+    override fun getItemCount(): Int = currentList.size
+
     class CustomWeatherTempViewHolder(
         private val binding: ItemCustomWeatherWeatherBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -44,6 +46,4 @@ class CustomWeatherTempAdapter :
             binding.executePendingBindings()
         }
     }
-
-    //override fun getItemCount(): Int = currentList.size
 }
