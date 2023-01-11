@@ -53,3 +53,75 @@ fun TextView.setDustTextColor(level: Int) {
         4 -> this.setTextColor(context.getColor(R.color.short_weather_dustworst2))
     }
 }
+
+@BindingAdapter("weatherImageType", "isDay")
+fun ImageView.setWeatherImage(type: String?, isDay: Boolean) {
+    when (type) {
+        "맑음" -> {
+            if (isDay) {
+                this.setImageResource(R.drawable.img_clear_day)
+            } else {
+                this.setImageResource(R.drawable.img_clear_night)
+            }
+        }
+        "구름많음" -> {
+            if (isDay) {
+                this.setImageResource(R.drawable.img_lotcloud_day)
+            } else {
+                this.setImageResource(R.drawable.img_lotcloud_night)
+            }
+        }
+        "흐림" -> this.setImageResource(R.drawable.img_cloudy)
+        "소나기" -> this.setImageResource(R.drawable.img_shower)
+        "이슬비" -> this.setImageResource(R.drawable.img_lightrain)
+        "비" -> this.setImageResource(R.drawable.img_rain)
+        "비 또는 눈" -> this.setImageResource(R.drawable.img_rainsnow)
+        "진눈깨비" -> this.setImageResource(R.drawable.img_lightsnow)
+        "눈날림" -> this.setImageResource(R.drawable.img_snowdrifting)
+        "눈" -> this.setImageResource(R.drawable.img_snow)
+        null -> {
+            if (isDay) {
+                this.setImageResource(R.drawable.img_clear_day)
+            } else {
+                this.setImageResource(R.drawable.img_clear_night)
+            }
+        }
+        else -> throw IllegalArgumentException("not found.")
+    }
+}
+
+@BindingAdapter("weatherBackgroundType", "isDay")
+fun ImageView.setWeatherBackground(type: String?, isDay: Boolean) {
+    when (type) {
+        "맑음" -> {
+            if (isDay) {
+                this.setBackgroundResource(R.drawable.bg_day)
+            } else {
+                this.setBackgroundResource(R.drawable.bg_night)
+            }
+        }
+        "구름많음" -> {
+            if (isDay) {
+                this.setBackgroundResource(R.drawable.bg_day)
+            } else {
+                this.setBackgroundResource(R.drawable.bg_night)
+            }
+        }
+        "흐림" -> this.setBackgroundResource(R.drawable.bg_cloud)
+        "소나기" -> this.setBackgroundResource(R.drawable.bg_cloud)
+        "이슬비" -> this.setBackgroundResource(R.drawable.bg_rain)
+        "비" -> this.setBackgroundResource(R.drawable.bg_rain)
+        "비 또는 눈" -> this.setBackgroundResource(R.drawable.bg_snow)
+        "진눈깨비" -> this.setBackgroundResource(R.drawable.bg_snow)
+        "눈날림" -> this.setBackgroundResource(R.drawable.bg_snow)
+        "눈" -> this.setBackgroundResource(R.drawable.bg_snow)
+        null -> {
+            if (isDay) {
+                this.setBackgroundResource(R.drawable.bg_day)
+            } else {
+                this.setBackgroundResource(R.drawable.bg_night)
+            }
+        }
+        else -> throw IllegalArgumentException("not found.")
+    }
+}
