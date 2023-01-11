@@ -72,7 +72,7 @@ fun ImageView.setImageSetting(imageSettingText: String, imageSettingDay: Boolean
         "이슬비" -> this.setImageResource(R.drawable.ic_lightrain)
         "비 또는 눈" -> this.setImageResource(R.drawable.ic_rainsnow)
         "진눈깨비" -> this.setImageResource(R.drawable.ic_lightsnow)
-        //"눈날림" -> imgId = 8
+        "눈날림" -> this.setImageResource(R.drawable.ic_snowdrifting)
         "눈" -> this.setImageResource(R.drawable.ic_snow)
     }
 }
