@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.shortweather.data.model.CustomWeatherPrecipitation
 import org.shortweather.data.model.CustomWeatherTemp
+import org.shortweather.data.model.ResponseCustomWeatherDetail
 import org.shortweather.domain.repository.CustomWeatherRepository
 import org.shortweather.util.Constants.WEATHER
 import javax.inject.Inject
@@ -23,6 +24,10 @@ class CustomWeatherViewModel @Inject constructor(
     private val _customWeatherRainList = MutableLiveData<List<CustomWeatherPrecipitation>>()
     val customWeatherRainList: LiveData<List<CustomWeatherPrecipitation>>
         get() = _customWeatherRainList
+
+    private val _customWeatherDetail = MutableLiveData<ResponseCustomWeatherDetail>()
+    val customWeatherDetail: LiveData<ResponseCustomWeatherDetail>
+        get() = _customWeatherDetail
 
     val isWeather = MutableLiveData(true)
     val isPrecipitation = MutableLiveData(false)
@@ -42,7 +47,6 @@ class CustomWeatherViewModel @Inject constructor(
             runCatching {
                 customWeatherRepository.getTemp()
             }.fold({
-//                Log.d("tag", it.data.toString())
                 val customWeatherTempList = mutableListOf<CustomWeatherTemp>()
                 val data = it.data!!
                 for (i in data.indices) {
@@ -80,4 +84,15 @@ class CustomWeatherViewModel @Inject constructor(
         }
     }
 
+    fun getDetail(accessToken: String) {
+        viewModelScope.launch {
+            runCatching {
+                customWeatherRepository.getDetail(accessToken)
+            }.fold({
+                _customWeatherDetail.value = it.data!!
+            }, {
+                //error
+            })
+        }
+    }
 }
