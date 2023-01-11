@@ -8,6 +8,7 @@
         <variable
             name="viewModel"
             type="org.shortweather.presentation.customweather.viewmodel.CustomWeatherViewModel" />
+
     </data>
 
     <org.shortweather.util.NestedScrollableHost
@@ -54,6 +55,7 @@
 
                 <TextView
                     android:id="@+id/tv_custom_weather_going_out_time"
+                    goTimeSetting="@{viewModel.customWeatherDetail.goOut.time}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
@@ -68,6 +70,7 @@
 
                 <TextView
                     android:id="@+id/tv_custom_weather_going_home_time"
+                    goTimeSetting="@{viewModel.customWeatherDetail.goHome.time}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
@@ -82,11 +85,12 @@
 
                 <ImageView
                     android:id="@+id/iv_custom_weather_going_out"
+                    dayImageDay="@{viewModel.customWeatherDetail.goOut.day}"
+                    dayImageSetting="@{viewModel.customWeatherDetail.goOut.image}"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="56dp"
                     android:layout_marginTop="11dp"
-                    android:src="@drawable/ic_lotcloud_day"
                     app:layout_constraintBottom_toBottomOf="@id/iv_custom_weather_going_home"
                     app:layout_constraintDimensionRatio="1"
                     app:layout_constraintStart_toStartOf="parent"
@@ -94,11 +98,12 @@
 
                 <ImageView
                     android:id="@+id/iv_custom_weather_going_home"
+                    dayImageDay="@{viewModel.customWeatherDetail.goHome.day}"
+                    dayImageSetting="@{viewModel.customWeatherDetail.goHome.image}"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="11dp"
                     android:layout_marginEnd="56dp"
-                    android:src="@drawable/ic_lotcloud_day"
                     app:layout_constraintBottom_toBottomOf="@id/iv_custom_weather_going_out"
                     app:layout_constraintDimensionRatio="1"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -106,6 +111,7 @@
 
                 <TextView
                     android:id="@+id/tv_custom_weather_going_out_temperature"
+                    tempSetting="@{viewModel.customWeatherDetail.goOut.temp}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="11dp"
@@ -119,6 +125,7 @@
 
                 <TextView
                     android:id="@+id/tv_custom_weather_going_home_temperature"
+                    tempSetting="@{viewModel.customWeatherDetail.goHome.temp}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="11dp"
@@ -235,7 +242,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="20dp"
-                            android:src="@drawable/ic_weekly_weather_example"
+                            android:src="@drawable/ic_humidity"
                             app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_humidity_info"
                             app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_humidity_info"
                             app:layout_constraintStart_toEndOf="@id/tv_custom_weather_humidity"
@@ -243,6 +250,7 @@
 
                         <TextView
                             android:id="@+id/tv_custom_weather_humidity_info"
+                            precipitationSetting="@{viewModel.customWeatherDetail.todayWeather.humidity}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -251,7 +259,6 @@
                             android:textColor="@color/short_weather_black"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-
                             app:layout_constraintTop_toTopOf="parent"
                             tools:text="30%" />
 
@@ -294,7 +301,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
                             android:layout_marginBottom="5dp"
-                            android:src="@drawable/ic_weekly_weather_example"
+                            android:src="@drawable/ic_sunrise"
                             app:layout_constraintBottom_toTopOf="@id/tv_custom_weather_sunrise_info"
                             app:layout_constraintEnd_toEndOf="@id/tv_custom_weather_sunrise_info"
                             app:layout_constraintStart_toStartOf="@id/tv_custom_weather_sunrise_info"
@@ -302,6 +309,7 @@
 
                         <TextView
                             android:id="@+id/tv_custom_weather_sunrise_info"
+                            sunTimeSetting="@{viewModel.customWeatherDetail.todayWeather.surise}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="10dp"
@@ -321,7 +329,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
                             android:layout_marginBottom="5dp"
-                            android:src="@drawable/ic_weekly_weather_example"
+                            android:src="@drawable/ic_sunset"
                             app:layout_constraintBottom_toTopOf="@id/tv_custom_weather_sunset_info"
                             app:layout_constraintEnd_toEndOf="@id/tv_custom_weather_sunset_info"
                             app:layout_constraintStart_toStartOf="@id/tv_custom_weather_sunset_info"
@@ -329,6 +337,7 @@
 
                         <TextView
                             android:id="@+id/tv_custom_weather_sunset_info"
+                            sunTimeSetting="@{viewModel.customWeatherDetail.todayWeather.surise}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="25dp"
@@ -377,10 +386,10 @@
 
                         <ImageView
                             android:id="@+id/iv_custom_weather_fine_dust"
+                            dustImageSetting="@{viewModel.customWeatherDetail.todayWeather.fineDust}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="25dp"
-                            android:src="@drawable/ic_weekly_weather_example"
                             app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_fine_dust_info"
                             app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_fine_dust_info"
                             app:layout_constraintStart_toEndOf="@id/tv_custom_weather_fine_dust"
@@ -388,6 +397,7 @@
 
                         <TextView
                             android:id="@+id/tv_custom_weather_fine_dust_info"
+                            dustTextSetting="@{viewModel.customWeatherDetail.todayWeather.fineDust}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -436,10 +446,10 @@
 
                         <ImageView
                             android:id="@+id/iv_custom_weather_ultrafine_dust"
+                            dustImageSetting="@{viewModel.customWeatherDetail.todayWeather.ultraFineDust}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="25dp"
-                            android:src="@drawable/ic_weekly_weather_example"
                             app:layout_constraintBottom_toBottomOf="@id/tv_custom_weather_ultrafine_dust_info"
                             app:layout_constraintEnd_toStartOf="@id/tv_custom_weather_ultrafine_dust_info"
                             app:layout_constraintStart_toEndOf="@id/tv_custom_weather_ultrafine_dust"
@@ -447,6 +457,7 @@
 
                         <TextView
                             android:id="@+id/tv_custom_weather_ultrafine_dust_info"
+                            dustTextSetting="@{viewModel.customWeatherDetail.todayWeather.ultraFineDust}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
