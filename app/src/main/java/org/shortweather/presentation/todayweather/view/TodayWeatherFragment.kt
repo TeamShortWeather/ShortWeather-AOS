@@ -10,6 +10,8 @@ import org.shortweather.R
 import org.shortweather.databinding.FragmentTodayWeatherBinding
 import org.shortweather.presentation.todayweather.adapter.TodayWeatherAdapter
 import org.shortweather.presentation.todayweather.viewmodel.TodayWeatherViewModel
+import org.shortweather.presentation.todayweathercontainer.OnPageDownClickListener
+import org.shortweather.util.EventObserver
 import org.shortweather.util.ShortWeatherSharedPreference
 import org.shortweather.util.binding.BindingFragment
 
@@ -17,21 +19,34 @@ import org.shortweather.util.binding.BindingFragment
 class TodayWeatherFragment :
     BindingFragment<FragmentTodayWeatherBinding>(R.layout.fragment_today_weather) {
     private val viewModel: TodayWeatherViewModel by viewModels()
+    private lateinit var listener: OnPageDownClickListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        viewModel.getTodayWeatherInfo(ShortWeatherSharedPreference.getAccessToken(requireContext()))
-        setOnClickListener()
+        initView()
         setOnRefreshListener()
+        setOnClickListener()
+        setObservers()
         setAdapter()
+    }
+
+    fun setOnPageDownClickListener(listener: OnPageDownClickListener) {
+        this.listener = listener
+    }
+
+    private fun initView() {
+        viewModel.getTodayWeatherInfo(ShortWeatherSharedPreference.getAccessToken(requireContext()))
     }
 
     private fun setOnRefreshListener() {
         binding.srlTodayWeather.setOnRefreshListener {
-            binding.srlTodayWeather.isRefreshing = false
+            viewModel.getTodayWeatherInfo(
+                ShortWeatherSharedPreference.getAccessToken(requireContext()),
+                true
+            )
         }
     }
 
@@ -44,6 +59,17 @@ class TodayWeatherFragment :
             )
             Handler(Looper.getMainLooper()).postDelayed({ viewModel.setToastEvent(false) }, 2000)
         }
+        binding.ivTodayWeatherExpandDown.setOnClickListener {
+            listener.pageDown()
+        }
+    }
+
+    private fun setObservers() {
+        viewModel.refreshEvent.observe(viewLifecycleOwner, EventObserver { isRefresh ->
+            if (isRefresh) {
+                binding.srlTodayWeather.isRefreshing = false
+            }
+        })
     }
 
     private fun setAdapter() {
