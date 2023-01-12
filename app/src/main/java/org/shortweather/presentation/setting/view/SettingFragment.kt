@@ -20,15 +20,15 @@ class SettingFragment :
     }
 
     fun setOnClickListener() {
-        binding.ivNextBtn1.setOnClickListener {
+        binding.layoutSettingTime.setOnClickListener {
             val intent = Intent(context, OtherTimeSettingActivity::class.java)
             startActivity(intent)
         }
-        binding.ivNextBtn2.setOnClickListener {
+        binding.layoutSettingAlarm.setOnClickListener {
             val intent = Intent(context, AlarmSettingActivity::class.java)
             startActivity(intent)
         }
-        binding.ivNextBtn3.setOnClickListener {
+        binding.layoutSettingWakeUp.setOnClickListener {
             val intent = Intent(context, WakeTimeSettingActivity::class.java)
             startActivity(intent)
         }
