@@ -122,16 +122,16 @@ fun TextView.setPrecipitationSetting(precipitationText: Int) {
 @BindingAdapter("precipitationImageSetting")
 fun ImageView.setImageSetting(rainText: Int) {
     when (rainText) {
-        in 0..19 -> this.setImageResource(R.drawable.ic_precipitation_1)
-        in 20..29 -> this.setImageResource(R.drawable.ic_precipitation_2)
-        in 30..39 -> this.setImageResource(R.drawable.ic_precipitation_3)
-        in 40..49 -> this.setImageResource(R.drawable.ic_precipitation_4)
-        in 50..59 -> this.setImageResource(R.drawable.ic_precipitation_5)
-        in 60..69 -> this.setImageResource(R.drawable.ic_precipitation_6)
-        in 70..79 -> this.setImageResource(R.drawable.ic_precipitation_7)
-        in 80..89 -> this.setImageResource(R.drawable.ic_precipitation_8)
-        in 90..99 -> this.setImageResource(R.drawable.ic_precipitation_9)
-        100 -> this.setImageResource(R.drawable.ic_precipitation_10)
+        in 0..9 -> this.setImageResource(R.drawable.ic_precipitation_1)
+        in 10..19 -> this.setImageResource(R.drawable.ic_precipitation_2)
+        in 20..29 -> this.setImageResource(R.drawable.ic_precipitation_3)
+        in 30..39 -> this.setImageResource(R.drawable.ic_precipitation_4)
+        in 40..49 -> this.setImageResource(R.drawable.ic_precipitation_5)
+        in 50..59 -> this.setImageResource(R.drawable.ic_precipitation_6)
+        in 60..69 -> this.setImageResource(R.drawable.ic_precipitation_7)
+        in 70..79 -> this.setImageResource(R.drawable.ic_precipitation_8)
+        in 80..89 -> this.setImageResource(R.drawable.ic_precipitation_9)
+        in 90..100 -> this.setImageResource(R.drawable.ic_precipitation_10)
     }
 }
 
