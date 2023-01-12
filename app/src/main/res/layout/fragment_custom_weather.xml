@@ -8,7 +8,6 @@
         <variable
             name="viewModel"
             type="org.shortweather.presentation.customweather.viewmodel.CustomWeatherViewModel" />
-
     </data>
 
     <org.shortweather.util.NestedScrollableHost
