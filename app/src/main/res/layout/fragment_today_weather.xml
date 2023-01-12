@@ -18,7 +18,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_today_weather"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/tv_today_weather_subtitle"
@@ -225,14 +225,13 @@
 
             <ImageView
                 android:id="@+id/iv_today_weather_expand_down"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="81dp"
-                android:padding="12dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_expand_down"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_today_weather_sub_description" />
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
