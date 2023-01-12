@@ -6,13 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
-import coil.load
 import org.shortweather.R
-
-@BindingAdapter("imageUrl")
-fun ImageView.setImageUrl(imageUrl: String) {
-    this.load(imageUrl)
-}
 
 @BindingAdapter("visibility")
 fun View.setVisibility(isVisible: Boolean?) {
@@ -23,23 +17,16 @@ fun View.setVisibility(isVisible: Boolean?) {
 @SuppressLint("SetTextI18n")
 @BindingAdapter("timeSetting", "isCurrent")
 fun TextView.setTimeText(timeText: String?, isCurrent: Boolean) {
-    val hour = timeText!!.substring(0 until 2).toInt()
+    if (timeText == null) return
+    val hour = timeText.substring(0 until 2).toInt()
     if (isCurrent) {
         this.text = "지금"
     } else {
         when (hour) {
-            in 1..11 -> {
-                this.text = "오전 " + hour.toString() + "시"
-            }
-            0 -> {
-                this.text = "오전 12시"
-            }
-            12 -> {
-                this.text = "오후 12시"
-            }
-            else -> {
-                this.text = "오후 " + (hour - 12).toString() + "시"
-            }
+            in 1..11 -> this.text = "오전 " + hour.toString() + "시"
+            0 -> this.text = "오전 12시"
+            12 -> this.text = "오후 12시"
+            else -> this.text = "오후 " + (hour - 12).toString() + "시"
         }
     }
 }
@@ -47,36 +34,25 @@ fun TextView.setTimeText(timeText: String?, isCurrent: Boolean) {
 @SuppressLint("SetTextI18n")
 @BindingAdapter("goTimeSetting")
 fun TextView.setTitleTimeText(timeText: String?) {
-    val hour: Int? = timeText?.substring(0 until 2)?.toInt()
-    if (hour != null) {
-        when (hour) {
-            in 1..11 -> {
-                this.text = "오전 " + hour.toString() + "시"
-            }
-            0 -> {
-                this.text = "오전 12시"
-            }
-            12 -> {
-                this.text = "오후 12시"
-            }
-            else -> {
-                this.text = "오후 " + (hour - 12).toString() + "시"
-            }
-        }
+    if (timeText == null) return
+    when (val hour = timeText.substring(0 until 2).toInt()) {
+        in 1..11 -> this.text = "오전 " + hour.toString() + "시"
+        0 -> this.text = "오전 12시"
+        12 -> this.text = "오후 12시"
+        else -> this.text = "오후 " + (hour - 12).toString() + "시"
     }
 }
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("sunTimeSetting")
 fun TextView.setTimeSetting(sunTimeText: String?) {
-    if (sunTimeText != null) {
-        val hour = sunTimeText.substring(0 until 2).toInt()
-        val min = sunTimeText.substring(2 until 4)
-        if (hour > 12) {
-            this.text = (hour - 12).toString() + ":" + min
-        } else {
-            this.text = "$hour:$min"
-        }
+    if (sunTimeText == null) return
+    val hour = sunTimeText.substring(0 until 2).toInt()
+    val min = sunTimeText.substring(2 until 4)
+    if (hour > 12) {
+        this.text = (hour - 12).toString() + ":" + min
+    } else {
+        this.text = "$hour:$min"
     }
 }
 
@@ -88,6 +64,7 @@ fun TextView.setTempSetting(tempText: Int) {
 
 @BindingAdapter("dayImageSetting", "dayImageDay")
 fun ImageView.setImageSetting(imageSettingText: String?, imageSettingDay: Boolean) {
+    if (imageSettingText == null) return
     when (imageSettingText) {
         "맑음" -> {
             if (imageSettingDay) {
@@ -176,6 +153,7 @@ fun TextView.setDustTextColor(level: Int) {
 
 @BindingAdapter("weatherImageType", "isDay")
 fun ImageView.setWeatherImage(type: String?, isDay: Boolean) {
+    if (type == null) return
     when (type) {
         "맑음" -> {
             if (isDay) {
@@ -199,19 +177,12 @@ fun ImageView.setWeatherImage(type: String?, isDay: Boolean) {
         "진눈깨비" -> this.setImageResource(R.drawable.img_lightsnow)
         "눈날림" -> this.setImageResource(R.drawable.img_snowdrifting)
         "눈" -> this.setImageResource(R.drawable.img_snow)
-        null -> {
-            if (isDay) {
-                this.setImageResource(R.drawable.img_clear_day)
-            } else {
-                this.setImageResource(R.drawable.img_clear_night)
-            }
-        }
-        else -> throw IllegalArgumentException("not found.")
     }
 }
 
 @BindingAdapter("weatherBackgroundType", "isDay")
 fun ImageView.setWeatherBackground(type: String?, isDay: Boolean) {
+    if (type == null) return
     when (type) {
         "맑음" -> {
             if (isDay) {
@@ -235,14 +206,6 @@ fun ImageView.setWeatherBackground(type: String?, isDay: Boolean) {
         "진눈깨비" -> this.setBackgroundResource(R.drawable.bg_snow)
         "눈날림" -> this.setBackgroundResource(R.drawable.bg_snow)
         "눈" -> this.setBackgroundResource(R.drawable.bg_snow)
-        null -> {
-            if (isDay) {
-                this.setBackgroundResource(R.drawable.bg_day)
-            } else {
-                this.setBackgroundResource(R.drawable.bg_night)
-            }
-        }
-        else -> throw IllegalArgumentException("not found.")
     }
 }
 
@@ -270,7 +233,7 @@ fun ImageView.setDustImageSetting(dustText: Int) {
 @BindingAdapter("weeklyRainSetting")
 fun TextView.setWeeklyRainSetting(weeklyRainText: Int) {
     if (weeklyRainText == 0) {
-        this.text=" "
+        this.text = " "
     } else {
         this.text = "$weeklyRainText%"
     }
@@ -288,11 +251,10 @@ fun TextView.setTextColorSetting(weeklyDayText: String) {
 @SuppressLint("SetTextI18n")
 @BindingAdapter("weeklyDateSetting")
 fun TextView.setWeeklyDateSetting(weeklyDateText: String?) {
-    if (weeklyDateText != null) {
-        val month = weeklyDateText.substring(0 until 2).toInt()
-        val day = weeklyDateText.substring(2 until 4)
-        this.text = "$month.$day"
-    }
+    if (weeklyDateText == null) return
+    val month = weeklyDateText.substring(0 until 2).toInt()
+    val day = weeklyDateText.substring(2 until 4)
+    this.text = "$month.$day"
 }
 
 @BindingAdapter("dayTextColorSetting")
@@ -300,7 +262,7 @@ fun TextView.setDayColorSetting(weeklyDayText: String) {
     if (weeklyDayText == "일") {
         this.text = weeklyDayText
         this.setTextColor(context.getColor(R.color.short_weather_weekend))
-    }else{
+    } else {
         this.text = weeklyDayText
         this.setTextColor(context.getColor(R.color.short_weather_black))
     }

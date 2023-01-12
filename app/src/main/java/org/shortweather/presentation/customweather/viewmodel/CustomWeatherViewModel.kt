@@ -10,7 +10,14 @@ import org.shortweather.data.model.CustomWeatherPrecipitation
 import org.shortweather.data.model.CustomWeatherTemp
 import org.shortweather.data.model.ResponseCustomWeatherDetail
 import org.shortweather.domain.repository.CustomWeatherRepository
+import org.shortweather.util.Constants
+import org.shortweather.util.Constants.FAILURE
+import org.shortweather.util.Constants.HTTP_EXCEPTION_400
+import org.shortweather.util.Constants.HTTP_EXCEPTION_500
+import org.shortweather.util.Constants.SUCCESS_200
 import org.shortweather.util.Constants.WEATHER
+import org.shortweather.util.Event
+import retrofit2.HttpException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,14 +27,21 @@ class CustomWeatherViewModel @Inject constructor(
     private val _customWeatherTempList = MutableLiveData<List<CustomWeatherTemp>>()
     val customWeatherTempList: LiveData<List<CustomWeatherTemp>>
         get() = _customWeatherTempList
-
     private val _customWeatherRainList = MutableLiveData<List<CustomWeatherPrecipitation>>()
     val customWeatherRainList: LiveData<List<CustomWeatherPrecipitation>>
         get() = _customWeatherRainList
-
     private val _customWeatherDetail = MutableLiveData<ResponseCustomWeatherDetail>()
     val customWeatherDetail: LiveData<ResponseCustomWeatherDetail>
         get() = _customWeatherDetail
+    private val _customWeatherTempListEvent = MutableLiveData<Event<Int>>()
+    val customWeatherTempListEvent: LiveData<Event<Int>>
+        get() = _customWeatherTempListEvent
+    private val _customWeatherRainListEvent = MutableLiveData<Event<Int>>()
+    val customWeatherRainListEvent: LiveData<Event<Int>>
+        get() = _customWeatherRainListEvent
+    private val _customWeatherDetailEvent = MutableLiveData<Event<Int>>()
+    val customWeatherDetailEvent: LiveData<Event<Int>>
+        get() = _customWeatherDetailEvent
 
     val isWeather = MutableLiveData(true)
     val isPrecipitation = MutableLiveData(false)
@@ -57,8 +71,17 @@ class CustomWeatherViewModel @Inject constructor(
                     }
                 }
                 _customWeatherTempList.value = customWeatherTempList
+                _customWeatherTempListEvent.value = Event(SUCCESS_200)
             }, {
-                //error
+                if (it is HttpException) {
+                    when (it.code()) {
+                        400 -> _customWeatherTempListEvent.value = Event(HTTP_EXCEPTION_400)
+                        500 -> _customWeatherTempListEvent.value = Event(HTTP_EXCEPTION_500)
+                        else -> throw IllegalArgumentException("not found error.")
+                    }
+                } else {
+                    _customWeatherTempListEvent.value = Event(FAILURE)
+                }
             })
         }
     }
@@ -78,8 +101,17 @@ class CustomWeatherViewModel @Inject constructor(
                     }
                 }
                 _customWeatherRainList.value = customWeatherRainList
+                _customWeatherRainListEvent.value = Event(SUCCESS_200)
             }, {
-                //error
+                if (it is HttpException) {
+                    when (it.code()) {
+                        400 -> _customWeatherRainListEvent.value = Event(HTTP_EXCEPTION_400)
+                        500 -> _customWeatherRainListEvent.value = Event(HTTP_EXCEPTION_500)
+                        else -> throw IllegalArgumentException("not found error.")
+                    }
+                } else {
+                    _customWeatherRainListEvent.value = Event(FAILURE)
+                }
             })
         }
     }
@@ -90,8 +122,18 @@ class CustomWeatherViewModel @Inject constructor(
                 customWeatherRepository.getDetail(accessToken)
             }.fold({
                 _customWeatherDetail.value = it.data!!
+                _customWeatherDetailEvent.value = Event(SUCCESS_200)
             }, {
-                //error
+                if (it is HttpException) {
+                    when (it.code()) {
+                        400 -> _customWeatherDetailEvent.value = Event(HTTP_EXCEPTION_400)
+                        401 -> _customWeatherDetailEvent.value = Event(Constants.HTTP_EXCEPTION_401)
+                        500 -> _customWeatherDetailEvent.value = Event(HTTP_EXCEPTION_500)
+                        else -> throw IllegalArgumentException("not found error.")
+                    }
+                } else {
+                    _customWeatherDetailEvent.value = Event(FAILURE)
+                }
             })
         }
     }

@@ -6,12 +6,7 @@ import org.shortweather.data.model.ResponseCustomWeatherRain
 import org.shortweather.data.model.ResponseCustomWeatherTemp
 
 interface CustomWeatherRepository {
-    suspend fun getDetail(accessToken: String):
-            BaseResponse<ResponseCustomWeatherDetail>
-
-    suspend fun getTemp():
-            BaseResponse<List<ResponseCustomWeatherTemp>>
-
-    suspend fun getRain():
-            BaseResponse<List<ResponseCustomWeatherRain>>
+    suspend fun getDetail(accessToken: String): BaseResponse<ResponseCustomWeatherDetail>
+    suspend fun getTemp(): BaseResponse<List<ResponseCustomWeatherTemp>>
+    suspend fun getRain(): BaseResponse<List<ResponseCustomWeatherRain>>
 }
