@@ -1,8 +1,6 @@
 package org.shortweather.presentation.input.view
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -11,7 +9,6 @@ import org.shortweather.databinding.ActivityInputInfoBinding
 import org.shortweather.presentation.input.viewmodel.InputInfoViewModel
 import org.shortweather.util.binding.BindingActivity
 import org.shortweather.util.extension.onThrottleClick
-
 
 @AndroidEntryPoint
 class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.activity_input_info) {
@@ -72,5 +69,4 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
             binding.btnSense.setBackgroundResource(R.drawable.ic_expand)
         }
     }
-
 }

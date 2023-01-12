@@ -1,17 +1,13 @@
 package org.shortweather.presentation.input.view
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
 import org.shortweather.databinding.ActivityInputTimeBinding
 import org.shortweather.presentation.MainActivity
 import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
-import org.shortweather.util.Event
 import org.shortweather.util.EventObserver
 import org.shortweather.util.ShortWeatherSharedPreference
 import org.shortweather.util.binding.BindingActivity
