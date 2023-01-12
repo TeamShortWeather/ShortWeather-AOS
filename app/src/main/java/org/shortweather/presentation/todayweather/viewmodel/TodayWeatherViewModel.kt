@@ -66,9 +66,12 @@ class TodayWeatherViewModel @Inject constructor(
             }, {
                 if (it is HttpException) {
                     when (it.code()) {
-                        400 -> _todayWeatherInfoEvent.value = Event(HTTP_EXCEPTION_400)
-                        401 -> _todayWeatherInfoEvent.value = Event(HTTP_EXCEPTION_401)
-                        500 -> _todayWeatherInfoEvent.value = Event(HTTP_EXCEPTION_500)
+                        HTTP_EXCEPTION_400 -> _todayWeatherInfoEvent.value =
+                            Event(HTTP_EXCEPTION_400)
+                        HTTP_EXCEPTION_401 -> _todayWeatherInfoEvent.value =
+                            Event(HTTP_EXCEPTION_401)
+                        HTTP_EXCEPTION_500 -> _todayWeatherInfoEvent.value =
+                            Event(HTTP_EXCEPTION_500)
                         else -> throw IllegalArgumentException("not found error.")
                     }
                 } else {
@@ -89,9 +92,12 @@ class TodayWeatherViewModel @Inject constructor(
             }, {
                 if (it is HttpException) {
                     when (it.code()) {
-                        400 -> _todayWeatherToastInfoEvent.value = Event(HTTP_EXCEPTION_400)
-                        401 -> _todayWeatherToastInfoEvent.value = Event(HTTP_EXCEPTION_401)
-                        500 -> _todayWeatherToastInfoEvent.value = Event(HTTP_EXCEPTION_500)
+                        HTTP_EXCEPTION_400 -> _todayWeatherToastInfoEvent.value =
+                            Event(HTTP_EXCEPTION_400)
+                        HTTP_EXCEPTION_401 -> _todayWeatherToastInfoEvent.value =
+                            Event(HTTP_EXCEPTION_401)
+                        HTTP_EXCEPTION_500 -> _todayWeatherToastInfoEvent.value =
+                            Event(HTTP_EXCEPTION_500)
                         else -> throw IllegalArgumentException("not found error.")
                     }
                 } else {
