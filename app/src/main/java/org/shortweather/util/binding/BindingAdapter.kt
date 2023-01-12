@@ -70,9 +70,13 @@ fun TextView.setTitleTimeText(timeText: String?) {
 @BindingAdapter("sunTimeSetting")
 fun TextView.setTimeSetting(sunTimeText: String?) {
     if (sunTimeText != null) {
-        val hour = sunTimeText.substring(0 until 2)
+        val hour = sunTimeText.substring(0 until 2).toInt()
         val min = sunTimeText.substring(2 until 4)
-        this.text = "$hour:$min"
+        if (hour > 12) {
+            this.text = (hour - 12).toString() + ":" + min
+        } else {
+            this.text = "$hour:$min"
+        }
     }
 }
 
@@ -119,14 +123,14 @@ fun TextView.setPrecipitationSetting(precipitationText: Int) {
 fun ImageView.setImageSetting(rainText: Int) {
     when (rainText) {
         in 0..19 -> this.setImageResource(R.drawable.ic_precipitation_1)
-        in 20..29  -> this.setImageResource(R.drawable.ic_precipitation_2)
-        in 30..39  -> this.setImageResource(R.drawable.ic_precipitation_3)
-        in 40..49  -> this.setImageResource(R.drawable.ic_precipitation_4)
-        in 50..59  -> this.setImageResource(R.drawable.ic_precipitation_5)
-        in 60..69  -> this.setImageResource(R.drawable.ic_precipitation_6)
-        in 70..79  -> this.setImageResource(R.drawable.ic_precipitation_7)
-        in 80..89  -> this.setImageResource(R.drawable.ic_precipitation_8)
-        in 90..99  -> this.setImageResource(R.drawable.ic_precipitation_9)
+        in 20..29 -> this.setImageResource(R.drawable.ic_precipitation_2)
+        in 30..39 -> this.setImageResource(R.drawable.ic_precipitation_3)
+        in 40..49 -> this.setImageResource(R.drawable.ic_precipitation_4)
+        in 50..59 -> this.setImageResource(R.drawable.ic_precipitation_5)
+        in 60..69 -> this.setImageResource(R.drawable.ic_precipitation_6)
+        in 70..79 -> this.setImageResource(R.drawable.ic_precipitation_7)
+        in 80..89 -> this.setImageResource(R.drawable.ic_precipitation_8)
+        in 90..99 -> this.setImageResource(R.drawable.ic_precipitation_9)
         100 -> this.setImageResource(R.drawable.ic_precipitation_10)
     }
 }
@@ -259,5 +263,34 @@ fun ImageView.setDustImageSetting(dustText: Int) {
         2 -> this.setImageResource(R.drawable.ic_dust_normal)
         3 -> this.setImageResource(R.drawable.ic_dust_bad)
         4 -> this.setImageResource(R.drawable.ic_dust_worst)
+    }
+}
+
+@SuppressLint("SetTextI18n")
+@BindingAdapter("weeklyRainSetting")
+fun TextView.setWeeeklyRainSetting(weeklyRainText: Int) {
+    if (weeklyRainText == 0) {
+        this.isVisible = false
+    } else {
+        this.text = "$weeklyRainText%"
+    }
+}
+
+@BindingAdapter("textColorSetting")
+fun TextView.setTextColorSetting(weeklyDayText: String) {
+    if (weeklyDayText != "오늘") {
+        this.setTextColor(context.getColor(R.color.short_weather_gray_4))
+    } else {
+        this.setTextColor(context.getColor(R.color.short_weather_black))
+    }
+}
+
+@SuppressLint("SetTextI18n")
+@BindingAdapter("weeklyDateSetting")
+fun TextView.setWeeklyDateSetting(weeklyDateText: String?) {
+    if (weeklyDateText != null) {
+        val month = weeklyDateText.substring(0 until 2)
+        val day = weeklyDateText.substring(2 until 4)
+        this.text = "$month.$day"
     }
 }
