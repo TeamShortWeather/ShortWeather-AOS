@@ -2,12 +2,11 @@ package org.shortweather.presentation.splash
 
 import android.content.Intent
 import android.os.Bundle
-import dagger.hilt.android.AndroidEntryPoint
-import org.shortweather.R
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
+import org.shortweather.R
 import org.shortweather.databinding.ActivitySplashBinding
 import org.shortweather.presentation.MainActivity
 import org.shortweather.presentation.input.view.InputInfoActivity
@@ -51,7 +50,7 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
         viewModel.accessTokenEvent.observe( // 유저 조회 성공하면 액세스토큰 기기에 저장
             this, EventObserver { accessToken ->
                 if (accessToken != null) {
-                    ShortWeatherSharedPreference.setAccessToken(this, accessToken!!)
+                    ShortWeatherSharedPreference.setAccessToken(this, accessToken)
                 }
             })
     }
