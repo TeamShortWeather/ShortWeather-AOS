@@ -73,7 +73,7 @@ fun ImageView.setImageSetting(imageSettingText: String?, imageSettingDay: Boolea
                 this.setImageResource(R.drawable.ic_clear_night)
             }
         }
-        "흐림" -> this.setImageResource(R.drawable.ic_lotcloud_day)
+        "흐림" -> this.setImageResource(R.drawable.ic_cloudy)
         "구름많음" -> {
             if (imageSettingDay) {
                 this.setImageResource(R.drawable.ic_lotcloud_day)
@@ -83,6 +83,7 @@ fun ImageView.setImageSetting(imageSettingText: String?, imageSettingDay: Boolea
         }
         "소나기" -> this.setImageResource(R.drawable.ic_shower)
         "이슬비" -> this.setImageResource(R.drawable.ic_lightrain)
+        "비" -> this.setImageResource(R.drawable.ic_rain)
         "비 또는 눈" -> this.setImageResource(R.drawable.ic_rainsnow)
         "진눈깨비" -> this.setImageResource(R.drawable.ic_lightsnow)
         "눈날림" -> this.setImageResource(R.drawable.ic_snowdrifting)

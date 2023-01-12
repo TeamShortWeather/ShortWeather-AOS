@@ -13,8 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="30dp">
+        android:layout_marginHorizontal="24dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_weekly_weather_day"
@@ -63,8 +62,8 @@
 
             <ImageView
                 android:id="@+id/iv_weekly_weather_day_info"
-                isDay="@{weeklyWeather.isDay}"
-                weatherImageType="@{weeklyWeather.dayImage}"
+                dayImageDay="@{weeklyWeather.isDay}"
+                dayImageSetting="@{weeklyWeather.dayImage}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
@@ -90,8 +89,8 @@
 
             <ImageView
                 android:id="@+id/iv_weekly_weather_night_info"
-                isDay="@{weeklyWeather.isDay}"
-                weatherImageType="@{weeklyWeather.nightImage}"
+                dayImageDay="@{weeklyWeather.isDay}"
+                dayImageSetting="@{weeklyWeather.nightImage}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="22dp"
@@ -127,7 +126,7 @@
             <TextView
                 android:id="@+id/tv_weekly_weather_temp_up"
                 tempSetting="@{weeklyWeather.minTemp}"
-                android:layout_width="33dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
