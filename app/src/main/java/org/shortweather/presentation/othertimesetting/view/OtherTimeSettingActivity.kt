@@ -1,4 +1,4 @@
-package org.shortweather.presentation.setting.view
+package org.shortweather.presentation.othertimesetting.view
 
 import android.os.Bundle
 import androidx.activity.viewModels

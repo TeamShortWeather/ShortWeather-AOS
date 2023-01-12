@@ -42,15 +42,15 @@
     <string name="setting_wake_up">기상시간 설정</string>
     <string name="setting_out">외출시간 설정</string>
     <string name="setting_return">귀가시간 설정</string>
-    <string name="setting_time_header">시간대를 변경해주세요</string>
-    <string name="setting_wake_up_header">기상시간을 변경해주세요</string>
+    <string name="setting_time_header">시간대를 변경해 주세요</string>
+    <string name="setting_wake_up_header">기상시간을 변경해 주세요</string>
     <string name="setting_content_description">세팅화면 대체 텍스트</string>
 
     <!-- WeeklyWeather -->
     <string name="weekly_weather_header_day">일별예보</string>
     <string name="weekly_weather_header_time">오전 / 오후</string>
     <string name="weekly_weather_header_temperature">최고 / 최저</string>
-    <string name="weekly_weather_content_description">주간날씨화면 대체 텍스트</string>
+    <string name="weekly_weather_content_description">주간 날씨 화면 대체 텍스트</string>
 
     <!-- CustomWeather -->
     <string name="custom_weather_going_out">외출 시간</string>
@@ -66,7 +66,7 @@
 
     <!-- AlarmSetting -->
     <string name="alarm_setting_title">알림 설정</string>
-    <string name="alarm_setting_subtitle">알림 받을 시간대를 \n설정해주세요</string>
+    <string name="alarm_setting_subtitle">알림 받을 시간대를 \n설정해 주세요</string>
     <string name="alarm_setting_all_title">전체 알림</string>
     <string name="alarm_setting_all_subtitle">날씨 정보를 알려드려요</string>
     <string name="alarm_setting_wake_title">기상시간대 알림</string>
