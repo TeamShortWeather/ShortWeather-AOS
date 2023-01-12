@@ -3,7 +3,7 @@
 
     <!-- Title -->
     <string name="title_today_weather">오늘 날씨</string>
-    <string name="title_week_weather">주간 날씨</string>
+    <string name="title_weekly_weather">주간 날씨</string>
     <string name="title_clothes">옷</string>
     <string name="title_setting">설정</string>
 
@@ -36,7 +36,7 @@
     <string name="wait_server_error">잠시만 기다려주세요:)</string>
     <string name="http_server_error">인터넷에 연결해 주세요:(</string>
 
-    <!--Setting-->
+    <!-- Setting -->
     <string name="setting_time">외출 / 귀가시간대 설정</string>
     <string name="setting_alarm">알림 설정</string>
     <string name="setting_wake_up">기상시간 설정</string>
