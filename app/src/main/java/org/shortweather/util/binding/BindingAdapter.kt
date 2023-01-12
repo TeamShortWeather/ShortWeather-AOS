@@ -260,7 +260,7 @@ fun TextView.setWeeklyDateSetting(weeklyDateText: String?) {
 
 @BindingAdapter("dayTextColorSetting")
 fun TextView.setDayColorSetting(weeklyDayText: String) {
-    if (weeklyDayText == "일") {
+    if (weeklyDayText == "일" || weeklyDayText == "내일") {
         this.text = weeklyDayText
         this.setTextColor(context.getColor(R.color.short_weather_weekend))
     } else {
