@@ -12,8 +12,10 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_setting_time"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -23,10 +25,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="13dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginEnd="91dp"
                 android:text="@string/setting_time"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_next_btn1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,22 +36,23 @@
                 android:id="@+id/iv_next_btn1"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
-                android:layout_marginStart="33dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
                 android:contentDescription="@string/setting_content_description"
                 android:padding="10dp"
                 android:src="@drawable/ic_expand_right"
-                app:layout_constraintStart_toEndOf="@+id/tv_setting_time"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBottom_toBottomOf="@id/tv_setting_time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_setting_time"
+                app:layout_constraintTop_toTopOf="@id/tv_setting_time" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_setting_alarm"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="46dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_setting_time">
 
@@ -59,35 +62,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="13dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginEnd="91dp"
                 android:text="@string/setting_alarm"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_next_btn2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <ImageView
                 android:id="@+id/iv_next_btn2"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
-                android:layout_marginStart="33dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
                 android:contentDescription="@string/setting_content_description"
                 android:padding="10dp"
                 android:src="@drawable/ic_expand_right"
-                app:layout_constraintStart_toEndOf="@+id/tv_setting_alarm"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                app:layout_constraintBottom_toBottomOf="@id/tv_setting_alarm"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_setting_alarm"
+                app:layout_constraintTop_toTopOf="@id/tv_setting_alarm" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_setting_wake_up"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="46dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_setting_alarm">
 
@@ -97,10 +99,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="13dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginEnd="91dp"
                 android:text="@string/setting_wake_up"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_next_btn3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -108,16 +110,16 @@
                 android:id="@+id/iv_next_btn3"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
-                android:layout_marginStart="33dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
                 android:contentDescription="@string/setting_content_description"
                 android:padding="10dp"
                 android:src="@drawable/ic_expand_right"
-                app:layout_constraintStart_toEndOf="@+id/tv_setting_wake_up"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBottom_toBottomOf="@id/tv_setting_wake_up"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_setting_wake_up"
+                app:layout_constraintTop_toTopOf="@id/tv_setting_wake_up" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
