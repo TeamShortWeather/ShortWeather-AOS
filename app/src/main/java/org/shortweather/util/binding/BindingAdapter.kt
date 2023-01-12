@@ -268,7 +268,7 @@ fun ImageView.setDustImageSetting(dustText: Int) {
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("weeklyRainSetting")
-fun TextView.setWeeeklyRainSetting(weeklyRainText: Int) {
+fun TextView.setWeeklyRainSetting(weeklyRainText: Int) {
     if (weeklyRainText == 0) {
         this.text=" "
     } else {
