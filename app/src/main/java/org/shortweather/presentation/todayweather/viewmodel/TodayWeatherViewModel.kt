@@ -8,7 +8,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import org.shortweather.data.model.*
 import org.shortweather.domain.repository.TodayWeatherRepository
+import org.shortweather.util.Constants.FAILURE
+import org.shortweather.util.Constants.HTTP_EXCEPTION_400
+import org.shortweather.util.Constants.HTTP_EXCEPTION_401
+import org.shortweather.util.Constants.HTTP_EXCEPTION_500
+import org.shortweather.util.Constants.SUCCESS_200
 import org.shortweather.util.Event
+import retrofit2.HttpException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,6 +34,12 @@ class TodayWeatherViewModel @Inject constructor(
     private val _refreshEvent = MutableLiveData<Event<Boolean>>()
     val refreshEvent: LiveData<Event<Boolean>>
         get() = _refreshEvent
+    private val _todayWeatherInfoEvent = MutableLiveData<Event<Int>>()
+    val todayWeatherInfoEvent: LiveData<Event<Int>>
+        get() = _todayWeatherInfoEvent
+    private val _todayWeatherToastInfoEvent = MutableLiveData<Event<Int>>()
+    val todayWeatherToastInfoEvent: LiveData<Event<Int>>
+        get() = _todayWeatherToastInfoEvent
 
     fun setToastEvent(isSelect: Boolean) {
         this.isSelect.value = isSelect
@@ -50,8 +62,18 @@ class TodayWeatherViewModel @Inject constructor(
                 if (isRefresh) {
                     _refreshEvent.value = Event(true)
                 }
+                _todayWeatherInfoEvent.value = Event(SUCCESS_200)
             }, {
-                // error 처리 필요
+                if (it is HttpException) {
+                    when (it.code()) {
+                        400 -> _todayWeatherInfoEvent.value = Event(HTTP_EXCEPTION_400)
+                        401 -> _todayWeatherInfoEvent.value = Event(HTTP_EXCEPTION_401)
+                        500 -> _todayWeatherInfoEvent.value = Event(HTTP_EXCEPTION_500)
+                        else -> throw IllegalArgumentException("not found error.")
+                    }
+                } else {
+                    _todayWeatherInfoEvent.value = Event(FAILURE)
+                }
             })
         }
     }
@@ -63,8 +85,18 @@ class TodayWeatherViewModel @Inject constructor(
             }.fold({
                 _todayWeatherToastInfo.value = it.data!!
                 isSelect.value = true
+                _todayWeatherToastInfoEvent.value = Event(SUCCESS_200)
             }, {
-                // error 처리 필요
+                if (it is HttpException) {
+                    when (it.code()) {
+                        400 -> _todayWeatherToastInfoEvent.value = Event(HTTP_EXCEPTION_400)
+                        401 -> _todayWeatherToastInfoEvent.value = Event(HTTP_EXCEPTION_401)
+                        500 -> _todayWeatherToastInfoEvent.value = Event(HTTP_EXCEPTION_500)
+                        else -> throw IllegalArgumentException("not found error.")
+                    }
+                } else {
+                    _todayWeatherToastInfoEvent.value = Event(FAILURE)
+                }
             })
         }
     }
