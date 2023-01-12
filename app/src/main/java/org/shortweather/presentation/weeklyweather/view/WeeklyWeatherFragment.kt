@@ -17,6 +17,13 @@ class WeeklyWeatherFragment :
         super.onViewCreated(view, savedInstanceState)
 
         setAdapter()
+        setOnRefreshListener()
+    }
+
+    private fun setOnRefreshListener() {
+        binding.srlWeeklyWeather.setOnRefreshListener {
+            binding.srlWeeklyWeather.isRefreshing = false
+        }
     }
 
     private fun setAdapter() {
