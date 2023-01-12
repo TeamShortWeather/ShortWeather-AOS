@@ -29,9 +29,9 @@
 
             <TextView
                 android:id="@+id/tv_weekly_weather_calendar_week"
+                dayTextColorSetting="@{weeklyWeather.day}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{weeklyWeather.day}"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -128,14 +128,14 @@
                 android:id="@+id/tv_weekly_weather_temp_up"
                 tempSetting="@{weeklyWeather.minTemp}"
                 android:layout_width="33dp"
-                android:gravity="center"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
                 android:textColor="@color/short_weather_gray_4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="-2°"
-                tools:ignore="RtlHardcoded" />
+                tools:ignore="RtlHardcoded"
+                tools:text="-2°" />
 
             <TextView
                 android:id="@+id/tv_weekly_weather_temp_down"
@@ -148,8 +148,8 @@
                 android:textColor="@color/short_weather_gray_7"
                 app:layout_constraintStart_toEndOf="@id/tv_weekly_weather_temp_up"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="9°"
-                tools:ignore="RtlHardcoded" />
+                tools:ignore="RtlHardcoded"
+                tools:text="9°" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
