@@ -268,9 +268,9 @@ fun ImageView.setDustImageSetting(dustText: Int) {
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("weeklyRainSetting")
-fun TextView.setWeeeklyRainSetting(weeklyRainText: Int) {
+fun TextView.setWeeklyRainSetting(weeklyRainText: Int) {
     if (weeklyRainText == 0) {
-        this.isVisible = false
+        this.text=" "
     } else {
         this.text = "$weeklyRainText%"
     }
@@ -289,8 +289,19 @@ fun TextView.setTextColorSetting(weeklyDayText: String) {
 @BindingAdapter("weeklyDateSetting")
 fun TextView.setWeeklyDateSetting(weeklyDateText: String?) {
     if (weeklyDateText != null) {
-        val month = weeklyDateText.substring(0 until 2)
+        val month = weeklyDateText.substring(0 until 2).toInt()
         val day = weeklyDateText.substring(2 until 4)
         this.text = "$month.$day"
+    }
+}
+
+@BindingAdapter("dayTextColorSetting")
+fun TextView.setDayColorSetting(weeklyDayText: String) {
+    if (weeklyDayText == "일") {
+        this.text = weeklyDayText
+        this.setTextColor(context.getColor(R.color.short_weather_weekend))
+    }else{
+        this.text = weeklyDayText
+        this.setTextColor(context.getColor(R.color.short_weather_black))
     }
 }
