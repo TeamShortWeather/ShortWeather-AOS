@@ -55,7 +55,7 @@
             android:id="@+id/layout_weekly_weather_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toStartOf="@+id/layout_weekly_weather_temp"
             app:layout_constraintStart_toEndOf="@+id/layout_weekly_weather_day"
@@ -127,25 +127,29 @@
             <TextView
                 android:id="@+id/tv_weekly_weather_temp_up"
                 tempSetting="@{weeklyWeather.minTemp}"
-                android:layout_width="wrap_content"
+                android:layout_width="33dp"
+                android:gravity="center"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
                 android:textColor="@color/short_weather_gray_4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="-10°" />
+                tools:text="-2°"
+                tools:ignore="RtlHardcoded" />
 
             <TextView
                 android:id="@+id/tv_weekly_weather_temp_down"
                 tempSetting="@{weeklyWeather.maxTemp}"
-                android:layout_width="wrap_content"
+                android:layout_width="33dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:gravity="center"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
                 android:textColor="@color/short_weather_gray_7"
                 app:layout_constraintStart_toEndOf="@id/tv_weekly_weather_temp_up"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="-10°" />
+                tools:text="9°"
+                tools:ignore="RtlHardcoded" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
