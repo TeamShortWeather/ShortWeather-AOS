@@ -41,6 +41,7 @@ class CustomWeatherPrecipitationAdapter :
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(customWeatherPrecipitation: CustomWeatherPrecipitation) {
             binding.customWeatherPrecipitation = customWeatherPrecipitation
+            binding.executePendingBindings()
         }
     }
 }

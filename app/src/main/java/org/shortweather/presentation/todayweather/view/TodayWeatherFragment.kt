@@ -57,12 +57,21 @@ class TodayWeatherFragment :
 
     private fun setOnClickListener() {
         binding.ivTodayWeatherInfo.setOnClickListener {
-            viewModel.getTodayWeatherToastInfo(
-                ShortWeatherSharedPreference.getAccessToken(
-                    requireContext()
+            if (!viewModel.getIsShowing()) {
+                viewModel.setIsShowing(true)
+                viewModel.getTodayWeatherToastInfo(
+                    ShortWeatherSharedPreference.getAccessToken(
+                        requireContext()
+                    )
                 )
-            )
-            Handler(Looper.getMainLooper()).postDelayed({ viewModel.setToastEvent(false) }, 2000)
+                Handler(Looper.getMainLooper()).postDelayed(
+                    {
+                        viewModel.setToastEvent(false)
+                        viewModel.setIsShowing(false)
+                    },
+                    2000
+                )
+            }
         }
         binding.ivTodayWeatherExpandDown.setOnClickListener {
             listener.pageDown()
