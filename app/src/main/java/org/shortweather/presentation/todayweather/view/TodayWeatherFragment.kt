@@ -11,6 +11,7 @@ import org.shortweather.databinding.FragmentTodayWeatherBinding
 import org.shortweather.presentation.todayweather.adapter.TodayWeatherAdapter
 import org.shortweather.presentation.todayweather.viewmodel.TodayWeatherViewModel
 import org.shortweather.presentation.todayweathercontainer.OnPageDownClickListener
+import org.shortweather.util.Constants.FAILURE
 import org.shortweather.util.Constants.HTTP_EXCEPTION_400
 import org.shortweather.util.Constants.HTTP_EXCEPTION_401
 import org.shortweather.util.Constants.HTTP_EXCEPTION_500
@@ -78,14 +79,16 @@ class TodayWeatherFragment :
             when (code) {
                 HTTP_EXCEPTION_400 -> requireContext().showToast(getString(R.string.wait_server_error))
                 HTTP_EXCEPTION_401 -> requireContext().showToast(getString(R.string.wait_server_error))
-                HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.http_server_error))
+                HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.wait_server_error))
+                FAILURE -> requireContext().showToast(getString(R.string.http_server_error))
             }
         })
         viewModel.todayWeatherToastInfoEvent.observe(viewLifecycleOwner, EventObserver { code ->
             when (code) {
                 HTTP_EXCEPTION_400 -> requireContext().showToast(getString(R.string.wait_server_error))
                 HTTP_EXCEPTION_401 -> requireContext().showToast(getString(R.string.wait_server_error))
-                HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.http_server_error))
+                HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.wait_server_error))
+                FAILURE -> requireContext().showToast(getString(R.string.http_server_error))
             }
         })
     }
