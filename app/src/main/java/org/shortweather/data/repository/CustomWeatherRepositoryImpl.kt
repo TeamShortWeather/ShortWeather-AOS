@@ -10,8 +10,7 @@ import javax.inject.Inject
 
 class CustomWeatherRepositoryImpl @Inject constructor(
     private val customWeatherDataSource: CustomWeatherDataSource
-) :
-    CustomWeatherRepository {
+) : CustomWeatherRepository {
     override suspend fun getDetail(accessToken: String): BaseResponse<ResponseCustomWeatherDetail> =
         customWeatherDataSource.getDetail(accessToken)
 
