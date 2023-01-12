@@ -20,11 +20,10 @@ import org.shortweather.util.extension.showToast
 @AndroidEntryPoint
 class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_splash) {
     private val viewModel by viewModels<InputTimeViewModel>()
-    private val SPLASH_TIME: Long = 2800  //3 sec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.setDeviceToken("pr") // 테스트를 위한 가상의 디바이스 토큰 설정
+        viewModel.setDeviceToken("sk") // 테스트를 위한 가상의 디바이스 토큰 설정
         // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
         setObservers()
         Handler(Looper.getMainLooper()).postDelayed({
@@ -55,5 +54,9 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
                     ShortWeatherSharedPreference.setAccessToken(this, accessToken!!)
                 }
             })
+    }
+
+    companion object {
+        private const val SPLASH_TIME: Long = 2800
     }
 }

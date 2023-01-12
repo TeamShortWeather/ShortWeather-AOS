@@ -10,7 +10,7 @@ object ShortWeatherSharedPreference {
             context.getSharedPreferences("tokens", Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString("AccessToken", token)
-        editor.commit()
+        editor.apply()
     }
 
     fun getAccessToken(context: Context): String { // 저장된 액세스 토큰 반환
@@ -25,8 +25,8 @@ object ShortWeatherSharedPreference {
                 val sharedPreferences: SharedPreferences =
                     context.getSharedPreferences("tokens", Context.MODE_PRIVATE)
                 val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                editor.putString("AccessToken", it)
-                editor.commit()
+                editor.putString("DeviceToken", it)
+                editor.apply()
             }
         }
     }
