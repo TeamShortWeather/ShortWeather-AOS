@@ -69,7 +69,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
     private fun setOnClickListener() {
         binding.btnInputTimeCheck.onThrottleClick { // 확인 버튼 클릭
             // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
-            viewModel.setDeviceToken("d")// 가상의 디바이스 토큰을 담은 테스트 코드
+            viewModel.setDeviceToken("pr")// 가상의 디바이스 토큰을 담은 테스트 코드
             viewModel.createUser() // 7개의 정보를 서버에 전송하고 메인 화면으로 이동 시도
         }
 

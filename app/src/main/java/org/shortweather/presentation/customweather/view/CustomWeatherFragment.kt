@@ -38,7 +38,6 @@ class CustomWeatherFragment :
         viewModel.getDetail(ShortWeatherSharedPreference.getAccessToken(requireContext()))
     }
 
-
     private fun setOnClickListener() {
         with(binding) {
             tvCustomWeatherSelectWeather.setOnClickListener {

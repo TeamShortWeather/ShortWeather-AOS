@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="org.shortweather.presentation.alarmsetting.viewmodel.AlarmSettingViewModel" />
@@ -19,7 +20,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="2dp"
             android:text="@string/alarm_setting_title"
             android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
             android:textColor="@color/short_weather_black"
@@ -76,7 +76,6 @@
                 android:layout_width="63dp"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
-                android:layout_marginEnd="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -92,8 +91,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
-            android:layout_marginEnd="17dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/layout_alarm_setting_all"
             app:layout_constraintStart_toStartOf="@+id/layout_alarm_setting_all"
             app:layout_constraintTop_toBottomOf="@+id/layout_alarm_setting_all">
 
@@ -122,9 +120,8 @@
             <com.suke.widget.SwitchButton
                 android:id="@+id/btn_alarm_setting_wake"
                 android:layout_width="63dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
-                android:layout_marginEnd="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -140,8 +137,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
-            android:layout_marginEnd="17dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/layout_alarm_setting_wake"
             app:layout_constraintStart_toStartOf="@+id/layout_alarm_setting_all"
             app:layout_constraintTop_toBottomOf="@+id/layout_alarm_setting_wake">
 
@@ -170,9 +166,8 @@
             <com.suke.widget.SwitchButton
                 android:id="@+id/btn_alarm_setting_sleep"
                 android:layout_width="63dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
-                android:layout_marginEnd="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -188,8 +183,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
-            android:layout_marginEnd="17dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/layout_alarm_setting_sleep"
             app:layout_constraintStart_toStartOf="@+id/layout_alarm_setting_all"
             app:layout_constraintTop_toBottomOf="@+id/layout_alarm_setting_sleep">
 
@@ -218,9 +212,8 @@
             <com.suke.widget.SwitchButton
                 android:id="@+id/btn_alarm_setting_news"
                 android:layout_width="63dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
-                android:layout_marginEnd="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

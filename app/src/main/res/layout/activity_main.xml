@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="org.shortweather.presentation.MainViewModel" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
@@ -34,12 +37,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@string/title_today_weather"
+                        android:text="@{viewModel.title}"
                         android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2" />
 
                 </androidx.appcompat.widget.Toolbar>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    visibility="@{viewModel.isSetting}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -71,7 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:dampingRatio="0.5"
-                        app:dotsColor="@color/short_weather_black"
+                        app:dotsColor="@color/short_weather_blue"
                         app:dotsSize="6dp"
                         app:dotsSpacing="3dp"
                         app:dotsStrokeColor="@color/short_weather_gray_4"
