@@ -29,10 +29,10 @@
             android:name=".presentation.input.view.InputTimeActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.setting.view.OtherTimeSettingActivity"
+            android:name=".presentation.othertimesetting.view.OtherTimeSettingActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.setting.view.WakeTimeSettingActivity"
+            android:name=".presentation.waketimesetting.view.WakeTimeSettingActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.splash.SplashActivity"
