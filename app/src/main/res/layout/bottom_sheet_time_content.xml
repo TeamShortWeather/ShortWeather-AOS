@@ -33,7 +33,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="36dp"
         android:theme="@style/CustomTimePicker"
-        android:timePickerMode="spinner" />
+        android:timePickerMode="spinner"
+        android:descendantFocusability="blocksDescendants"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_botton_sheet_time"
