@@ -40,10 +40,17 @@ class TodayWeatherViewModel @Inject constructor(
     private val _todayWeatherToastInfoEvent = MutableLiveData<Event<Int>>()
     val todayWeatherToastInfoEvent: LiveData<Event<Int>>
         get() = _todayWeatherToastInfoEvent
+    private var isShowing: Boolean = false
 
     fun setToastEvent(isSelect: Boolean) {
         this.isSelect.value = isSelect
     }
+
+    fun setIsShowing(isShow: Boolean) {
+        isShowing = isShow
+    }
+
+    fun getIsShowing(): Boolean = isShowing
 
     fun getTodayWeatherInfo(accessToken: String, isRefresh: Boolean = false) {
         viewModelScope.launch {
