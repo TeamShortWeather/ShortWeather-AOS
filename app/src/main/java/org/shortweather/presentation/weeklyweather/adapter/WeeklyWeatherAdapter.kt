@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.shortweather.R
-import org.shortweather.data.source.remote.ResponseWeeklyWeather
+import org.shortweather.data.model.WeeklyWeather
 import org.shortweather.databinding.ItemWeeklyWeatherBinding
 import org.shortweather.databinding.ItemWeeklyWeatherHeaderBinding
 
 class WeeklyWeatherAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var inflater: LayoutInflater
-    private val weeklyList = mutableListOf<ResponseWeeklyWeather?>()
+    private val weeklyList = mutableListOf<WeeklyWeather?>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (!::inflater.isInitialized) {
@@ -30,7 +30,7 @@ class WeeklyWeatherAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is WeeklyWeatherViewHolder -> holder.onBind(weeklyList[position] as ResponseWeeklyWeather)
+            is WeeklyWeatherViewHolder -> holder.onBind(weeklyList[position] as WeeklyWeather)
             else -> {}
         }
     }
@@ -41,15 +41,15 @@ class WeeklyWeatherAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         if (weeklyList[position] == null) VIEW_TYPE_HEADER else VIEW_TYPE_ITEM
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setWeatherList(weeklyList: List<ResponseWeeklyWeather?>) {
+    fun setWeatherList(weeklyList: List<WeeklyWeather?>) {
         this.weeklyList.addAll(weeklyList)
         notifyDataSetChanged()
     }
 
     class WeeklyWeatherViewHolder(private val binding: ItemWeeklyWeatherBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(weather: ResponseWeeklyWeather) {
-            binding.responseWeeklyWeather = weather
+        fun onBind(weather: WeeklyWeather) {
+            binding.weeklyWeather = weather
             binding.executePendingBindings()
             binding.ivWeeklyWeatherDayInfo.setImageResource(R.drawable.ic_weekly_weather_example)
             binding.ivWeeklyWeatherNightInfo.setImageResource(R.drawable.ic_weekly_weather_example)
