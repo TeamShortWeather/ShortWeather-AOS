@@ -9,10 +9,16 @@ import org.shortweather.databinding.FragmentCustomWeatherBinding
 import org.shortweather.presentation.customweather.adapter.CustomWeatherPrecipitationAdapter
 import org.shortweather.presentation.customweather.adapter.CustomWeatherTempAdapter
 import org.shortweather.presentation.customweather.viewmodel.CustomWeatherViewModel
+import org.shortweather.util.Constants.FAILURE
 import org.shortweather.util.Constants.FINE_DUST
+import org.shortweather.util.Constants.HTTP_EXCEPTION_400
+import org.shortweather.util.Constants.HTTP_EXCEPTION_401
+import org.shortweather.util.Constants.HTTP_EXCEPTION_500
 import org.shortweather.util.Constants.WEATHER
+import org.shortweather.util.EventObserver
 import org.shortweather.util.ShortWeatherSharedPreference
 import org.shortweather.util.binding.BindingFragment
+import org.shortweather.util.extension.showToast
 
 @AndroidEntryPoint
 class CustomWeatherFragment :
@@ -27,7 +33,7 @@ class CustomWeatherFragment :
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         initView()
-        setObserver()
+        setObservers()
         setOnClickListener()
         setOnScrollChangeListener()
     }
@@ -53,7 +59,7 @@ class CustomWeatherFragment :
         }
     }
 
-    private fun setObserver() {
+    private fun setObservers() {
         viewModel.customWeatherTempList.observe(
             viewLifecycleOwner
         ) {
@@ -64,6 +70,28 @@ class CustomWeatherFragment :
         ) {
             precipitationAdapter.submitList(it)
         }
+        viewModel.customWeatherDetailEvent.observe(viewLifecycleOwner, EventObserver { code ->
+            when (code) {
+                HTTP_EXCEPTION_400 -> requireContext().showToast(getString(R.string.wait_server_error))
+                HTTP_EXCEPTION_401 -> requireContext().showToast(getString(R.string.wait_server_error))
+                HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.wait_server_error))
+                FAILURE -> requireContext().showToast(getString(R.string.http_server_error))
+            }
+        })
+        viewModel.customWeatherTempListEvent.observe(viewLifecycleOwner, EventObserver { code ->
+            when (code) {
+                HTTP_EXCEPTION_400 -> requireContext().showToast(getString(R.string.wait_server_error))
+                HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.wait_server_error))
+                FAILURE -> requireContext().showToast(getString(R.string.http_server_error))
+            }
+        })
+        viewModel.customWeatherRainListEvent.observe(viewLifecycleOwner, EventObserver { code ->
+            when (code) {
+                HTTP_EXCEPTION_400 -> requireContext().showToast(getString(R.string.wait_server_error))
+                HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.wait_server_error))
+                FAILURE -> requireContext().showToast(getString(R.string.http_server_error))
+            }
+        })
     }
 
     private fun setOnScrollChangeListener() {
