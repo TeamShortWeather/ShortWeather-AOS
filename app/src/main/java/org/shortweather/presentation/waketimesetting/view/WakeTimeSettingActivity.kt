@@ -21,7 +21,6 @@ class WakeTimeSettingActivity :
         super.onCreate(savedInstanceState)
         binding.vm = viewModel // 데이터바인딩
         binding.lifecycleOwner = this
-
         binding.btnSettingWakeTimeCheck.isEnabled = false // 최초에는 확인 버튼의 Enable 상태 false
         setOnClickListener()
         setObservers()
