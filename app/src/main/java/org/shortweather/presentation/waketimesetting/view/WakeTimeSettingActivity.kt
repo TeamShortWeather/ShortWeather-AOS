@@ -9,6 +9,7 @@ import org.shortweather.presentation.input.view.BottomSheetTimeFragment
 import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
 import org.shortweather.util.EventObserver
 import org.shortweather.util.binding.BindingActivity
+import org.shortweather.util.extension.setOnThrottleClickListener
 
 @AndroidEntryPoint
 class WakeTimeSettingActivity :
@@ -35,12 +36,12 @@ class WakeTimeSettingActivity :
 
     private fun setOnClickListener() {
         // 확인 버튼을 누르면 MainActivity로 이동
-        binding.btnSettingWakeTimeCheck.setOnClickListener() { // 메인 액티비티의 설정 프래그먼트로 이동
+        binding.btnSettingWakeTimeCheck.setOnThrottleClickListener {
+            // 메인 액티비티의 설정 프래그먼트로 이동
             // 서버에 시간 전달
             finish()
         }
-
-        binding.layoutSettingWakeTime.setOnClickListener() { // 기상시간 선택
+        binding.layoutSettingWakeTime.setOnThrottleClickListener { // 기상시간 선택
             binding.vSettingWakeTimeLine.setBackgroundResource(R.color.short_weather_blue)
             BottomSheetTimeFragment.newInstance("wake")
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)

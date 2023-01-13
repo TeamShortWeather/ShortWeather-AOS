@@ -8,15 +8,14 @@ buildscript {
         okhttp_version = '4.10.0'
         kotlinx_serialization_version = '1.4.1'
         kotlinx_serialization_converter_version = '0.8.0'
-        coil_version = '2.2.2'
         hilt_version = '2.44'
         dotsindicator_version = '4.3'
         lottie_version = '5.2.0'
         swipe_refresh_layout_version = '1.1.0'
-        switch_button_version = "0.0.3@aar"
-        fcm_version = "23.1.1"
-        fb_messaging_version = "23.1.1"
-        fb_bom_version = "31.1.1"
+        switch_button_version = '0.0.3@aar'
+        fcm_version = '23.1.1'
+        fb_messaging_version = '23.1.1'
+        fb_bom_version = '31.1.1'
     }
     repositories {
         mavenCentral()
