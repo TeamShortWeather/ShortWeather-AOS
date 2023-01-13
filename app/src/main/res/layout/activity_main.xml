@@ -16,7 +16,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
 
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/abl_main"
@@ -107,6 +108,7 @@
             android:layout_gravity="start"
             android:theme="@style/NavigationView.Basic"
             app:headerLayout="@layout/item_drawer_header"
+            app:itemRippleColor="@color/short_weather_gray_2"
             app:menu="@menu/menu_drawer" />
 
     </androidx.drawerlayout.widget.DrawerLayout>

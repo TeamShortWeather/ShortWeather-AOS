@@ -143,7 +143,7 @@
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="33dp"
                     android:text="@string/custom_weather_time_zone_weather"
-                    android:textAppearance="@style/TextAppearance.ShortWeather.Subhead4"
+                    android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
                     android:textColor="@color/short_weather_black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
