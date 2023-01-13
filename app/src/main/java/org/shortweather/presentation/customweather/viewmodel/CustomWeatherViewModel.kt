@@ -11,9 +11,6 @@ import org.shortweather.data.model.CustomWeatherTemp
 import org.shortweather.data.model.ResponseCustomWeatherDetail
 import org.shortweather.domain.repository.CustomWeatherRepository
 import org.shortweather.util.Constants.FAILURE
-import org.shortweather.util.Constants.HTTP_EXCEPTION_400
-import org.shortweather.util.Constants.HTTP_EXCEPTION_401
-import org.shortweather.util.Constants.HTTP_EXCEPTION_500
 import org.shortweather.util.Constants.SUCCESS_200
 import org.shortweather.util.Constants.WEATHER
 import org.shortweather.util.Event
@@ -73,13 +70,7 @@ class CustomWeatherViewModel @Inject constructor(
                 _customWeatherTempListEvent.value = Event(SUCCESS_200)
             }, {
                 if (it is HttpException) {
-                    when (it.code()) {
-                        HTTP_EXCEPTION_400 -> _customWeatherTempListEvent.value =
-                            Event(HTTP_EXCEPTION_400)
-                        HTTP_EXCEPTION_500 -> _customWeatherTempListEvent.value =
-                            Event(HTTP_EXCEPTION_500)
-                        else -> throw IllegalArgumentException("not found error.")
-                    }
+                    _customWeatherTempListEvent.value = Event(it.code())
                 } else {
                     _customWeatherTempListEvent.value = Event(FAILURE)
                 }
@@ -105,13 +96,7 @@ class CustomWeatherViewModel @Inject constructor(
                 _customWeatherRainListEvent.value = Event(SUCCESS_200)
             }, {
                 if (it is HttpException) {
-                    when (it.code()) {
-                        HTTP_EXCEPTION_400 -> _customWeatherRainListEvent.value =
-                            Event(HTTP_EXCEPTION_400)
-                        HTTP_EXCEPTION_500 -> _customWeatherRainListEvent.value =
-                            Event(HTTP_EXCEPTION_500)
-                        else -> throw IllegalArgumentException("not found error.")
-                    }
+                    _customWeatherRainListEvent.value = Event(it.code())
                 } else {
                     _customWeatherRainListEvent.value = Event(FAILURE)
                 }
@@ -128,15 +113,7 @@ class CustomWeatherViewModel @Inject constructor(
                 _customWeatherDetailEvent.value = Event(SUCCESS_200)
             }, {
                 if (it is HttpException) {
-                    when (it.code()) {
-                        HTTP_EXCEPTION_400 -> _customWeatherDetailEvent.value =
-                            Event(HTTP_EXCEPTION_400)
-                        HTTP_EXCEPTION_401 -> _customWeatherDetailEvent.value =
-                            Event(HTTP_EXCEPTION_401)
-                        HTTP_EXCEPTION_500 -> _customWeatherDetailEvent.value =
-                            Event(HTTP_EXCEPTION_500)
-                        else -> throw IllegalArgumentException("not found error.")
-                    }
+                    _customWeatherDetailEvent.value = Event(it.code())
                 } else {
                     _customWeatherDetailEvent.value = Event(FAILURE)
                 }

@@ -14,6 +14,7 @@ import org.shortweather.util.Constants.FINE_DUST
 import org.shortweather.util.Constants.HTTP_EXCEPTION_400
 import org.shortweather.util.Constants.HTTP_EXCEPTION_401
 import org.shortweather.util.Constants.HTTP_EXCEPTION_500
+import org.shortweather.util.Constants.SUCCESS_200
 import org.shortweather.util.Constants.WEATHER
 import org.shortweather.util.EventObserver
 import org.shortweather.util.ShortWeatherSharedPreference
@@ -71,25 +72,34 @@ class CustomWeatherFragment :
             precipitationAdapter.submitList(it)
         }
         viewModel.customWeatherDetailEvent.observe(viewLifecycleOwner, EventObserver { code ->
-            when (code) {
-                HTTP_EXCEPTION_400 -> requireContext().showToast(getString(R.string.wait_server_error))
-                HTTP_EXCEPTION_401 -> requireContext().showToast(getString(R.string.wait_server_error))
-                HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.wait_server_error))
-                FAILURE -> requireContext().showToast(getString(R.string.http_server_error))
+            if (code != SUCCESS_200) {
+                when (code) {
+                    HTTP_EXCEPTION_400 -> requireContext().showToast(getString(R.string.wait_server_error))
+                    HTTP_EXCEPTION_401 -> requireContext().showToast(getString(R.string.wait_server_error))
+                    HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.wait_server_error))
+                    FAILURE -> requireContext().showToast(getString(R.string.http_server_error))
+                    else -> throw IllegalArgumentException("error.")
+                }
             }
         })
         viewModel.customWeatherTempListEvent.observe(viewLifecycleOwner, EventObserver { code ->
-            when (code) {
-                HTTP_EXCEPTION_400 -> requireContext().showToast(getString(R.string.wait_server_error))
-                HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.wait_server_error))
-                FAILURE -> requireContext().showToast(getString(R.string.http_server_error))
+            if (code != SUCCESS_200) {
+                when (code) {
+                    HTTP_EXCEPTION_400 -> requireContext().showToast(getString(R.string.wait_server_error))
+                    HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.wait_server_error))
+                    FAILURE -> requireContext().showToast(getString(R.string.http_server_error))
+                    else -> throw IllegalArgumentException("error.")
+                }
             }
         })
         viewModel.customWeatherRainListEvent.observe(viewLifecycleOwner, EventObserver { code ->
-            when (code) {
-                HTTP_EXCEPTION_400 -> requireContext().showToast(getString(R.string.wait_server_error))
-                HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.wait_server_error))
-                FAILURE -> requireContext().showToast(getString(R.string.http_server_error))
+            if (code != SUCCESS_200) {
+                when (code) {
+                    HTTP_EXCEPTION_400 -> requireContext().showToast(getString(R.string.wait_server_error))
+                    HTTP_EXCEPTION_500 -> requireContext().showToast(getString(R.string.wait_server_error))
+                    FAILURE -> requireContext().showToast(getString(R.string.http_server_error))
+                    else -> throw IllegalArgumentException("error.")
+                }
             }
         })
     }
