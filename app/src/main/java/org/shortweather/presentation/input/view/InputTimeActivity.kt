@@ -8,7 +8,13 @@ import org.shortweather.R
 import org.shortweather.databinding.ActivityInputTimeBinding
 import org.shortweather.presentation.MainActivity
 import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
+import org.shortweather.util.Constants.AGE
+import org.shortweather.util.Constants.GENDER
 import org.shortweather.util.EventObserver
+import org.shortweather.util.Constants.WAKE
+import org.shortweather.util.Constants.OUT
+import org.shortweather.util.Constants.RETURN
+import org.shortweather.util.Constants.SENSE
 import org.shortweather.util.ShortWeatherSharedPreference
 import org.shortweather.util.binding.BindingActivity
 import org.shortweather.util.extension.setOnThrottleClickListener
@@ -65,12 +71,12 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
     private fun setOnClickListener() {
         binding.btnInputTimeCheck.setOnThrottleClickListener { // 확인 버튼 클릭
             // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
-            viewModel.setDeviceToken("sk")// 가상의 디바이스 토큰을 담은 테스트 코드
+            viewModel.setDeviceToken("poor")// 가상의 디바이스 토큰을 담은 테스트 코드
             viewModel.createUser() // 7개의 정보를 서버에 전송하고 메인 화면으로 이동 시도
         }
 
         binding.layoutTimeWake.setOnThrottleClickListener { // 기상시간 선택
-            BottomSheetTimeFragment.newInstance("wake")
+            BottomSheetTimeFragment.newInstance(WAKE)
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
             binding.vInputTimeWakeLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputTimeWake.setTextColor(getColor(R.color.short_weather_gray_7))
@@ -78,7 +84,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
         }
 
         binding.layoutTimeOut.setOnThrottleClickListener { // 외출시간 선택
-            BottomSheetTimeFragment.newInstance("out")
+            BottomSheetTimeFragment.newInstance(OUT)
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
             binding.vInputTimeOutLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputTimeOut.setTextColor(getColor(R.color.short_weather_gray_7))
@@ -86,7 +92,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
         }
 
         binding.layoutTimeReturn.setOnThrottleClickListener { // 귀가시간 선택
-            BottomSheetTimeFragment.newInstance("return")
+            BottomSheetTimeFragment.newInstance(RETURN)
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
             binding.vInputTimeReturnLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputTimeReturn.setTextColor(getColor(R.color.short_weather_gray_7))
@@ -95,9 +101,9 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
     }
 
     private fun saveBeforeInfo() { // 이전 activity에서 받은 3개의 정보를 저장
-        val gender = intent.getStringExtra("gender")
-        val age = intent.getStringExtra("age")
-        val sense = intent.getStringExtra("sense")
+        val gender = intent.getStringExtra(GENDER)
+        val age = intent.getStringExtra(AGE)
+        val sense = intent.getStringExtra(SENSE)
         viewModel.setBeforeInfo(gender!!, age!!, sense!!)
     }
 }

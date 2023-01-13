@@ -11,6 +11,11 @@ import org.shortweather.databinding.ActivitySplashBinding
 import org.shortweather.presentation.MainActivity
 import org.shortweather.presentation.input.view.InputInfoActivity
 import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
+import org.shortweather.util.Constants.SUCCESS_200
+import org.shortweather.util.Constants.FAILURE
+import org.shortweather.util.Constants.HTTP_EXCEPTION_400
+import org.shortweather.util.Constants.HTTP_EXCEPTION_401
+import org.shortweather.util.Constants.HTTP_EXCEPTION_500
 import org.shortweather.util.EventObserver
 import org.shortweather.util.ShortWeatherSharedPreference
 import org.shortweather.util.binding.BindingActivity
@@ -22,7 +27,7 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.setDeviceToken("sk") // 테스트를 위한 가상의 디바이스 토큰 설정
+        viewModel.setDeviceToken("poor") // 테스트를 위한 가상의 디바이스 토큰 설정
         // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
         setObservers()
         Handler(Looper.getMainLooper()).postDelayed({
@@ -34,7 +39,7 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
         viewModel.searchUserEvent.observe( // 유저 조회 성공 시 Main으로, 실패 시 정보입력으로
             this, EventObserver { code ->
                 when (code) {
-                    200 -> {
+                    SUCCESS_200 -> {
                         if (viewModel.getIsExist()) {
                             startActivity(Intent(this, MainActivity::class.java))
                         } else {
@@ -42,9 +47,10 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
                         }
                         finish()
                     }
-                    400 -> showToast(getString(R.string.wait_server_error), false)
-                    500 -> showToast(getString(R.string.wait_server_error), false)
-                    0 -> showToast(getString(R.string.http_server_error), false)
+                    HTTP_EXCEPTION_400 -> showToast(getString(R.string.wait_server_error))
+                    HTTP_EXCEPTION_401 -> showToast(getString(R.string.wait_server_error))
+                    HTTP_EXCEPTION_500 -> showToast(getString(R.string.wait_server_error))
+                    FAILURE -> showToast(getString(R.string.http_server_error))
                 }
             })
         viewModel.accessTokenEvent.observe( // 유저 조회 성공하면 액세스토큰 기기에 저장
