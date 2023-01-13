@@ -55,6 +55,7 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initialTime(binding.tpInputTime)
         setTimeInterval(binding.tpInputTime)
         setOnClickListeners()
         viewKindCheck()
@@ -162,6 +163,19 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
         val formattedHour = if (hour < 10) "0".plus(hour.toString()) else hour.toString()
         val formattedMinute = if (minute == 0) "00" else minute.toString()
         return formattedHour.plus(formattedMinute)
+    }
+
+    private fun initialTime(timePicker: TimePicker) {
+        if (target == WAKE) {
+            binding.tpInputTime.hour = 7
+            binding.tpInputTime.minute = 0
+        } else if (target == OUT) {
+            binding.tpInputTime.hour = 8
+            binding.tpInputTime.minute = 0
+        } else {
+            binding.tpInputTime.hour = 18
+            binding.tpInputTime.minute = 0
+        }
     }
 
     companion object {
