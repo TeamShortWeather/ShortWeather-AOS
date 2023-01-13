@@ -1,12 +1,12 @@
 #  ☂🌩 ShortWeather 🌩☂
-### 날씨를 가볍게, ShortWeather
+### 어제의 날씨로 알아보는 오늘의 날씨
 
 <br>
 
 ## Contributors 🌥
 | [@SunwoongH](https://github.com/SunwoongH) | [@chaso1495](https://github.com/chaso1495) | [@ahra1221](https://github.com/ahra1221) |
 | :---: | :---: | :---: |
-|<img width="400" src="https://user-images.githubusercontent.com/81796317/210391135-9d2ffe30-7628-415d-aab5-c1adbbe14789.jpg">|<img width="400" src="https://user-images.githubusercontent.com/81796317/210391173-c6a5a077-500c-486a-b3fd-8070f7b0e7e9.jpg">|<img width="400" src="https://user-images.githubusercontent.com/81796317/210391218-802f4c66-decf-4220-8742-494c96eb1cfd.png">|
+|<img width="400" src="https://user-images.githubusercontent.com/81796317/212262151-ba79cbce-5993-4893-80ec-be5cb8d3dd95.jpg">|<img width="400" src="https://user-images.githubusercontent.com/81796317/212262357-79051e8d-01be-4e3e-acef-37c0972e6534.jpg">|<img width="400" src="https://user-images.githubusercontent.com/81796317/212262424-8cd2e60a-effa-4065-9dd9-02d0261f120c.jpg">|
 |**오늘 날씨 & 맞춤 날씨 뷰**|**정보 입력 & 스플래쉬 & 설정 뷰**|**주간 날씨 & 설정 뷰**|
 
 <br>
