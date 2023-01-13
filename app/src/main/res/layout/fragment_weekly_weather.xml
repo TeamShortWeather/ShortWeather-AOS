@@ -47,7 +47,7 @@
                 android:id="@+id/tv_weekly_weather_header_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="28dp"
+                android:layout_marginEnd="33dp"
                 android:text="@string/weekly_weather_header_temperature"
                 android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
                 android:textColor="@color/short_weather_gray_7"
