@@ -5,6 +5,6 @@
     <solid android:color="@color/short_weather_transparency_white" />
     <corners android:radius="20dp" />
     <stroke
-        android:width="3dp"
+        android:width="1dp"
         android:color="@color/white" />
 </shape>
