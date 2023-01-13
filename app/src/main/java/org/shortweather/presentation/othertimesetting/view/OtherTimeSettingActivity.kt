@@ -9,6 +9,7 @@ import org.shortweather.presentation.input.view.BottomSheetTimeFragment
 import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
 import org.shortweather.util.EventObserver
 import org.shortweather.util.binding.BindingActivity
+import org.shortweather.util.extension.setOnThrottleClickListener
 
 @AndroidEntryPoint
 class OtherTimeSettingActivity :
@@ -41,19 +42,18 @@ class OtherTimeSettingActivity :
 
     private fun setOnClickListener() {
         // 확인 버튼을 누르면 MainActivity로 이동
-        binding.btnSettingOtherTimeCheck.setOnClickListener() { // 메인 액티비티의 설정 프래그먼트로 이동
+        binding.btnSettingOtherTimeCheck.setOnThrottleClickListener {
+            // 메인 액티비티의 설정 프래그먼트로 이동
             // 서버에 시간 전달
             finish()
         }
-
-        binding.layoutSettingOutTime.setOnClickListener() { // 외출시간 선택
+        binding.layoutSettingOutTime.setOnThrottleClickListener() { // 외출시간 선택
             binding.vSettingOutTimeLine.setBackgroundResource(R.color.short_weather_blue)
             viewModel.setIsOutDestroy(false)
             BottomSheetTimeFragment.newInstance("out")
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
-
-        binding.layoutSettingReturnTime.setOnClickListener() { // 귀가시간 선택
+        binding.layoutSettingReturnTime.setOnThrottleClickListener() { // 귀가시간 선택
             binding.vSettingReturnTimeLine.setBackgroundResource(R.color.short_weather_blue)
             viewModel.setIsReturnDestroy(false)
             BottomSheetTimeFragment.newInstance("return")
