@@ -37,7 +37,8 @@ class OtherTimeSettingActivity :
                 binding.btnSettingOtherTimeCheck.isEnabled = true
             } else {
                 binding.vSettingOutTimeLine.setBackgroundResource(R.color.short_weather_gray_1)
-                binding.btnSettingOtherTimeCheck.isEnabled = false
+                binding.btnSettingOtherTimeCheck.isEnabled =
+                    checkTimeChanged(OUT) || checkTimeChanged(RETURN)
             }
         })
         viewModel.isReturnDestroy.observe(this, EventObserver { isSuccess ->
@@ -46,7 +47,8 @@ class OtherTimeSettingActivity :
                 binding.btnSettingOtherTimeCheck.isEnabled = true
             } else { // 바텀시트 취소
                 binding.vSettingReturnTimeLine.setBackgroundResource(R.color.short_weather_gray_1)
-                binding.btnSettingOtherTimeCheck.isEnabled = false
+                binding.btnSettingOtherTimeCheck.isEnabled =
+                    checkTimeChanged(OUT) || checkTimeChanged(RETURN)
             }
         })
     }
@@ -61,13 +63,13 @@ class OtherTimeSettingActivity :
         binding.layoutSettingOutTime.setOnThrottleClickListener() { // 외출시간 선택
             beforeOut = viewModel.timeOut.value!! // 호출 전 외출시간 저장
             binding.vSettingOutTimeLine.setBackgroundResource(R.color.short_weather_blue)
-            BottomSheetTimeFragment.newInstance("out")
+            BottomSheetTimeFragment.newInstance(OUT)
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
         binding.layoutSettingReturnTime.setOnThrottleClickListener() { // 귀가시간 선택
             beforeReturn = viewModel.timeReturn.value!! // 호출 전 귀가시간 저장
             binding.vSettingReturnTimeLine.setBackgroundResource(R.color.short_weather_blue)
-            BottomSheetTimeFragment.newInstance("return")
+            BottomSheetTimeFragment.newInstance(RETURN)
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
         }
     }
