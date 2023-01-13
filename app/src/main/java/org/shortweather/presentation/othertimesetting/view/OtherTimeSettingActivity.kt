@@ -19,7 +19,8 @@ class OtherTimeSettingActivity :
     private val viewModel by viewModels<InputTimeViewModel>()
     private var beforeOut = " "
     private var beforeReturn = " "
-
+    private var outFlag = false
+    private var returnFlag = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,22 +34,24 @@ class OtherTimeSettingActivity :
     private fun setObservers() {
         viewModel.isOutDestroy.observe(this, EventObserver { isSuccess ->
             if (isSuccess && checkTimeChanged(OUT)) {
+                outFlag = true
                 binding.vSettingOutTimeLine.setBackgroundResource(R.color.short_weather_blue)
-                binding.btnSettingOtherTimeCheck.isEnabled = true
+                binding.btnSettingOtherTimeCheck.isEnabled = (outFlag && returnFlag)
             } else {
+                outFlag = false
                 binding.vSettingOutTimeLine.setBackgroundResource(R.color.short_weather_gray_1)
-                binding.btnSettingOtherTimeCheck.isEnabled =
-                    checkTimeChanged(OUT) || checkTimeChanged(RETURN)
+                binding.btnSettingOtherTimeCheck.isEnabled = false
             }
         })
         viewModel.isReturnDestroy.observe(this, EventObserver { isSuccess ->
             if (isSuccess && checkTimeChanged(RETURN)) {
+                returnFlag = true
                 binding.vSettingReturnTimeLine.setBackgroundResource(R.color.short_weather_blue)
-                binding.btnSettingOtherTimeCheck.isEnabled = true
+                binding.btnSettingOtherTimeCheck.isEnabled = (outFlag && returnFlag)
             } else { // 바텀시트 취소
+                returnFlag = false
                 binding.vSettingReturnTimeLine.setBackgroundResource(R.color.short_weather_gray_1)
-                binding.btnSettingOtherTimeCheck.isEnabled =
-                    checkTimeChanged(OUT) || checkTimeChanged(RETURN)
+                binding.btnSettingOtherTimeCheck.isEnabled = false
             }
         })
     }
