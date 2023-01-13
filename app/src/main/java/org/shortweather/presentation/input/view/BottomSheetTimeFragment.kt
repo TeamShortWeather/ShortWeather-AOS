@@ -13,6 +13,9 @@ import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
+import org.shortweather.util.Constants.WAKE
+import org.shortweather.util.Constants.OUT
+import org.shortweather.util.Constants.RETURN
 import org.shortweather.databinding.BottomSheetTimeContentBinding
 import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
 import java.util.*
@@ -37,10 +40,10 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
     override fun onCancel(dialog: DialogInterface) { // 어떤 바텀시트에서 onCancel이 발생하는지 target을 통해 결정
         super.onCancel(dialog)
         when (target) {
-            "wake" -> {
+            WAKE -> {
                 viewModel.setIsWakeDestroy(true)
             }
-            "out" -> {
+            OUT -> {
                 viewModel.setIsOutDestroy(true)
             }
             else -> {
@@ -64,10 +67,10 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
 
     private fun viewKindCheck() { // 바텀시트의 종류가 기상/외출/복귀시간인지 확인하고 이에 대응하여 아이템들을 생성함,
         when (target) {
-            "wake" -> {
+            WAKE -> {
                 binding.tvBottomSheetTimeHeader.text = getString(R.string.setting_wake_up)
             }
-            "out" -> {
+            OUT -> {
                 binding.tvBottomSheetTimeHeader.text = getString(R.string.setting_out)
             }
             else -> {
@@ -78,10 +81,10 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
 
     private fun inputCancel() { // 입력 실패 상황 (바텀시트가 등장한 상태에서 아무것도 선택하지 않고 바텀시트 이탈 시)
         when (target) {
-            "wake" -> {
+            WAKE -> {
                 viewModel.setTimeWake("") // 시간 초기화
             }
-            "out" -> {
+            OUT -> {
                 viewModel.setTimeOut("")
             }
             else -> {
@@ -92,7 +95,7 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
 
     @SuppressLint("PrivateApi")
     private fun setTimeInterval(timePicker: TimePicker) { // TimpPicker의 시간 간격을 조정하는 함수
-        timeInterval = if (target == "wake") 30 else 60  // 기상시간은 30분 간격, 나머지는 60분 간격
+        timeInterval = if (target == WAKE) 30 else 60  // 기상시간은 30분 간격, 나머지는 60분 간격
         val displayedValues: ArrayList<String> = ArrayList()
         val minutePicker: NumberPicker = timePicker.findViewById(
             Resources.getSystem().getIdentifier(
@@ -113,12 +116,12 @@ class BottomSheetTimeFragment : BottomSheetDialogFragment() {
         binding.btnBottonSheetTime.setOnClickListener { // 시간 저장 버튼 클릭 시
             val minute = binding.tpInputTime.minute * timeInterval
             when (target) {
-                "wake" -> { // 기상시간 결정
+                WAKE -> { // 기상시간 결정
                     viewModel.setTimeWakeReal(makeRealTime(binding.tpInputTime.hour, minute))
                     viewModel.setTimeWake(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsWakeDestroy(true)
                 }
-                "out" -> { // 외출시간 결정
+                OUT -> { // 외출시간 결정
                     viewModel.setTimeOutReal(makeRealTime(binding.tpInputTime.hour, minute))
                     viewModel.setTimeOut(makeTime(binding.tpInputTime.hour, minute.toString()))
                     viewModel.setIsOutDestroy(true)

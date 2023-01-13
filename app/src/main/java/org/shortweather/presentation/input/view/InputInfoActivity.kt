@@ -7,6 +7,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.shortweather.R
 import org.shortweather.databinding.ActivityInputInfoBinding
 import org.shortweather.presentation.input.viewmodel.InputInfoViewModel
+import org.shortweather.util.Constants.AGE
+import org.shortweather.util.Constants.GENDER
+import org.shortweather.util.Constants.SENSE
 import org.shortweather.util.binding.BindingActivity
 import org.shortweather.util.extension.setOnThrottleClickListener
 
@@ -39,14 +42,14 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
         binding.btnInputInfoNext.setOnThrottleClickListener { // 다음 버튼 클릭 시 InputTimeActivity로 이동,
             // intent를 통해 입력한 3개의 정보를 다음 activity에 전달
             val intent = Intent(this, InputTimeActivity::class.java)
-            intent.putExtra("gender", viewModel.getGender())
-            intent.putExtra("age", viewModel.getAge())
-            intent.putExtra("sense", viewModel.getSense())
+            intent.putExtra(GENDER, viewModel.getGender())
+            intent.putExtra(AGE, viewModel.getAge())
+            intent.putExtra(SENSE, viewModel.getSense())
             startActivity(Intent(intent))
         }
 
         binding.layoutGender.setOnThrottleClickListener { // 성별 선택란 클릭 시
-            BottomSheetFragment.newInstance("gender")
+            BottomSheetFragment.newInstance(GENDER)
                 .show(supportFragmentManager, BottomSheetFragment.TAG)
             binding.vInputInfoGenderLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputInfoGender.setTextColor(getColor(R.color.short_weather_gray_7))
@@ -54,7 +57,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
         }
 
         binding.layoutAge.setOnThrottleClickListener { // 연령 선택란 클릭 시
-            BottomSheetFragment.newInstance("age")
+            BottomSheetFragment.newInstance(AGE)
                 .show(supportFragmentManager, BottomSheetFragment.TAG)
             binding.vInputInfoAgeLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputInfoAge.setTextColor(getColor(R.color.short_weather_gray_7))
@@ -62,7 +65,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
         }
 
         binding.layoutSense.setOnThrottleClickListener { // 민감도 선택란 클릭 시
-            BottomSheetFragment.newInstance("sense")
+            BottomSheetFragment.newInstance(SENSE)
                 .show(supportFragmentManager, BottomSheetFragment.TAG)
             binding.vInputInfoSenseLine.setBackgroundResource(R.color.short_weather_blue)
             binding.tvInputInfoSense.setTextColor(getColor(R.color.short_weather_gray_7))
