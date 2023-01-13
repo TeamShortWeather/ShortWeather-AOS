@@ -27,8 +27,7 @@ class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.setDeviceToken("poor") // 테스트를 위한 가상의 디바이스 토큰 설정
-        // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
+        viewModel.setDeviceToken(ShortWeatherSharedPreference.getDeviceToken(this)) // 디바이스 토큰 설정
         setObservers()
         Handler(Looper.getMainLooper()).postDelayed({
             viewModel.searchUser() // 디바이스 토큰을 서버에 전송하여 유저 조회
