@@ -8,7 +8,7 @@ import org.shortweather.R
 import org.shortweather.databinding.ActivityInputInfoBinding
 import org.shortweather.presentation.input.viewmodel.InputInfoViewModel
 import org.shortweather.util.binding.BindingActivity
-import org.shortweather.util.extension.onThrottleClick
+import org.shortweather.util.extension.setOnThrottleClickListener
 
 @AndroidEntryPoint
 class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.activity_input_info) {
@@ -36,7 +36,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
     }
 
     private fun setOnClickListener() {
-        binding.btnInputInfoNext.onThrottleClick { // 다음 버튼 클릭 시 InputTimeActivity로 이동,
+        binding.btnInputInfoNext.setOnThrottleClickListener { // 다음 버튼 클릭 시 InputTimeActivity로 이동,
             // intent를 통해 입력한 3개의 정보를 다음 activity에 전달
             val intent = Intent(this, InputTimeActivity::class.java)
             intent.putExtra("gender", viewModel.getGender())
@@ -45,7 +45,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
             startActivity(Intent(intent))
         }
 
-        binding.layoutGender.onThrottleClick { // 성별 선택란 클릭 시
+        binding.layoutGender.setOnThrottleClickListener { // 성별 선택란 클릭 시
             BottomSheetFragment.newInstance("gender")
                 .show(supportFragmentManager, BottomSheetFragment.TAG)
             binding.vInputInfoGenderLine.setBackgroundResource(R.color.short_weather_blue)
@@ -53,7 +53,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
             binding.btnGender.setBackgroundResource(R.drawable.ic_expand)
         }
 
-        binding.layoutAge.onThrottleClick { // 연령 선택란 클릭 시
+        binding.layoutAge.setOnThrottleClickListener { // 연령 선택란 클릭 시
             BottomSheetFragment.newInstance("age")
                 .show(supportFragmentManager, BottomSheetFragment.TAG)
             binding.vInputInfoAgeLine.setBackgroundResource(R.color.short_weather_blue)
@@ -61,7 +61,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
             binding.btnAge.setBackgroundResource(R.drawable.ic_expand)
         }
 
-        binding.layoutSense.onThrottleClick { // 민감도 선택란 클릭 시
+        binding.layoutSense.setOnThrottleClickListener { // 민감도 선택란 클릭 시
             BottomSheetFragment.newInstance("sense")
                 .show(supportFragmentManager, BottomSheetFragment.TAG)
             binding.vInputInfoSenseLine.setBackgroundResource(R.color.short_weather_blue)

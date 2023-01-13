@@ -11,7 +11,7 @@ import org.shortweather.presentation.input.viewmodel.InputTimeViewModel
 import org.shortweather.util.EventObserver
 import org.shortweather.util.ShortWeatherSharedPreference
 import org.shortweather.util.binding.BindingActivity
-import org.shortweather.util.extension.onThrottleClick
+import org.shortweather.util.extension.setOnThrottleClickListener
 import org.shortweather.util.extension.showToast
 
 @AndroidEntryPoint
@@ -63,13 +63,13 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
     }
 
     private fun setOnClickListener() {
-        binding.btnInputTimeCheck.onThrottleClick { // 확인 버튼 클릭
+        binding.btnInputTimeCheck.setOnThrottleClickListener { // 확인 버튼 클릭
             // viewModel.setDeviceToken(ShortWeatherSharedPreference.getToken(this)) // 디바이스 토큰 설정
             viewModel.setDeviceToken("sk")// 가상의 디바이스 토큰을 담은 테스트 코드
             viewModel.createUser() // 7개의 정보를 서버에 전송하고 메인 화면으로 이동 시도
         }
 
-        binding.layoutTimeWake.onThrottleClick { // 기상시간 선택
+        binding.layoutTimeWake.setOnThrottleClickListener { // 기상시간 선택
             BottomSheetTimeFragment.newInstance("wake")
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
             binding.vInputTimeWakeLine.setBackgroundResource(R.color.short_weather_blue)
@@ -77,7 +77,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
             binding.btnWake.setBackgroundResource(R.drawable.ic_expand)
         }
 
-        binding.layoutTimeOut.onThrottleClick { // 외출시간 선택
+        binding.layoutTimeOut.setOnThrottleClickListener { // 외출시간 선택
             BottomSheetTimeFragment.newInstance("out")
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
             binding.vInputTimeOutLine.setBackgroundResource(R.color.short_weather_blue)
@@ -85,7 +85,7 @@ class InputTimeActivity : BindingActivity<ActivityInputTimeBinding>(R.layout.act
             binding.btnOut.setBackgroundResource(R.drawable.ic_expand)
         }
 
-        binding.layoutTimeReturn.onThrottleClick { // 귀가시간 선택
+        binding.layoutTimeReturn.setOnThrottleClickListener { // 귀가시간 선택
             BottomSheetTimeFragment.newInstance("return")
                 .show(supportFragmentManager, BottomSheetTimeFragment.TAG)
             binding.vInputTimeReturnLine.setBackgroundResource(R.color.short_weather_blue)
