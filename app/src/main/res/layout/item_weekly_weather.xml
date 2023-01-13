@@ -15,144 +15,111 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_weekly_weather_day"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/tv_item_weekly_weather_day"
+            dayTextColorSetting="@{weeklyWeather.day}"
+            android:layout_width="34dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="오늘" />
 
-            <TextView
-                android:id="@+id/tv_weekly_weather_calendar_week"
-                dayTextColorSetting="@{weeklyWeather.day}"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="오늘" />
+        <TextView
+            android:id="@+id/tv_item_weekly_weather_day_info"
+            dayTextColorSetting="@{weeklyWeather.day}"
+            weeklyDateSetting="@{weeklyWeather.date}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="18dp"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Body2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_item_weekly_weather_day"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_weekly_weather_day"
+            tools:text="12.20" />
 
-            <TextView
-                android:id="@+id/tv_weekly_weather_calendar_day"
-                dayTextColorSetting="@{weeklyWeather.day}"
-                weeklyDateSetting="@{weeklyWeather.date}"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Body2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_weekly_weather_calendar_week"
-                tools:text="12.20" />
+        <ImageView
+            android:id="@+id/iv_item_weekly_weather_day"
+            dayImageDay="@{weeklyWeather.isDay}"
+            dayImageSetting="@{weeklyWeather.dayImage}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="74dp"
+            android:src="@drawable/ic_clear_night"
+            app:layout_constraintEnd_toStartOf="@id/iv_item_weekly_weather_night"
+            app:layout_constraintStart_toEndOf="@id/tv_item_weekly_weather_day"
+            app:layout_constraintTop_toTopOf="@id/tv_item_weekly_weather_day" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_item_weekly_weather_day_precipitation"
+            weeklyRainSetting="@{weeklyWeather.dayRain}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
+            android:textColor="@color/short_weather_gray_4"
+            app:layout_constraintEnd_toEndOf="@id/iv_item_weekly_weather_day"
+            app:layout_constraintStart_toStartOf="@id/iv_item_weekly_weather_day"
+            app:layout_constraintTop_toBottomOf="@id/iv_item_weekly_weather_day"
+            tools:text="60%" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_weekly_weather_info"
+        <ImageView
+            android:id="@+id/iv_item_weekly_weather_night"
+            dayImageDay="@{weeklyWeather.isDay}"
+            dayImageSetting="@{weeklyWeather.nightImage}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/layout_weekly_weather_temp"
-            app:layout_constraintStart_toEndOf="@+id/layout_weekly_weather_day"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginEnd="46dp"
+            android:src="@drawable/ic_clear_night"
+            app:layout_constraintBottom_toBottomOf="@id/iv_item_weekly_weather_day"
+            app:layout_constraintEnd_toStartOf="@id/tv_item_weekly_weather_min_info"
+            app:layout_constraintStart_toEndOf="@id/iv_item_weekly_weather_day"
+            app:layout_constraintTop_toTopOf="@id/iv_item_weekly_weather_day" />
 
-            <ImageView
-                android:id="@+id/iv_weekly_weather_day_info"
-                dayImageDay="@{weeklyWeather.isDay}"
-                dayImageSetting="@{weeklyWeather.dayImage}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:contentDescription="@string/weekly_weather_content_description"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_weekly_weather_day_info"
-                weeklyRainSetting="@{weeklyWeather.dayRain}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="3dp"
-                android:layout_marginTop="6dp"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
-                android:textColor="@color/short_weather_gray_4"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_weekly_weather_day_info"
-                tools:text="60%" />
-
-            <ImageView
-                android:id="@+id/iv_weekly_weather_night_info"
-                dayImageDay="@{weeklyWeather.isDay}"
-                dayImageSetting="@{weeklyWeather.nightImage}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="22dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:contentDescription="@string/weekly_weather_content_description"
-                app:layout_constraintStart_toEndOf="@+id/iv_weekly_weather_day_info"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_weekly_weather_night_info"
-                weeklyRainSetting="@{weeklyWeather.nightRain}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="3dp"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
-                android:textColor="@color/short_weather_gray_4"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="60%" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_weekly_weather_temp"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/tv_item_weekly_weather_night_precipitation"
+            weeklyRainSetting="@{weeklyWeather.nightRain}"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="4dp"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Caption1"
+            android:textColor="@color/short_weather_gray_4"
+            app:layout_constraintEnd_toEndOf="@id/iv_item_weekly_weather_night"
+            app:layout_constraintStart_toStartOf="@id/iv_item_weekly_weather_night"
+            app:layout_constraintTop_toBottomOf="@id/iv_item_weekly_weather_night"
+            tools:text="60%" />
+
+        <TextView
+            android:id="@+id/tv_item_weekly_weather_min_info"
+            tempSetting="@{weeklyWeather.minTemp}"
+            android:layout_width="33dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+            android:textColor="@color/short_weather_gray_4"
+            app:layout_constraintBottom_toBottomOf="@id/iv_item_weekly_weather_night"
+            app:layout_constraintEnd_toStartOf="@id/tv_item_weekly_weather_max_info"
+            app:layout_constraintTop_toTopOf="@id/iv_item_weekly_weather_night"
+            tools:text="-31°" />
+
+        <TextView
+            android:id="@+id/tv_item_weekly_weather_max_info"
+            tempSetting="@{weeklyWeather.maxTemp}"
+            android:layout_width="33dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
+            android:textColor="@color/short_weather_gray_7"
+            app:layout_constraintBottom_toBottomOf="@id/tv_item_weekly_weather_min_info"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/tv_weekly_weather_temp_up"
-                tempSetting="@{weeklyWeather.minTemp}"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                android:textColor="@color/short_weather_gray_4"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="RtlHardcoded"
-                tools:text="-2°" />
-
-            <TextView
-                android:id="@+id/tv_weekly_weather_temp_down"
-                tempSetting="@{weeklyWeather.maxTemp}"
-                android:layout_width="33dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.ShortWeather.Subhead2"
-                android:textColor="@color/short_weather_gray_7"
-                app:layout_constraintStart_toEndOf="@id/tv_weekly_weather_temp_up"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="RtlHardcoded"
-                tools:text="9°" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="@id/tv_item_weekly_weather_min_info"
+            tools:text="-31°" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </layout>

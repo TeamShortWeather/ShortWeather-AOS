@@ -1,16 +1,20 @@
 package org.shortweather.presentation.weeklyweather.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.shortweather.data.model.WeeklyWeather
 import org.shortweather.databinding.ItemWeeklyWeatherBinding
+import org.shortweather.util.ItemDiffCallback
 
 class WeeklyWeatherAdapter :
-    RecyclerView.Adapter<WeeklyWeatherAdapter.WeeklyWeatherViewHolder>() {
+    ListAdapter<WeeklyWeather, WeeklyWeatherAdapter.WeeklyWeatherViewHolder>(
+        ItemDiffCallback<WeeklyWeather>(
+            onItemsTheSame = { oldItem, newItem -> oldItem == newItem },
+            onContentsTheSame = { oldItem, newItem -> oldItem == newItem })
+    ) {
     private lateinit var inflater: LayoutInflater
-    private val weeklyList = mutableListOf<WeeklyWeather>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -29,15 +33,7 @@ class WeeklyWeatherAdapter :
     }
 
     override fun onBindViewHolder(holder: WeeklyWeatherViewHolder, position: Int) {
-        holder.onBind(weeklyList[position])
-    }
-
-    override fun getItemCount(): Int = weeklyList.size
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setWeatherList(weeklyList: List<WeeklyWeather>) {
-        this.weeklyList.addAll(weeklyList)
-        notifyDataSetChanged()
+        holder.onBind(currentList[position])
     }
 
     class WeeklyWeatherViewHolder(

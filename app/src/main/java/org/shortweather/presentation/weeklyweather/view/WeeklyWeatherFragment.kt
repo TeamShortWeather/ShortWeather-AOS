@@ -12,23 +12,28 @@ import org.shortweather.util.binding.BindingFragment
 class WeeklyWeatherFragment :
     BindingFragment<FragmentWeeklyWeatherBinding>(R.layout.fragment_weekly_weather) {
     private val viewModel by viewModels<WeeklyWeatherViewModel>()
+    private val adapter = WeeklyWeatherAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initView()
         setAdapter()
         setOnRefreshListener()
     }
 
+    private fun initView() {
+        adapter.submitList(viewModel.getMockWeeklyWeatherList())
+    }
+
     private fun setOnRefreshListener() {
         binding.srlWeeklyWeather.setOnRefreshListener {
+            adapter.submitList(viewModel.getMockWeeklyWeatherList())
             binding.srlWeeklyWeather.isRefreshing = false
         }
     }
 
     private fun setAdapter() {
-        val adapter = WeeklyWeatherAdapter()
-        adapter.setWeatherList(viewModel.getMockWeeklyWeatherList())
         binding.rvWeeklyWeather.adapter = adapter
     }
 }
