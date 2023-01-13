@@ -9,9 +9,6 @@ import kotlinx.coroutines.launch
 import org.shortweather.data.model.*
 import org.shortweather.domain.repository.TodayWeatherRepository
 import org.shortweather.util.Constants.FAILURE
-import org.shortweather.util.Constants.HTTP_EXCEPTION_400
-import org.shortweather.util.Constants.HTTP_EXCEPTION_401
-import org.shortweather.util.Constants.HTTP_EXCEPTION_500
 import org.shortweather.util.Constants.SUCCESS_200
 import org.shortweather.util.Event
 import retrofit2.HttpException
@@ -72,15 +69,7 @@ class TodayWeatherViewModel @Inject constructor(
                 _todayWeatherInfoEvent.value = Event(SUCCESS_200)
             }, {
                 if (it is HttpException) {
-                    when (it.code()) {
-                        HTTP_EXCEPTION_400 -> _todayWeatherInfoEvent.value =
-                            Event(HTTP_EXCEPTION_400)
-                        HTTP_EXCEPTION_401 -> _todayWeatherInfoEvent.value =
-                            Event(HTTP_EXCEPTION_401)
-                        HTTP_EXCEPTION_500 -> _todayWeatherInfoEvent.value =
-                            Event(HTTP_EXCEPTION_500)
-                        else -> throw IllegalArgumentException("not found error.")
-                    }
+                    _todayWeatherInfoEvent.value = Event(it.code())
                 } else {
                     _todayWeatherInfoEvent.value = Event(FAILURE)
                 }
@@ -98,15 +87,7 @@ class TodayWeatherViewModel @Inject constructor(
                 _todayWeatherToastInfoEvent.value = Event(SUCCESS_200)
             }, {
                 if (it is HttpException) {
-                    when (it.code()) {
-                        HTTP_EXCEPTION_400 -> _todayWeatherToastInfoEvent.value =
-                            Event(HTTP_EXCEPTION_400)
-                        HTTP_EXCEPTION_401 -> _todayWeatherToastInfoEvent.value =
-                            Event(HTTP_EXCEPTION_401)
-                        HTTP_EXCEPTION_500 -> _todayWeatherToastInfoEvent.value =
-                            Event(HTTP_EXCEPTION_500)
-                        else -> throw IllegalArgumentException("not found error.")
-                    }
+                    _todayWeatherToastInfoEvent.value = Event(it.code())
                 } else {
                     _todayWeatherToastInfoEvent.value = Event(FAILURE)
                 }
