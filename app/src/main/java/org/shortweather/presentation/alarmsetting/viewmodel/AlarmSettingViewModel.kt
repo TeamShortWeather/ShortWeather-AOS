@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AlarmSettingViewModel @Inject constructor(): ViewModel() {
-    val isChange = MutableLiveData(false)
+    val isChange = MutableLiveData(true)
 
     fun setIsChange(select: Boolean) {
         isChange.value = select
