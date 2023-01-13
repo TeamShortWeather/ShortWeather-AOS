@@ -19,7 +19,13 @@ class AlarmSettingActivity :
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        initView()
         setOnCheckedChangeListener()
+    }
+
+    private fun initView(){
+        binding.btnAlarmSettingAll.isChecked = true
+        binding.btnAlarmSettingWake.isChecked = true
     }
 
     private fun setOnCheckedChangeListener() {
