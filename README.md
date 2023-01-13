@@ -35,11 +35,19 @@
 ┣ 📂 domain
 ┃ ┣ 📂 repository
 ┣ 📂 presentation
-┃ ┣ 📂 splash
+┃ ┣ 📂 alarmsetting
+┃ ┣ 📂 customweather
 ┃ ┣ 📂 input
-┃ ┣ 📂 todayweather
-┃ ┣ 📂 weekweather
+┃ ┣ 📂 othertimesetting
 ┃ ┣ 📂 setting
+┃ ┣ 📂 splash
+┃ ┣ 📂 todayweather
+┃ ┣ 📂 todayweathercontainer
+┃   ┣ 📂 adapter
+┃   ┣ 📂 view
+┃   ┣ 📂 viewmodel
+┃ ┣ 📂 waketimesetting
+┃ ┣ 📂 weeklyweather
 ┣ 📂 util
 ┃ ┣ 📂 binding
 ┃ ┣ 📂 extension
