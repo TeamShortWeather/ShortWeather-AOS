@@ -23,6 +23,21 @@
 
 <br>
 
+## Teck Stack ⛈
+
+| Architecture | Clean Architecture, MVVM |
+|:---|:---|
+| Design Pattern | Repository Pattern, Adapter Pattern,  Delegation Pattern, Observer Pattern |
+| Jetpack Components | LiveData, Lifecycle, ViewModel, DataBinding |
+| Dependency Injection | Hilt |
+| Network | Retrofit, OkHttp |
+| Asynchronous Processing | Coroutine |
+| Third Party Library | Lottie, kotlinSerialization, Firebase |
+| Strategy | Git Flow |
+| Other Tool | Slack, Notion, Figma, Postman |
+
+<br>
+
 ## Foldering 🌩
 ```
 📂 org.shortweather
