@@ -38,6 +38,11 @@
 
 <br>
 
+## 시연 영상 ⛅
+<img src="https://user-images.githubusercontent.com/81796317/213410331-08b97a00-5896-4820-bf5d-e9236272d886.mp4" width="360"/>
+
+<br>
+
 ## Foldering 🌩
 ```
 📂 org.shortweather
