@@ -14,12 +14,12 @@
 ![main](https://user-images.githubusercontent.com/81796317/212494861-8ce6e41a-52db-45e3-8f6a-0ab8865c5678.jpg)
 
 ## Android Coding Convention 🌦
-[android coding convention 📝](https://elfin-saltopus-873.notion.site/Android-Coding-Convention-2d1428b408614047a1fafa698383d4e0)
+[android coding convention 📝](https://devjoy.notion.site/Android-Coding-Convention-2d1428b408614047a1fafa698383d4e0)
 
 <br>
 
 ## Git Convention 🌨
-[git convention 📝](https://elfin-saltopus-873.notion.site/Git-Convention-bab184da78c548f085b02026bbb86cbe)
+[git convention 📝](https://devjoy.notion.site/Git-Convention-bab184da78c548f085b02026bbb86cbe)
 
 <br>
 
